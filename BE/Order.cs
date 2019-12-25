@@ -14,6 +14,18 @@ namespace BE
         private Status status;
         private DateTime CreateDate;
         private DateTime OrderDate;
+
+        //ctor
+        internal Order(long HostingUnitKey, long GuestRequestKey, long OrderKey, Status status, DateTime CreateDate, DateTime OrderDate)
+        {
+            this.HostingUnitKey = HostingUnitKey;
+            this.GuestRequestKey = GuestRequestKey;
+            this.OrderKey = OrderKey;
+            this.status = status;
+            this.CreateDate = CreateDate;
+            this.OrderDate = OrderDate;
+        }
+
         public override string ToString()
         {
             string str = "";

@@ -9,13 +9,4 @@ namespace DAL
 {
     
 
-
-
-        void GetHostingsList();
-        void GetClientsList();
-        void GetOrdersList();
-
-        ////functions about bank////
-        void GetAllBranchsOfBankList();
-    }
 }

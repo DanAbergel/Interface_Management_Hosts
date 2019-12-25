@@ -26,6 +26,12 @@ namespace BE
         private Criterion Jacuzzi;
         private Criterion Garden;
         private Criterion ChildrenAttractions;
+
+        //ctor
+        internal GuestRequest(int guestRequestKey, string PrivateName, string FamilyName, string MailAddress, string Status, DateTime RegistrationDate, DateTime EntryDate, DateTime ReleaseDate, Area area, string SubArea, Type type, int Adults, int Children, Criterion Pool, Criterion Jacuzzi, Criterion Garden, Criterion ChildrenAttractions)
+        {
+
+        }
         public override string ToString()
         {
             string str = " ";

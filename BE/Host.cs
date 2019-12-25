@@ -15,6 +15,20 @@ namespace BE
         internal string MailAddress { get; set; }
         internal BankAccount Account { get; set; }
         internal bool CollectionClearance { get; set; }
+
+        //ctor
+        public Host(long HostKey,string PrivateName,string FamilyName,long PhoneNumber,string MailAddress, BankAccount Account,bool Collectionlearance)
+        {
+            this.HostKey = HostKey;
+            this.PrivateName = PrivateName;
+            this.FamilyName = FamilyName;
+            this.PhoneNumber = PhoneNumber;
+            this.MailAddress = MailAddress;
+            this.Account = Account;
+            this.CollectionClearance = CollectionClearance;
+        }
+
+
         public override string ToString()
         {
             return base.ToString();

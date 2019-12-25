@@ -7,7 +7,7 @@ using BE;
 
 namespace DAL
 {
-    internal class DAL_imp: IDAL
+    internal class DAL_imp
     {
       
     }
