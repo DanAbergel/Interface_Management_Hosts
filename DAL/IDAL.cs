@@ -12,20 +12,20 @@ namespace DAL
         //fonctions logement    
 
         void addHostingUnit(HostingUnit hostingUnit);
-        void deleteHostingUnit();
+        void deleteHostingUnit(long HostingUnitKey);
         void uptadeHostingUnit(HostingUnit updateHostingUnit);
         List<HostingUnit> getAllHostingUnits();
        
         //fonctions requete
 
-        void addGuestRequest(String id, String name, int age);
-        void updateGuestRequest();
+        void addGuestRequest(GuestRequest guestRequest);
+        void updateGuestRequest(GuestRequest updateGuestRequest);
         List<GuestRequest> getAllGuestRequest();
    
         //fonctions commande en cours
       
         void addOrder(Order order);
-        void updateOrder();
+        void updateOrder(Order updateOrder);
         List<Order> getAllOrders();
        
         //liste des comptes bancaires

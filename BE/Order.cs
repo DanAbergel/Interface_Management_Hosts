@@ -8,7 +8,7 @@ namespace BE
 {
     public class Order:BE
     {
-        private long HostingUnitKey;
+        public long HostingUnitKey;
         private long GuestRequestKey;
         private long OrderKey;
         private Status status;

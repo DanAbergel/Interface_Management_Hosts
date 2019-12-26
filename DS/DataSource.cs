@@ -10,11 +10,11 @@ namespace DS
 {
 
 
-    public class DataSource
+    static public class DataSource
     {
-        internal static List<HostingUnit> hostingUnits;
-        internal static List<Order> orders;
-        internal static List<GuestRequest> guestRequests;
+        public static List<HostingUnit> hostingUnits;
+        public static List<Order> orders;
+        public static List<GuestRequest> guestRequests;
 
 
         static DataSource()

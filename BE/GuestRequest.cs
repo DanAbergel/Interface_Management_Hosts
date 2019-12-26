@@ -8,7 +8,7 @@ namespace BE
 {
     public class GuestRequest:BE
     {
-        private int guestRequestKey;
+        public int guestRequestKey;
         static private int sourceKey = 1000000;
         private string PrivateName;
         private string FamilyName;
