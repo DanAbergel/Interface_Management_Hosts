@@ -10,6 +10,13 @@ namespace DAL
 {
     internal class DAL_imp : IDAL
     {
+        //Factory Method
+        public DAL_imp()
+        {
+
+        }
+
+
         //toutes les fonctions de rajout//
         public void addGuestRequest(GuestRequest guestRequest)
         {
