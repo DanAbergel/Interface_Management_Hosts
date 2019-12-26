@@ -96,7 +96,7 @@ namespace DAL
             if(updatedHostingUnit==null)
                 throw new Exception("Error in try of update a hosting unit");
             DataSource.hostingUnits.Remove(updatedHostingUnit);
-            DataSource.hostingUnits.Add(updateHostingUnit);
+            DataSource.hostingUnits.Add(updateHostingUnit); 
         }
 
 
