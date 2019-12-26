@@ -15,7 +15,7 @@ namespace DS
         public static List<HostingUnit> hostingUnits;
         public static List<Order> orders;
         public static List<GuestRequest> guestRequests;
-
+        public static List<BankAccount> allBankAccounts;
 
         static DataSource()
         {

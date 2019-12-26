@@ -8,8 +8,9 @@ using DS;
 
 namespace DAL
 {
-    internal class DAL_imp:IDAL
+    internal class DAL_imp : IDAL
     {
+        //toutes les fonctions de rajout//
         public void addGuestRequest(GuestRequest guestRequest)
         {
             DataSource.guestRequests.Add(guestRequest);
@@ -25,18 +26,29 @@ namespace DAL
             DataSource.orders.Add(order);
         }
 
+        //toutes les fonctions de supression//
         public void deleteHostingUnit(long HostingUnitKey)
         {
-            var result = (from HostingUnit in DataSource.hostingUnits
+            HostingUnit deletedHostingUnit = (from HostingUnit in DataSource.hostingUnits
                           where HostingUnit.HostingUnitKey == HostingUnitKey
                           select HostingUnit).First();
-            DataSource.hostingUnits.Remove(result);
+            if (deletedHostingUnit == null)
+                throw new Exception("Error in try of delete a hosting unit");
+            DataSource.hostingUnits.Remove(deletedHostingUnit);
 
         }
-
+        public void deleteGuestRequest(long guestRequestKey) 
+        {
+            GuestRequest deletedGuestRequest = (from GuestRequest in DataSource.guestRequests
+                                      where GuestRequest.guestRequestKey == guestRequestKey
+                                      select GuestRequest).First();
+            if (deletedGuestRequest == null)
+                throw new Exception("Error in try of delete a guest request");
+            DataSource.guestRequests.Remove(deletedGuestRequest);
+        }
         public List<BankAccount> GetAllBankAccounts()
         {
-            throw new NotImplementedException();
+            return new List<BankAccount>(DataSource.allBankAccounts);
         }
 
         public List<GuestRequest> getAllGuestRequest()
@@ -56,31 +68,38 @@ namespace DAL
 
         public void updateGuestRequest(GuestRequest updateGuestRequest)
         {
-            var result = (from GuestRequest in DataSource.guestRequests
+            var updatedGuestRequest = (from GuestRequest in DataSource.guestRequests
                           where GuestRequest.guestRequestKey == updateGuestRequest.guestRequestKey
                           select GuestRequest).First();
-            DataSource.guestRequests.Remove(result);
+            if (updatedGuestRequest == null)
+                throw new Exception("Error in try of update a guest request");
+            DataSource.guestRequests.Remove(updatedGuestRequest);
             DataSource.guestRequests.Add(updateGuestRequest);
         }
 
         public void updateOrder(Order updateOrder)
         {
-            var result = (from Order in DataSource.orders
+            var updatedOrder = (from Order in DataSource.orders
                           where Order.HostingUnitKey == updateOrder.HostingUnitKey
                           select Order).First();
-            DataSource.orders.Remove(result);
+            if (updatedOrder == null)
+                throw new Exception("Error in try of update an order");
+            DataSource.orders.Remove(updatedOrder);
             DataSource.orders.Add(updateOrder);
         }
 
         public void uptadeHostingUnit(HostingUnit updateHostingUnit)
         {
-            var result = (from HostingUnit in DataSource.hostingUnits
+            var updatedHostingUnit = (from HostingUnit in DataSource.hostingUnits
                           where HostingUnit.HostingUnitKey == updateHostingUnit.HostingUnitKey
                           select HostingUnit).First();
-            DataSource.hostingUnits.Remove(result);
+            if(updatedHostingUnit==null)
+                throw new Exception("Error in try of update a hosting unit");
+            DataSource.hostingUnits.Remove(updatedHostingUnit);
             DataSource.hostingUnits.Add(updateHostingUnit);
         }
 
 
-       
+
+    }
 }

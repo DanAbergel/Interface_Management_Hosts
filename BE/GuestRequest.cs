@@ -8,12 +8,12 @@ namespace BE
 {
     public class GuestRequest:BE
     {
-        public int guestRequestKey;
+        public long guestRequestKey { get; set; }
         static private int sourceKey = 1000000;
         private string PrivateName;
         private string FamilyName;
         private string MailAddress;
-        private string Status;
+        private string StatusOfRequest;
         private DateTime RegistrationDate;
         private DateTime EntryDate;
         private DateTime ReleaseDate;
