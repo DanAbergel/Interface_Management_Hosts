@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static BE.BE;
 
 namespace BE
 {
@@ -20,7 +21,7 @@ namespace BE
         {
             this.HostingUnitKey = HostingUnitKey;
             this.GuestRequestKey = GuestRequestKey;
-            this.OrderKey =;
+            this.OrderKey =Configuration.StaticOrder++;
             this.status = status;
             this.CreateDate = CreateDate;
             this.OrderDate = OrderDate;

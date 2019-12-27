@@ -55,9 +55,9 @@ namespace DAL
            if(! DataSource.guestRequests.Remove(deletedGuestRequest))
                 throw new Exception("Failed in try of delete a guest request");
         }
-        public List<BankAccount> GetAllBankAccounts()
+        public List<BankBranch> GetAllBankAccounts()
         {
-            return new List<BankAccount>(DataSource.allBankAccounts);
+            return new List<BankBranch>(DataSource.allBankAccounts);
         }
 
         public List<GuestRequest> getAllGuestRequest()

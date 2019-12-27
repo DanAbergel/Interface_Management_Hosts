@@ -13,11 +13,11 @@ namespace BE
         internal string FamilyName { get; set; }
         internal long PhoneNumber { get; set; }
         internal string MailAddress { get; set; }
-        internal BankAccount Account { get; set; }
+        internal BankBranch Account { get; set; }
         internal bool CollectionClearance { get; set; }
 
         //ctor
-        public Host(long HostKey,string PrivateName,string FamilyName,long PhoneNumber,string MailAddress, BankAccount Account,bool Collectionlearance)
+        public Host(long HostKey,string PrivateName,string FamilyName,long PhoneNumber,string MailAddress, BankBranch Account,bool Collectionlearance)
         {
             this.HostKey = HostKey;
             this.PrivateName = PrivateName;

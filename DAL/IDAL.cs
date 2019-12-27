@@ -31,6 +31,6 @@ namespace DAL
        
         //liste des comptes bancaires
 
-        List<BankAccount> GetAllBankAccounts();
+        List<BankBranch> GetAllBankAccounts();
     }
 }

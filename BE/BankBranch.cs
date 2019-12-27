@@ -6,24 +6,22 @@ using System.Threading.Tasks;
 
 namespace BE
 {
-    public class BankAccount
+    public class BankBranch
     {
         private int BankNumber;
         private string BankName;
         private int BranchNumber;
         private string BranchAddress;
         private string BranchCity;
-        private int BankAccountNumber;
 
         //ctor
-        public BankAccount(int BankNumber, string BankName, int BranchNumber, string BranchAddress, string BranchCity, int BankAccountNumber)
+        public BankBranch(int BankNumber, string BankName, int BranchNumber, string BranchAddress, string BranchCity)
         {
             this.BankNumber = BankNumber;
             this.BankName = BankName;
             this.BranchNumber = BranchNumber;
             this.BranchAddress = BranchAddress;
             this.BranchCity = BranchCity;
-            this.BankAccountNumber = BankAccountNumber;
         }
 
 

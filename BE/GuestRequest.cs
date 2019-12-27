@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static BE.BE;
 
 namespace BE
 {
@@ -12,13 +13,13 @@ namespace BE
         private string PrivateName;
         private string FamilyName;
         private string MailAddress;
-        private string StatusOfRequest;
+        private StatutRequirement StatusOfRequest;
         private DateTime RegistrationDate;
         private DateTime EntryDate;
         private DateTime ReleaseDate;
         private Area area;
         private string SubArea;
-        private Type type;
+        private theType type;
         private int Adults;
         private int Children;
         private Criterion Pool;
@@ -28,9 +29,25 @@ namespace BE
 
         
         //ctor
-        internal GuestRequest(string PrivateName, string FamilyName, string MailAddress, string Status, DateTime RegistrationDate, DateTime EntryDate, DateTime ReleaseDate, Area area, string SubArea, Type type, int Adults, int Children, Criterion Pool, Criterion Jacuzzi, Criterion Garden, Criterion ChildrenAttractions)
+        internal GuestRequest(string PrivateName, string FamilyName, string MailAddress, StatutRequirement Status, DateTime RegistrationDate, DateTime EntryDate, DateTime ReleaseDate, Area area, string SubArea, theType type, int Adults, int Children, Criterion Pool, Criterion Jacuzzi, Criterion Garden, Criterion ChildrenAttractions)
         {
-            
+            guestRequestKey = Configuration.StaticGuestRequestKey++;
+            this.PrivateName = PrivateName;
+            this.FamilyName = FamilyName;
+            this.MailAddress = MailAddress;
+            this.StatusOfRequest = Status;
+            this.RegistrationDate = RegistrationDate;
+            this.EntryDate = EntryDate;
+            this.ReleaseDate = ReleaseDate;
+            this.area = area;
+            this.SubArea = SubArea;
+            this.type = type;
+            this.Adults = Adults;
+            this.Children = Children;
+            this.Pool = Pool;
+            this.Jacuzzi = Jacuzzi;
+            this.Garden = Garden;
+            this.ChildrenAttractions = ChildrenAttractions;
         }
         public override string ToString()
         {
