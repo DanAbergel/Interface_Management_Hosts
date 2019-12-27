@@ -26,6 +26,7 @@ namespace BE
             this.MailAddress = MailAddress;
             this.Account = Account;
             this.CollectionClearance = CollectionClearance;
+            
         }
 
 

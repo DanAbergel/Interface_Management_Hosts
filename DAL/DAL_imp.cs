@@ -41,7 +41,8 @@ namespace DAL
                           select HostingUnit).First();
             if (deletedHostingUnit == null)
                 throw new Exception("Error in try of delete a hosting unit");
-            DataSource.hostingUnits.Remove(deletedHostingUnit);
+            if(!DataSource.hostingUnits.Remove(deletedHostingUnit))
+                throw new Exception("Failed in try of delete the hosting unit");
 
         }
         public void deleteGuestRequest(long guestRequestKey) 
@@ -51,7 +52,8 @@ namespace DAL
                                       select GuestRequest).First();
             if (deletedGuestRequest == null)
                 throw new Exception("Error in try of delete a guest request");
-            DataSource.guestRequests.Remove(deletedGuestRequest);
+           if(! DataSource.guestRequests.Remove(deletedGuestRequest))
+                throw new Exception("Failed in try of delete a guest request");
         }
         public List<BankAccount> GetAllBankAccounts()
         {

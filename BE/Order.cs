@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BE
 {
-    public class Order:BE
+    public class Order
     {
         public long HostingUnitKey;
         private long GuestRequestKey;
@@ -16,11 +16,11 @@ namespace BE
         private DateTime OrderDate;
 
         //ctor
-        internal Order(long HostingUnitKey, long GuestRequestKey, long OrderKey, Status status, DateTime CreateDate, DateTime OrderDate)
+        internal Order(long HostingUnitKey, long GuestRequestKey,Status status, DateTime CreateDate, DateTime OrderDate)
         {
             this.HostingUnitKey = HostingUnitKey;
             this.GuestRequestKey = GuestRequestKey;
-            this.OrderKey = OrderKey;
+            this.OrderKey =;
             this.status = status;
             this.CreateDate = CreateDate;
             this.OrderDate = OrderDate;

@@ -6,10 +6,9 @@ using System.Threading.Tasks;
 
 namespace BE
 {
-    public class GuestRequest:BE
+    public class GuestRequest
     {
         public long guestRequestKey { get; set; }
-        static private int sourceKey = 1000000;
         private string PrivateName;
         private string FamilyName;
         private string MailAddress;
@@ -27,10 +26,11 @@ namespace BE
         private Criterion Garden;
         private Criterion ChildrenAttractions;
 
+        
         //ctor
-        internal GuestRequest(int guestRequestKey, string PrivateName, string FamilyName, string MailAddress, string Status, DateTime RegistrationDate, DateTime EntryDate, DateTime ReleaseDate, Area area, string SubArea, Type type, int Adults, int Children, Criterion Pool, Criterion Jacuzzi, Criterion Garden, Criterion ChildrenAttractions)
+        internal GuestRequest(string PrivateName, string FamilyName, string MailAddress, string Status, DateTime RegistrationDate, DateTime EntryDate, DateTime ReleaseDate, Area area, string SubArea, Type type, int Adults, int Children, Criterion Pool, Criterion Jacuzzi, Criterion Garden, Criterion ChildrenAttractions)
         {
-
+            
         }
         public override string ToString()
         {
@@ -50,6 +50,5 @@ namespace BE
             str += (ChildrenAttractions.ToString() == "Possible") ? "possible with a pool\n" : "";
             return str;
         }
-
     }
 }
