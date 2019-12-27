@@ -19,7 +19,7 @@ namespace BE
         //ctor
         public Host(long HostKey,string PrivateName,string FamilyName,long PhoneNumber,string MailAddress, BankBranch Account,bool Collectionlearance)
         {
-            this.HostKey = HostKey;
+            this.HostKey = Configuration.StaticHostKey++;
             this.PrivateName = PrivateName;
             this.FamilyName = FamilyName;
             this.PhoneNumber = PhoneNumber;

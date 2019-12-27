@@ -9,16 +9,17 @@ namespace BE
     public class HostingUnit
     {
         public long HostingUnitKey { get; set; }
-        public Host Owner { get; set; }
+        public Host Owner;
         private string HostingUnitName { get; set; }
-        bool[,] Diary { get; set; }
+        bool[,] Diary;
 
         //ctor
         public HostingUnit(Host Owner, string HostingUnitName)
         {
-            this.HostingUnitKey = HostingUnitKey;
+            this.HostingUnitKey = Configuration.StaticHostingUnitKey++;
             this.Owner = Owner;
             this.HostingUnitName = HostingUnitName;
+            Diary = new bool[12,31];
         }
 
 
