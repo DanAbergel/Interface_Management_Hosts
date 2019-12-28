@@ -10,14 +10,6 @@ namespace DAL
 {
     internal class DAL_imp : IDAL
     {
-        //Factory Method
-        public DAL_imp()
-        {
-
-        }
-
-
-        //toutes les fonctions de rajout//
         public void addGuestRequest(GuestRequest guestRequest)
         {
             DataSource.guestRequests.Add(guestRequest);
@@ -25,7 +17,13 @@ namespace DAL
 
         public void addHostingUnit(HostingUnit hostingUnit)
         {
-            DataSource.hostingUnits.Add(hostingUnit);
+            if (!HostingUnitExist(hostingUnit.HostingUnitKey))
+            {
+                DataSource.hostingUnits.Add(hostingUnit);
+            }
+            else
+                throw new KeyNotFoundException("le logement existe deja");
+
         }
 
         public void addOrder(Order order)
@@ -33,28 +31,20 @@ namespace DAL
             DataSource.orders.Add(order);
         }
 
-        //toutes les fonctions de supression//
         public void deleteHostingUnit(long HostingUnitKey)
         {
-            HostingUnit deletedHostingUnit = (from HostingUnit in DataSource.hostingUnits
-                          where HostingUnit.HostingUnitKey == HostingUnitKey
-                          select HostingUnit).First();
-            if (deletedHostingUnit == null)
-                throw new Exception("Error in try of delete a hosting unit");
-            if(!DataSource.hostingUnits.Remove(deletedHostingUnit))
-                throw new Exception("Failed in try of delete the hosting unit");
+            if (HostingUnitExist(HostingUnitKey))
+            {
+                var result = (from HostingUnit in DataSource.hostingUnits
+                              where HostingUnit.HostingUnitKey == HostingUnitKey
+                              select HostingUnit).First();
+                DataSource.hostingUnits.Remove(result);
+            }
+            else
+                throw new KeyNotFoundException("le logement n'existe pas");
 
         }
-        public void deleteGuestRequest(long guestRequestKey) 
-        {
-            GuestRequest deletedGuestRequest = (from GuestRequest in DataSource.guestRequests
-                                      where GuestRequest.guestRequestKey == guestRequestKey
-                                      select GuestRequest).First();
-            if (deletedGuestRequest == null)
-                throw new Exception("Error in try of delete a guest request");
-           if(! DataSource.guestRequests.Remove(deletedGuestRequest))
-                throw new Exception("Failed in try of delete a guest request");
-        }
+
         public List<BankBranch> GetAllBankAccounts()
         {
             return new List<BankBranch>(DataSource.allBankAccounts);
@@ -77,38 +67,83 @@ namespace DAL
 
         public void updateGuestRequest(GuestRequest updateGuestRequest)
         {
-            var updatedGuestRequest = (from GuestRequest in DataSource.guestRequests
-                          where GuestRequest.guestRequestKey == updateGuestRequest.guestRequestKey
-                          select GuestRequest).First();
-            if (updatedGuestRequest == null)
-                throw new Exception("Error in try of update a guest request");
-            DataSource.guestRequests.Remove(updatedGuestRequest);
-            DataSource.guestRequests.Add(updateGuestRequest);
+            if (GuestRequestExist(updateGuestRequest.guestRequestKey))
+            {
+                var result = (from GuestRequest in DataSource.guestRequests
+                              where GuestRequest.guestRequestKey == updateGuestRequest.guestRequestKey
+                              select GuestRequest).First();
+                DataSource.guestRequests.Remove(result);
+                DataSource.guestRequests.Add(updateGuestRequest);
+            }
+            else
+                throw new KeyNotFoundException("la requete n existe pas");
         }
 
         public void updateOrder(Order updateOrder)
         {
-            var updatedOrder = (from Order in DataSource.orders
-                          where Order.HostingUnitKey == updateOrder.HostingUnitKey
-                          select Order).First();
-            if (updatedOrder == null)
-                throw new Exception("Error in try of update an order");
-            DataSource.orders.Remove(updatedOrder);
-            DataSource.orders.Add(updateOrder);
+            if (OrderExist(updateOrder.HostingUnitKey))
+            {
+                var result = (from Order in DataSource.orders
+                              where Order.HostingUnitKey == updateOrder.HostingUnitKey
+                              select Order).First();
+                DataSource.orders.Remove(result);
+                DataSource.orders.Add(updateOrder);
+            }
+            else
+                throw new KeyNotFoundException("aucune commande n'a ete trouve");
         }
 
         public void uptadeHostingUnit(HostingUnit updateHostingUnit)
         {
-            var updatedHostingUnit = (from HostingUnit in DataSource.hostingUnits
-                          where HostingUnit.HostingUnitKey == updateHostingUnit.HostingUnitKey
-                          select HostingUnit).First();
-            if(updatedHostingUnit==null)
-                throw new Exception("Error in try of update a hosting unit");
-            DataSource.hostingUnits.Remove(updatedHostingUnit);
-            DataSource.hostingUnits.Add(updateHostingUnit); 
+            if (HostingUnitExist(updateHostingUnit.HostingUnitKey))
+            {
+                var result = (from HostingUnit in DataSource.hostingUnits
+                              where HostingUnit.HostingUnitKey == updateHostingUnit.HostingUnitKey
+                              select HostingUnit).First();
+                DataSource.hostingUnits.Remove(result);
+                DataSource.hostingUnits.Add(updateHostingUnit);
+            }
+            else
+                throw new KeyNotFoundException("le logement n'est pas existant");
         }
 
 
 
+        public bool HostingUnitExist(long HostingUnitKey)
+        {
+            HostingUnit tmp = (from HostingUnit in DataSource.hostingUnits
+                               where HostingUnit.HostingUnitKey == HostingUnitKey
+                               select HostingUnit).FirstOrDefault();
+            if (tmp == default(HostingUnit))
+                return false;
+            else
+                return true;
+        }
+
+        public bool GuestRequestExist(long guestRequestKey)
+        {
+            GuestRequest tmp = (from GuestRequest in DataSource.guestRequests
+                                where GuestRequest.guestRequestKey == guestRequestKey
+                                select GuestRequest).FirstOrDefault();
+            if (tmp == default(GuestRequest))
+                return false;
+            else
+                return true;
+
+        }
+
+        public bool OrderExist(long HostingUnitKey)
+        {
+            Order tmp = (from Order in DataSource.orders
+                         where Order.HostingUnitKey == HostingUnitKey
+                         select Order).FirstOrDefault();
+            if (tmp == default(Order))
+                return false;
+            else
+                return true;
+
+        }
+
     }
+
 }

@@ -19,7 +19,6 @@ namespace DAL
         //fonctions requete
 
         void addGuestRequest(GuestRequest guestRequest);
-        void deleteGuestRequest(long guestRequestKey);
         void updateGuestRequest(GuestRequest updateGuestRequest);
         List<GuestRequest> getAllGuestRequest();
    
@@ -32,5 +31,11 @@ namespace DAL
         //liste des comptes bancaires
 
         List<BankBranch> GetAllBankAccounts();
+
+        // fonction pour exceptions
+
+        bool HostingUnitExist(long HostingUnitKey);
+        bool GuestRequestExist(long guestRequestKey);
+        bool OrderExist(long HostingUnitKey);
     }
 }
