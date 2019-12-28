@@ -43,7 +43,7 @@ namespace BL
                 throw new Exception("Error !!! Entry date is later than release date ");
             if (guestRequest.EntryDate.CompareTo(guestRequest.ReleaseDate) == 0)
                 throw new Exception("Error !!! We accept only with at least one day between Entry and Release dates");
-
+            newDal.addGuestRequest(guestRequest);
         }
         public void deleteGuestRequest(long guestRequestKey)
         {
