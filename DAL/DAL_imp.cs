@@ -38,8 +38,8 @@ namespace DAL
                 var result = (from HostingUnit in DataSource.hostingUnits
                               where HostingUnit.HostingUnitKey == HostingUnitKey
                               select HostingUnit).First();
-                if (!DataSource.hostingUnits.Remove(result))
-                    throw new Exception("la supression n'a pas été éffectuée");//regardes ca
+                DataSource.hostingUnits.Remove(result);
+                   
             }
             else
                 throw new KeyNotFoundException("le logement n'existe pas");
