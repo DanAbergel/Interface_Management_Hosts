@@ -7,7 +7,7 @@ using BE;
 
 namespace DAL
 {
-    internal interface IDAL
+    public interface IDAL
     {
         //fonctions logement    
 
