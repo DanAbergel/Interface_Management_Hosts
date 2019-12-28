@@ -39,6 +39,10 @@ namespace BL
 
         public void addGuestRequest(GuestRequest guestRequest)
         {
+            if (guestRequest.EntryDate.CompareTo(guestRequest.ReleaseDate) > 0)
+                throw new Exception("Error !!! Entry date is later than release date ");
+            if (guestRequest.EntryDate.CompareTo(guestRequest.ReleaseDate) == 0)
+                throw new Exception("Error !!! We accept only with at least one day between Entry and Release dates");
 
         }
         public void deleteGuestRequest(long guestRequestKey)
@@ -75,5 +79,6 @@ namespace BL
         {
             return new List<BankBranch>();
         }
+
     }
 }

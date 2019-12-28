@@ -8,10 +8,10 @@ namespace BE
 {
     public class BE
     {
-        internal enum theType { Zimmer, Hotel, Camping }
-        internal enum Area { North, South, Center, Jerusalem }
-        internal enum Status { NotYetAddressed, MailSent, Closed_Absence, Closed_Demanded }
-        internal enum StatutRequirement { Active, DealClosed, Closed }
-        internal enum Criterion { Necessary, Possible, NotInterested }
+        public enum theType { Zimmer, Hotel, Camping }
+        public enum Area { North, South, Center, Jerusalem }
+        public enum Status { NotYetAddressed, MailSent, Closed_Absence, Closed_Demanded }
+        public enum StatutRequirement { Active, DealClosed, Closed }
+        public enum Criterion { Necessary, Possible, NotInterested }
     }
 }

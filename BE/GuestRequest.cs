@@ -9,23 +9,23 @@ namespace BE
 {
     public class GuestRequest
     {
-        public long guestRequestKey { get; set; }
-        private string PrivateName;
-        private string FamilyName;
-        private string MailAddress;
-        private StatutRequirement StatusOfRequest;
-        private DateTime RegistrationDate;
-        private DateTime EntryDate;
-        private DateTime ReleaseDate;
-        private Area area;
-        private string SubArea;
-        private theType type;
-        private int Adults;
-        private int Children;
-        private Criterion Pool;
-        private Criterion Jacuzzi;
-        private Criterion Garden;
-        private Criterion ChildrenAttractions;
+        public long guestRequestKey;
+        public string PrivateName;
+        public string FamilyName;
+        public string MailAddress;
+        public StatutRequirement StatusOfRequest;
+        public DateTime RegistrationDate;
+        public DateTime EntryDate;
+        public DateTime ReleaseDate;
+        public Area area;
+        public string SubArea;
+        public theType type;
+        public int Adults;
+        public int Children;
+        public Criterion Pool;
+        public Criterion Jacuzzi;
+        public Criterion Garden;
+        public Criterion ChildrenAttractions;
 
         
         //ctor
