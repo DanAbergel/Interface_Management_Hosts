@@ -151,5 +151,14 @@ namespace BL
             order.TotalPrice=priceForsAdults+priceForChildrens+10;
             return order;
         }
+
+        public IEnumerable<HostingUnit> SearchHostingUnitinList(DateTime Entry,int days)
+        {
+            DateTime End = Entry.AddDays(days);
+            var newList = from HostingUnit in getAllHostingUnits()
+                          where SearchForFreeDates(Entry, End, HostingUnit.Diary)
+                          select HostingUnit;
+            return newList;
+        }
     }
 }
