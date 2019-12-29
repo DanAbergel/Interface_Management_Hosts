@@ -14,6 +14,7 @@ namespace BE
         public string FamilyName;
         public string MailAddress;
         public StatutRequirement StatusOfRequest;
+        public bool canChangeStatusOfRequirement;
         public DateTime RegistrationDate;
         public DateTime EntryDate;
         public DateTime ReleaseDate;

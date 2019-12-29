@@ -19,6 +19,7 @@ namespace DAL
         //fonctions requete
 
         void addGuestRequest(GuestRequest guestRequest);
+        void deleteGuestRequest(long guestRequestKey);
         void updateGuestRequest(GuestRequest updateGuestRequest);
         List<GuestRequest> getAllGuestRequest();
    

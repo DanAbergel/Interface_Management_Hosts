@@ -47,6 +47,14 @@ namespace DAL
 
         }
 
+        public void deleteGuestRequest(long guestRequestKey)
+        {
+            var result = from guestRequest in DataSource.guestRequests
+                         where guestRequest.guestRequestKey == guestRequestKey
+                         select guestRequest;
+            if (!DataSource.guestRequests.Remove(result.ElementAt(0)))
+                throw new KeyNotFoundException("Error!!!didnt find this GuestRequestKey");
+        }
         public List<BankBranch> GetAllBankAccounts()
         {
             return new List<BankBranch>(DataSource.allBankAccounts);

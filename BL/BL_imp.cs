@@ -65,11 +65,23 @@ namespace BL
         }
         public void updateGuestRequest(GuestRequest updateGuestRequest)
         {
-            //if(updateGuestRequest.StatusOfRequest!=BE.BE.StatutRequirement.DealClosed)
+           
 
         } 
         public void updateOrder(Order updateOrder)
         {
+            //seulement si le deal n'a pas été conclu je peux changer le statut de la demande
+            if (updateOrder.guestRequest.canChangeStatusOfRequirement)
+                newDal.updateOrder(updateOrder);
+            if (updateOrder.guestRequest.StatusOfRequest == BE.BE.StatutRequirement.DealClosed)
+            {
+                updateOrder.guestRequest.canChangeStatusOfRequirement = false;
+                calculateTotalPriceWithComission(updateOrder);
+            }
+            //si le statut de la demande est closed jappelle la fonction deleteGuestRequest
+            if (updateOrder.guestRequest.StatusOfRequest == BE.BE.StatutRequirement.Closed)
+                deleteGuestRequest(updateOrder.guestRequest.guestRequestKey);
+            //si le statut est que le mail a ete envoye j imprime le mail a l ecran
             if (updateOrder.status == BE.BE.Status.MailSent&&updateOrder.hostofHostingUnitReserved.CollectionClearance)
                 Console.WriteLine(updateOrder);
         }
@@ -129,6 +141,15 @@ namespace BL
             /*si il n a pas retourne de false jusque maintenant ca veut dire qu'il n'y'a aucun probleme
              et donc il renvoie une valeur true qui signifie que les dates demandées sont valides */
             return true;
+        }
+
+        Order calculateTotalPriceWithComission(Order order)
+        {
+            double priceForsAdults,priceForChildrens;
+            priceForsAdults = order.guestRequest.Adults * order.hostingUnitReserved.pricePerDayPerAdult;
+            priceForChildrens = order.guestRequest.Children * order.hostingUnitReserved.pricePerDayPerChild;
+            order.TotalPrice=priceForsAdults+priceForChildrens+10;
+            return order;
         }
     }
 }

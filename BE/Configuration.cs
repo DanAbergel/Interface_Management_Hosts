@@ -12,5 +12,6 @@ namespace BE
         internal static long StaticHostKey=100000000;
         internal static long StaticHostingUnitKey=100000000;
         internal static long StaticOrder=100000000;
+        internal static double comissionPerDay = 10; 
     }
 }

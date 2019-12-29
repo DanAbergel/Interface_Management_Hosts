@@ -12,7 +12,8 @@ namespace BE
         public Host Owner;
         public string HostingUnitName;
         public bool[,] Diary=new bool[12,31];
-        public double pricePerDay;
+        public double pricePerDayPerAdult;
+        public double pricePerDayPerChild;
        
         public override string ToString()
         {
