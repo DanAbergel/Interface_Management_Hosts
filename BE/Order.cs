@@ -17,6 +17,7 @@ namespace BE
         public DateTime OrderDate;
         public HostingUnit hostingUnitReserved;
         public Host hostofHostingUnitReserved;
+        public GuestRequest guestRequest;
         //ctor
        
 

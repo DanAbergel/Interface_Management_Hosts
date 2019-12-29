@@ -10,8 +10,8 @@ namespace BE
     {
         public long HostingUnitKey = Configuration.StaticHostingUnitKey++;
         public Host Owner;
-        private string HostingUnitName { get; set; }
-        bool[,] Diary=new bool[12,31];
+        public string HostingUnitName { get; set; }
+        public bool[,] Diary=new bool[12,31];
 
        
 

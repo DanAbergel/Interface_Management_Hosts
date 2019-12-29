@@ -34,8 +34,11 @@ namespace BL
         public void addOrder(Order order)
         {
             //verifie si le proprietaire a rempli le certificat du compte en banque
-            if (order.hostofHostingUnitReserved.CollectionClearance)
-                newDal.addOrder(order);
+            if (!order.hostofHostingUnitReserved.CollectionClearance)
+                throw new KeyNotFoundException("The host did not signed CollectionClearance !!!");
+            if (!SearchForFreeDates(order.guestRequest.EntryDate, order.guestRequest.ReleaseDate, order.hostingUnitReserved.Diary))
+                throw new KeyNotFoundException("The demanded dates are not available for this hosting unit");
+            newDal.addOrder(order);
         }
 
 
@@ -47,7 +50,7 @@ namespace BL
             var result = from hostingUnit in newDal.GetAllHostingUnitsOccupied()
                          where hostingUnit.HostingUnitKey == HostingUnitKey
                          select hostingUnit;
-            if (result.Count() == 0)//si le logement ne se trouve pas dans la liste des logements occuppés on le supprime 
+            if (result.Count() == 0)//si le logement ne se trouve pas dans la liste des logements occupés on le supprime 
                 newDal.deleteHostingUnit(HostingUnitKey);
         }
         public void deleteGuestRequest(long guestRequestKey)
@@ -75,20 +78,23 @@ namespace BL
         //implementation de retour de listes
         public List<HostingUnit> getAllHostingUnits()
         {
-            return new List<HostingUnit>();
+            return newDal.getAllHostingUnits();
         }
         public List<GuestRequest> getAllGuestRequest()
         {
-            return new List<GuestRequest>();
+            return newDal.getAllGuestRequest();
         }
         public List<Order> getAllOrders()
         {
-            return new List<Order>();
+            return newDal.getAllOrders();
         }
         public List<BankBranch> GetAllBankAccounts()
         {
-            return new List<BankBranch>();
+            return newDal.GetAllBankAccounts();
         }
+
+
+
 
 
         ////autres fonctions

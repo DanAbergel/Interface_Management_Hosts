@@ -33,6 +33,7 @@ namespace DAL
 
         public void deleteHostingUnit(long HostingUnitKey)
         {
+            //verifie si le logement existe pour pouvoir le supprimer
             if (HostingUnitExist(HostingUnitKey))
             {
                 var result = (from HostingUnit in DataSource.hostingUnits
@@ -41,7 +42,7 @@ namespace DAL
                 DataSource.hostingUnits.Remove(result);
                    
             }
-            else
+            else//si il ne le trouve pas 
                 throw new KeyNotFoundException("le logement n'existe pas");
 
         }
@@ -91,7 +92,7 @@ namespace DAL
                 DataSource.orders.Add(updateOrder);
             }
             else
-                throw new KeyNotFoundException("aucune commande n'a ete trouve");
+                throw new KeyNotFoundException("aucune commande n'a été trouve");
         }
 
         public void uptadeHostingUnit(HostingUnit updateHostingUnit)
