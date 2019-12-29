@@ -18,6 +18,7 @@ namespace BE
         public HostingUnit hostingUnitReserved;
         public Host hostofHostingUnitReserved;
         public GuestRequest guestRequest;
+        public double pricePerDay;
         //ctor
        
 

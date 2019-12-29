@@ -70,7 +70,8 @@ namespace BL
         } 
         public void updateOrder(Order updateOrder)
         {
-
+            if (updateOrder.status == BE.BE.Status.MailSent)
+                Console.WriteLine(updateOrder);
         }
 
 
