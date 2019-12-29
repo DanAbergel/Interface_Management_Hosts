@@ -27,28 +27,6 @@ namespace BE
         public Criterion Garden;
         public Criterion ChildrenAttractions;
         
-
-        
-        //ctor
-        internal GuestRequest(string PrivateName, string FamilyName, string MailAddress, StatutRequirement Status, DateTime RegistrationDate, DateTime EntryDate, DateTime ReleaseDate, Area area, string SubArea, theType type, int Adults, int Children, Criterion Pool, Criterion Jacuzzi, Criterion Garden, Criterion ChildrenAttractions)
-        {
-            this.PrivateName = PrivateName;
-            this.FamilyName = FamilyName;
-            this.MailAddress = MailAddress;
-            this.StatusOfRequest = Status;
-            this.RegistrationDate = RegistrationDate;
-            this.EntryDate = EntryDate;
-            this.ReleaseDate = ReleaseDate;
-            this.area = area;
-            this.SubArea = SubArea;
-            this.type = type;
-            this.Adults = Adults;
-            this.Children = Children;
-            this.Pool = Pool;
-            this.Jacuzzi = Jacuzzi;
-            this.Garden = Garden;
-            this.ChildrenAttractions = ChildrenAttractions;
-        }
         public override string ToString()
         {
             string str = " ";

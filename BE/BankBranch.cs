@@ -14,20 +14,15 @@ namespace BE
         private string BranchAddress;
         private string BranchCity;
 
-        //ctor
-        public BankBranch(int BankNumber, string BankName, int BranchNumber, string BranchAddress, string BranchCity)
-        {
-            this.BankNumber = BankNumber;
-            this.BankName = BankName;
-            this.BranchNumber = BranchNumber;
-            this.BranchAddress = BranchAddress;
-            this.BranchCity = BranchCity;
-        }
-
 
         public override string ToString()
         {
-            return base.ToString();
+            string str = "";
+            str += "Bank Name: " + BankName;
+            str += " Bank Number: " + BankNumber;
+            str += "\nBranch Number:" + BranchNumber;
+            str += "Address :" + BranchAddress + " at " + BranchCity+"\n";
+            return str;
         }
     }
 }

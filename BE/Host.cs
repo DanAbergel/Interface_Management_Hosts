@@ -8,27 +8,13 @@ namespace BE
 {
     public class Host
     {
-        internal long HostKey { get; }
-        internal string PrivateName { get; set; }
-        internal string FamilyName { get; set; }
-        internal long PhoneNumber { get; set; }
-        internal string MailAddress { get; set; }
-        internal BankBranch Account { get; set; }
-        internal bool CollectionClearance { get; set; }
-
-        //ctor
-        public Host(long HostKey,string PrivateName,string FamilyName,long PhoneNumber,string MailAddress, BankBranch Account,bool Collectionlearance)
-        {
-            this.HostKey = Configuration.StaticHostKey++;
-            this.PrivateName = PrivateName;
-            this.FamilyName = FamilyName;
-            this.PhoneNumber = PhoneNumber;
-            this.MailAddress = MailAddress;
-            this.Account = Account;
-            this.CollectionClearance = CollectionClearance;
-            
-        }
-
+        public long HostKey= Configuration.StaticHostKey++;
+        public string PrivateName;
+        public string FamilyName;
+        public long PhoneNumber;
+        public string MailAddress;
+        public BankBranch Account;
+        public bool CollectionClearance;
 
         public override string ToString()
         {

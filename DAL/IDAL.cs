@@ -37,5 +37,8 @@ namespace DAL
         bool HostingUnitExist(long HostingUnitKey);
         bool GuestRequestExist(long guestRequestKey);
         bool OrderExist(long HostingUnitKey);
+
+
+        List<HostingUnit> GetAllHostingUnitsOccupied();
     }
 }

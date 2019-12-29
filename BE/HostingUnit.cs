@@ -8,20 +8,12 @@ namespace BE
 {
     public class HostingUnit
     {
-        public long HostingUnitKey { get; set; }
+        public long HostingUnitKey = Configuration.StaticHostingUnitKey++;
         public Host Owner;
         private string HostingUnitName { get; set; }
-        bool[,] Diary;
+        bool[,] Diary=new bool[12,31];
 
-        //ctor
-        public HostingUnit(Host Owner, string HostingUnitName)
-        {
-            this.HostingUnitKey = Configuration.StaticHostingUnitKey++;
-            this.Owner = Owner;
-            this.HostingUnitName = HostingUnitName;
-            Diary = new bool[12,31];
-        }
-
+       
 
         public override string ToString()
         {
