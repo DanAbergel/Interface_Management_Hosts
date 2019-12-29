@@ -9,7 +9,7 @@ namespace BE
 {
     public class GuestRequest
     {
-        public long guestRequestKey;
+        public long guestRequestKey= Configuration.StaticGuestRequestKey++;
         public string PrivateName;
         public string FamilyName;
         public string MailAddress;
@@ -26,12 +26,12 @@ namespace BE
         public Criterion Jacuzzi;
         public Criterion Garden;
         public Criterion ChildrenAttractions;
+        
 
         
         //ctor
         internal GuestRequest(string PrivateName, string FamilyName, string MailAddress, StatutRequirement Status, DateTime RegistrationDate, DateTime EntryDate, DateTime ReleaseDate, Area area, string SubArea, theType type, int Adults, int Children, Criterion Pool, Criterion Jacuzzi, Criterion Garden, Criterion ChildrenAttractions)
         {
-            guestRequestKey = Configuration.StaticGuestRequestKey++;
             this.PrivateName = PrivateName;
             this.FamilyName = FamilyName;
             this.MailAddress = MailAddress;
