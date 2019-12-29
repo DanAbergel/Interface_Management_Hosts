@@ -26,6 +26,8 @@ namespace BE
             str += "Hosting Unit Key: " + HostingUnitKey;
             str += "\nGuest Request Key: " + GuestRequestKey;
             str += "\nOrder Key: " + OrderKey;
+            str += hostofHostingUnitReserved.ToString();
+            str += hostingUnitReserved.ToString();
             str += "\nStatus: " + status;
             str += "\nCreateDate: " + CreateDate;
             str += "\nOrderDate: " + OrderDate + "\n";

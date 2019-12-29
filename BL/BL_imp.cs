@@ -33,6 +33,7 @@ namespace BL
         }
         public void addOrder(Order order)
         {
+            //verifie si le proprietaire a rempli le certificat du compte en banque
             if (order.hostofHostingUnitReserved.CollectionClearance)
                 newDal.addOrder(order);
         }
