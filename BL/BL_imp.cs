@@ -25,7 +25,7 @@ namespace BL
         } 
         public void addGuestRequest(GuestRequest guestRequest)
         {
-            if (guestRequest.EntryDate.CompareTo(guestRequest.ReleaseDate) > 0)
+            if (differnceBetweenTwoDates(guestRequest.EntryDate,guestRequest.ReleaseDate) < 0)
                 throw new Exception("Error !!! Entry date is later than release date ");
             if (guestRequest.EntryDate.CompareTo(guestRequest.ReleaseDate) == 0)
                 throw new Exception("Error !!! We accept only with at least one day between Entry and Release dates");
@@ -55,7 +55,7 @@ namespace BL
         }
         public void deleteGuestRequest(long guestRequestKey)
         {
-
+            newDal.deleteGuestRequest(guestRequestKey);
         }
 
         ////implementation de mise a jour
@@ -161,5 +161,45 @@ namespace BL
             foreach (var item in newList) ;
             return newList;
         }
+
+        //calcule la difference de dates entre la date d'aujourd'hui et une date de fin
+        public int differnceBetweenTwoDates(DateTime End)
+        {
+            int difference=0;
+            DateTime today = DateTime.Today;
+            int daysInMonth;
+            daysInMonth = DateTime.DaysInMonth(today.Year, today.Month);
+            for (int day = today.Day; day < daysInMonth; day++)
+                difference++;
+            for (int month = today.Month; month < End.Month; month++)
+            {
+                daysInMonth = DateTime.DaysInMonth(today.Year, month + 1);
+                for (int day = 0; day < daysInMonth; day++)
+                    difference++;
+            }
+            for (int day = 0; day < End.Day; day++)
+                difference++;
+            return difference;
+        }
+        //calcule la difference de dates avec une date de debut et une de fin
+        public int differnceBetweenTwoDates(DateTime Begin ,DateTime End)
+        {
+            int difference = 0;
+            int daysInMonth;
+            daysInMonth = DateTime.DaysInMonth(Begin.Year, Begin.Month);
+            for (int day = Begin.Day; day < daysInMonth; day++)
+                difference++;
+            for (int month = Begin.Month; month < End.Month; month++)
+            {
+                daysInMonth = DateTime.DaysInMonth(Begin.Year, month + 1);
+                for (int day = 0; day < daysInMonth; day++)
+                    difference++;
+            }
+            for (int day = 0; day < End.Day; day++)
+                difference++;
+            return difference;
+        }
+
+
     }
 }
