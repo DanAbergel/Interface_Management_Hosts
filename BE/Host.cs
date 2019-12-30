@@ -8,7 +8,7 @@ namespace BE
 {
     public class Host
     {
-        public long HostKey= Configuration.StaticHostKey++;
+        public long HostKey = Configuration.StaticHostKey++;
         public string PrivateName;
         public string FamilyName;
         public long PhoneNumber;
@@ -18,7 +18,17 @@ namespace BE
 
         public override string ToString()
         {
-            return base.ToString();
+            string str = "";
+            str += "Name of HOst: " + PrivateName + " " + FamilyName;
+            str += "Mail: " + MailAddress + "Phone number: " + PhoneNumber;
+            return str;
         }
+        
+       
     }
-}
+    }
+    
+        
+        
+    
+

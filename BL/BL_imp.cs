@@ -21,6 +21,7 @@ namespace BL
         public void addHostingUnit(HostingUnit hostingUnit)
         {
             //la verification de l'unicité du logement se fait en couche DAL
+            hostingUnit.succesfulDeals = 0;
             newDal.addHostingUnit(hostingUnit);
         } 
         public void addGuestRequest(GuestRequest guestRequest)
