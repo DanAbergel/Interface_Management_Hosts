@@ -158,6 +158,7 @@ namespace BL
             var newList = from HostingUnit in getAllHostingUnits()
                           where SearchForFreeDates(Entry, End, HostingUnit.Diary)
                           select HostingUnit;
+            foreach (var item in newList) ;
             return newList;
         }
     }
