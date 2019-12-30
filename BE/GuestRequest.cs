@@ -10,9 +10,7 @@ namespace BE
     public class GuestRequest
     {
         public long guestRequestKey= Configuration.StaticGuestRequestKey++;
-        public string PrivateName;
-        public string FamilyName;
-        public string MailAddress;
+        public Client client;
         public StatutRequirement StatusOfRequest;
         public bool canChangeStatusOfRequirement;
         public DateTime RegistrationDate;
@@ -31,10 +29,8 @@ namespace BE
         public override string ToString()
         {
             string str = " ";
-            str += "guestRequestKey" + guestRequestKey;
-            str += "\nname:" + PrivateName + " " + FamilyName;
-            str += "\nMail:" + MailAddress;
-            str += "The request is from " + EntryDate + " to " + ReleaseDate;
+            str += client.ToString();
+            str += "\nThe request is from " + EntryDate + " to " + ReleaseDate;
             str += "for " + Adults + " adults and " + Children + "childrens\n";
             str += (Pool.ToString() == "Necessary") ? "necessary with a pool\n" : "";
             str += (Pool.ToString() == "Possible") ? "possible with a pool\n" : "";
