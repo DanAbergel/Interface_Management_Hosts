@@ -79,6 +79,7 @@ namespace BL
                 updateOrder.guestRequest.canChangeStatusOfRequirement = false;
                 updateOrder.hostingUnitReserved.succesfulDeals++;
                 calculateTotalPriceWithComission(updateOrder);
+                assignDatesForAHostingUnit(updateOrder.guestRequest.EntryDate, updateOrder.guestRequest.ReleaseDate, updateOrder.hostingUnitReserved);
             }
             //si le statut de la demande est closed jappelle la fonction deleteGuestRequest
             if (updateOrder.guestRequest.StatusOfRequest == BE.BE.StatutRequirement.Closed)
@@ -205,6 +206,22 @@ namespace BL
         public int succesfulDealsForHostingUnit(HostingUnit unit)
         {
             return unit.succesfulDeals;
+        }
+
+        public void assignDatesForAHostingUnit(DateTime Entry,DateTime Exit,HostingUnit unit)
+        {
+            int daysInMonth = DateTime.DaysInMonth(Entry.Year, Entry.Month);
+            for (int day = Entry.Day - 1; day < daysInMonth; day++)
+                unit.Diary[Entry.Month-1, day] = true;
+            for (int month = Entry.Month; month < Exit.Month; month++)
+            {
+                daysInMonth = DateTime.DaysInMonth(Entry.Year, month);
+                for (int day = 0; day < daysInMonth; day++)
+                    unit.Diary[month, day] = true;
+            }
+            for (int day = 0; day < Exit.Day; day++)
+                unit.Diary[Exit.Month - 1, day] = true;
+
         }
     }
 }
