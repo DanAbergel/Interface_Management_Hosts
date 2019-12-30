@@ -14,14 +14,15 @@ namespace BE
         public bool[,] Diary=new bool[12,31];
         public double pricePerDayPerAdult;
         public double pricePerDayPerChild;
-       
+        public int succesfulDeals;
         public override string ToString()
         {
             string str = "";
             str += "HostingUnit Key: " + HostingUnitKey;
             str +="\n"+ Owner.ToString();
             str += "\nHostingUnit Name:" + HostingUnitName;
-            str += "\nPrice per day: " + pricePerDay;
+            str += "\nPrice per day for each adult: " + pricePerDayPerAdult;
+            str += "\nPrice per day for each child: " + pricePerDayPerChild;
             return str;
         }
     }

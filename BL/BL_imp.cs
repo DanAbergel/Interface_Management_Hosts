@@ -76,6 +76,7 @@ namespace BL
             if (updateOrder.guestRequest.StatusOfRequest == BE.BE.StatutRequirement.DealClosed)
             {
                 updateOrder.guestRequest.canChangeStatusOfRequirement = false;
+                updateOrder.hostingUnitReserved.succesfulDeals++;
                 calculateTotalPriceWithComission(updateOrder);
             }
             //si le statut de la demande est closed jappelle la fonction deleteGuestRequest
@@ -200,6 +201,9 @@ namespace BL
             return difference;
         }
 
-
+        public int succesfulDealsForHostingUnit(HostingUnit unit)
+        {
+            return unit.succesfulDeals;
+        }
     }
 }
