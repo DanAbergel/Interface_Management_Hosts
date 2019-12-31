@@ -12,34 +12,12 @@ namespace DS
 
     static public class DataSource
     {
-        public static List<HostingUnit> hostingUnits;
-        public static List<Order> orders;
-        public static List<GuestRequest> guestRequests;
-        public static List<BankBranch> allBankAccounts;
-        public static List<string> allBanks;
-        public static List<HostingUnit> Occupied;
-        static DataSource()
-        {
-            hostingUnits = new List<HostingUnit>
-            {
-                    //new HostingUnit(15, new Host(12345678,"Nathane","Baranes",0549524434,"nathaneb@hotmail.fr", new BankBranch(11,"דיסקונט",41,"210 יפו","ירושלים",165555),true) ,"chateau")
-            };
-
-            orders = new List<Order>
-            {
-
-            };
-
-            guestRequests = new List<GuestRequest>
-            {
-
-            };
-            Occupied = new List<HostingUnit>
-            {
-
-            };
-
-        }
+        public static List<HostingUnit> hostingUnits=new List<HostingUnit>();
+        public static List<Order> orders=new List<Order>();
+        public static List<GuestRequest> guestRequests=new List<GuestRequest>();
+        public static List<BankBranch> allBankAccounts=new List<BankBranch>();
+        public static List<HostingUnit> Occupied=new List<HostingUnit>();
+        
 
 
     }

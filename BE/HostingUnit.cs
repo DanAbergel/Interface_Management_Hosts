@@ -9,6 +9,8 @@ namespace BE
     public class HostingUnit
     {
         public long HostingUnitKey = Configuration.StaticHostingUnitKey++;
+        public int capacityAdults;
+        public int capacityChildren;
         public Host Owner;
         public string HostingUnitName;
         public bool[,] Diary=new bool[12,31];

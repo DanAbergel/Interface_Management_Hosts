@@ -149,10 +149,11 @@ namespace BL
 
         Order calculateTotalPriceWithComission(Order order)
         {
-            double priceForsAdults,priceForChildrens;
+            double priceForsAdults,priceForChildrens,TotalComission;
             priceForsAdults = order.guestRequest.Adults * order.hostingUnitReserved.pricePerDayPerAdult;
             priceForChildrens = order.guestRequest.Children * order.hostingUnitReserved.pricePerDayPerChild;
-            order.TotalPrice=priceForsAdults+priceForChildrens+10;
+            TotalComission = 10 * differnceBetweenTwoDates(order.guestRequest.EntryDate, order.guestRequest.ReleaseDate);
+            order.TotalPrice=priceForsAdults+priceForChildrens+TotalComission;
             return order;
         }
 
