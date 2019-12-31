@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using BE;
 
-
 namespace BL
 {
     class BL_imp : IBL
@@ -71,6 +70,8 @@ namespace BL
         } 
         public void updateOrder(Order updateOrder)
         {
+            //change la date d'actualisation
+            updateOrder.lastModification = DateTime.Now;
             //seulement si le deal n'a pas été conclu je peux changer le statut de la demande
             if (updateOrder.guestRequest.canChangeStatusOfRequirement)
                 newDal.updateOrder(updateOrder);
@@ -212,7 +213,7 @@ namespace BL
         {
             int daysInMonth = DateTime.DaysInMonth(Entry.Year, Entry.Month);
             for (int day = Entry.Day - 1; day < daysInMonth; day++)
-                unit.Diary[Entry.Month-1, day] = true;
+                unit.Diary[Entry.Month - 1, day] = true;
             for (int month = Entry.Month; month < Exit.Month; month++)
             {
                 daysInMonth = DateTime.DaysInMonth(Entry.Year, month);
@@ -221,7 +222,38 @@ namespace BL
             }
             for (int day = 0; day < Exit.Day; day++)
                 unit.Diary[Exit.Month - 1, day] = true;
+        }
+        public List<Order> updatesOrderFromDate(int days)
+        {
+            List<Order> listTmp=new List<Order>();
+            int index = 0;
+            DateTime firstDate = DateTime.Today.AddDays(-days);
+            var newList = from order in newDal.getAllOrders()
+                          where order.lastModification >= firstDate
+                          select order;
+            foreach (var order in newList) {
+                listTmp.Add(newList.ElementAt(index++));
+             }
+            return listTmp;
+        }
 
+        public List<List<GuestRequest>>newGroupingPerArea()
+        {
+            List<List<GuestRequest>> TotalGrouping = new List<List<GuestRequest>>();
+            var newGroup=from guestRequest in newDal.getAllGuestRequest()
+                         group guestRequest by guestRequest.area into groups
+                         orderby groups.Key
+                         select groups;
+            foreach(var group in newGroup )
+            {
+                List<GuestRequest> Group = new List<GuestRequest>();
+                foreach(var item in group)
+                {
+                    Group.Add(item);
+                }
+                TotalGrouping.Add(Group);
+            }
+            return TotalGrouping;
         }
     }
 }

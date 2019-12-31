@@ -20,7 +20,7 @@ namespace BE
         public Client client;
         public GuestRequest guestRequest;
         public double TotalPrice;
-        
+        public DateTime lastModification;
         
        
 
