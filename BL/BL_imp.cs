@@ -20,6 +20,8 @@ namespace BL
         public void addHostingUnit(HostingUnit hostingUnit)
         {
             //la verification de l'unicité du logement se fait en couche DAL
+            if (!hostingUnit.Owner.CollectionClearance)
+                throw new KeyNotFoundException("The host did not signed CollectionClearance !!!");
             hostingUnit.succesfulDeals = 0;
             newDal.addHostingUnit(hostingUnit);
         } 
@@ -33,11 +35,8 @@ namespace BL
         }
         public void addOrder(Order order)
         {
-            //verifie si le proprietaire a rempli le certificat du compte en banque
-            if (!order.hostingUnitReserved.Owner.CollectionClearance)
-                throw new KeyNotFoundException("The host did not signed CollectionClearance !!!");
-            if (!SearchForFreeDates(order.guestRequest.EntryDate, order.guestRequest.ReleaseDate, order.hostingUnitReserved.Diary))
-                throw new KeyNotFoundException("The demanded dates are not available for this hosting unit");
+            //if (!SearchForFreeDates(order.guestRequest.EntryDate, order.guestRequest.ReleaseDate, order.hostingUnitReserved.Diary))
+              //  throw new KeyNotFoundException("The demanded dates are not available for this hosting unit");
             newDal.addOrder(order);
         }
 
@@ -47,10 +46,11 @@ namespace BL
         public void deleteHostingUnit(long HostingUnitKey)
         {
             //verifie si le logement est occuppé et si c'est le cas il ne peut pas le supprimer
-            var result = from hostingUnit in newDal.GetAllHostingUnitsOccupied()
+            var result = from hostingUnit in newDal.getAllHostingUnits()
                          where hostingUnit.HostingUnitKey == HostingUnitKey
                          select hostingUnit;
-            if (result.Count() == 0)//si le logement ne se trouve pas dans la liste des logements occupés on le supprime 
+            foreach (var item in result) ;
+            if(!result.First().occupied)
                 newDal.deleteHostingUnit(HostingUnitKey);
         }
         public void deleteGuestRequest(long guestRequestKey)

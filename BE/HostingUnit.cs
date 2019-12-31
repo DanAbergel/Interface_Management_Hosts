@@ -14,6 +14,7 @@ namespace BE
         public Host Owner;
         public string HostingUnitName;
         public bool[,] Diary=new bool[12,31];
+        public bool occupied = false;
         public double pricePerDayPerAdult;
         public double pricePerDayPerChild;
         public int succesfulDeals;

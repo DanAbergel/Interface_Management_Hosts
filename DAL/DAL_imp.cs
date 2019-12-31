@@ -154,10 +154,6 @@ namespace DAL
 
         }
 
-        public List<HostingUnit> GetAllHostingUnitsOccupied()
-        {
-            return new List<HostingUnit>(DataSource.Occupied);
-        }
     }
 
 }

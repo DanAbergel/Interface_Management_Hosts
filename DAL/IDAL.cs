@@ -40,6 +40,5 @@ namespace DAL
         bool OrderExist(long HostingUnitKey);
 
 
-        List<HostingUnit> GetAllHostingUnitsOccupied();
     }
 }
