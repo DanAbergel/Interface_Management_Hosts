@@ -16,8 +16,8 @@ namespace BE
         public DateTime CreateDate;
         public DateTime OrderDate;
         public HostingUnit hostingUnitReserved;
-        public Host hostofHostingUnitReserved;
-        public Client client;
+        //public Host hostofHostingUnitReserved;
+       // public Client client;
         public GuestRequest guestRequest;
         public double TotalPrice;
         public DateTime lastModification;
@@ -30,8 +30,8 @@ namespace BE
             str += "Hosting Unit Key: " + HostingUnitKey;
             str += "\nGuest Request Key: " + GuestRequestKey;
             str += "\nOrder Key: " + OrderKey;
-            str += hostofHostingUnitReserved.ToString()+"\n";
-            str += client.ToString()+"\n";
+            //str += hostofHostingUnitReserved.ToString()+"\n";
+            //str += client.ToString()+"\n";
             str += hostingUnitReserved.ToString();
             str += "\nStatus: " + status;
             str += "\nCreateDate: " + CreateDate;

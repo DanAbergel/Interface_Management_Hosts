@@ -34,7 +34,7 @@ namespace BL
         public void addOrder(Order order)
         {
             //verifie si le proprietaire a rempli le certificat du compte en banque
-            if (!order.hostofHostingUnitReserved.CollectionClearance)
+            if (!order.hostingUnitReserved.Owner.CollectionClearance)
                 throw new KeyNotFoundException("The host did not signed CollectionClearance !!!");
             if (!SearchForFreeDates(order.guestRequest.EntryDate, order.guestRequest.ReleaseDate, order.hostingUnitReserved.Diary))
                 throw new KeyNotFoundException("The demanded dates are not available for this hosting unit");
@@ -86,7 +86,7 @@ namespace BL
             if (updateOrder.guestRequest.StatusOfRequest == BE.BE.StatutRequirement.Closed)
                 deleteGuestRequest(updateOrder.guestRequest.guestRequestKey);
             //si le statut est que le mail a ete envoye j imprime le mail a l ecran
-            if (updateOrder.status == BE.BE.Status.MailSent&&updateOrder.hostofHostingUnitReserved.CollectionClearance)
+            if (updateOrder.status == BE.BE.Status.MailSent&&updateOrder.hostingUnitReserved.Owner.CollectionClearance)
                 Console.WriteLine(updateOrder);
         }
 
@@ -240,9 +240,9 @@ namespace BL
         public List<List<GuestRequest>>newGroupingPerArea()
         {
             List<List<GuestRequest>> TotalGrouping = new List<List<GuestRequest>>();
-            var newGroup=from guestRequest in newDal.getAllGuestRequest()
-                         group guestRequest by guestRequest.area into groups
-                         orderby groups.Key
+            var newGroup = from guestRequest in newDal.getAllGuestRequest()
+                           group guestRequest by guestRequest.area into groups
+                           orderby groups.ElementAt(0)
                          select groups;
             foreach(var group in newGroup )
             {
