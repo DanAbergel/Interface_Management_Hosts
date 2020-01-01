@@ -11,7 +11,7 @@ namespace BE
         public long HostingUnitKey = Configuration.StaticHostingUnitKey++;
         public int capacityAdults;
         public int capacityChildren;
-        public Host Owner;
+        public Host Owner=new Host();
         public string HostingUnitName;
         public bool[,] Diary=new bool[12,31];
         public bool occupied = false;
