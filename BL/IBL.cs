@@ -8,18 +8,12 @@ using BE;
 namespace BL
 {
     public interface IBL
-    { 
-
-            //fonctions logement    
-
-            void addHostingUnit(HostingUnit hostingUnit);
+    {
+        void addHostingUnit(HostingUnit hostingUnit);
             void deleteHostingUnit(long HostingUnitKey);
             void uptadeHostingUnit(HostingUnit updateHostingUnit);
             List<HostingUnit> getAllHostingUnits();
-
-            //fonctions requete
-
-            void addGuestRequest(GuestRequest guestRequest);
+        void addGuestRequest(GuestRequest guestRequest);
             void deleteGuestRequest(long guestRequestKey);
             void updateGuestRequest(GuestRequest updateGuestRequest);
             List<GuestRequest> getAllGuestRequest();

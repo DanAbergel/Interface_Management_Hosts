@@ -13,14 +13,14 @@ namespace BE
         public string FamilyName;
         public string PhoneNumber;
         public string MailAddress;
-        public BankBranch Account;
+        public BankBranch Account=new BankBranch();
         public bool CollectionClearance;
 
         public override string ToString()
         {
             string str = "";
-            str += "Name of HOst: " + PrivateName + " " + FamilyName;
-            str += "Mail: " + MailAddress + "Phone number: " + PhoneNumber;
+            str += "\nName of Host: " + PrivateName + " " + FamilyName;
+            str += "\nMail: " + MailAddress + "\nPhone number: " + PhoneNumber;
             return str;
         }
         

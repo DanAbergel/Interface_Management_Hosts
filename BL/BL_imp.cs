@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using BE;
+using DAL;
 
 namespace BL
 {
     class BL_imp : IBL
     {
-        DAL.IDAL newDal;
+        IDAL newDal;
         public BL_imp()//CTOR
         {
             newDal = DAL.FactoryAndSingletonDal.GetDAL();

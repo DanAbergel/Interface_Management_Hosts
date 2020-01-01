@@ -18,14 +18,19 @@ namespace BE
         public double pricePerDayPerAdult;
         public double pricePerDayPerChild;
         public int succesfulDeals;
+        public bool pool;
+        public bool garden;
+        public bool jacuzzi;
+        public bool childrenAttraction;
         public override string ToString()
         {
             string str = "";
             str += "HostingUnit Key: " + HostingUnitKey;
-            str +="\n"+ Owner.ToString();
+            str += Owner.ToString();
             str += "\nHostingUnit Name:" + HostingUnitName;
             str += "\nPrice per day for each adult: " + pricePerDayPerAdult;
             str += "\nPrice per day for each child: " + pricePerDayPerChild;
+            str += "\nnumber of succesful deals: " + succesfulDeals;
             return str;
         }
     }
