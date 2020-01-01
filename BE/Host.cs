@@ -11,7 +11,7 @@ namespace BE
         public long HostKey = Configuration.StaticHostKey++;
         public string PrivateName;
         public string FamilyName;
-        public long PhoneNumber;
+        public string PhoneNumber;
         public string MailAddress;
         public BankBranch Account;
         public bool CollectionClearance;

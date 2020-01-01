@@ -16,7 +16,10 @@ namespace DS
         public static List<Order> orders=new List<Order>();
         public static List<GuestRequest> guestRequests=new List<GuestRequest>();
         public static List<BankBranch> allBankAccounts=new List<BankBranch>();
-        
+        static void Main(string []args)
+        {
+
+        }
 
 
     }
