@@ -21,6 +21,7 @@ namespace BE
         public theType type;
         public int Adults;
         public int Children;
+        public int totalVacationers = Adults + Children;
         public Criterion Pool;
         public Criterion Jacuzzi;
         public Criterion Garden;

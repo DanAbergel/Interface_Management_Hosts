@@ -33,6 +33,10 @@ namespace DAL
 
         List<BankBranch> GetAllBankAccounts();
 
+        //liste des proprietaires
+
+        List<Host> getAllHost();
+
         // fonction pour exceptions
 
         bool HostingUnitExist(long HostingUnitKey);

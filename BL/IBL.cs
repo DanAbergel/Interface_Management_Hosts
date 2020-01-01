@@ -7,28 +7,51 @@ using BE;
 
 namespace BL
 {
-    public interface IBL
-    {
-        void addHostingUnit(HostingUnit hostingUnit);
+    interface IBL
+    { 
+
+            #region fonctions logement    
+
+            void addHostingUnit(HostingUnit hostingUnit);
             void deleteHostingUnit(long HostingUnitKey);
             void uptadeHostingUnit(HostingUnit updateHostingUnit);
             List<HostingUnit> getAllHostingUnits();
-        void addGuestRequest(GuestRequest guestRequest);
+            
+            #endregion
+            
+            #region fonctions requete
+
+            void addGuestRequest(GuestRequest guestRequest);
             void deleteGuestRequest(long guestRequestKey);
             void updateGuestRequest(GuestRequest updateGuestRequest);
             List<GuestRequest> getAllGuestRequest();
+            #endregion
 
-            //fonctions commande en cours
+            #region fonctions commande en cours
 
             void addOrder(Order order);
             void updateOrder(Order updateOrder);
             List<Order> getAllOrders();
 
-            //liste des comptes bancaires
+            #endregion
+
+            #region liste des comptes bancaires
 
             List<BankBranch> GetAllBankAccounts();
-        }
+
+            #endregion
+    
+            #region fonction grouping
+
+            IEnumerable<IGrouping<BE.BE.Area, BE.GuestRequest>> GetRequestByArea();
+            IEnumerable<IGrouping<int, BE.GuestRequest>> GetRequestByTotalVacationers();
+            IEnumerable<IGrouping<long, BE.Host>> GetHostByNumOfHostingUnit(bool sorted = false);
+            IEnumerable<IGrouping<BE.BE.Area, BE.HostingUnit>> GetHostingUnitByArea();
+
+            #endregion
+        
     }
+}
 
 
 
