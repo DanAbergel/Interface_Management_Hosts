@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using static BE.BE;
 
 namespace BE
 {
@@ -12,28 +11,26 @@ namespace BE
         public long HostingUnitKey = Configuration.StaticHostingUnitKey++;
         public int capacityAdults;
         public int capacityChildren;
-        public Host Owner;
-        public Area area;
-        public string SubArea;
-        public theType type;
-        public Criterion Pool;
-        public Criterion Jacuzzi;
-        public Criterion Garden;
-        public Criterion ChildrenAttractions;
+        public Host Owner=new Host();
         public string HostingUnitName;
         public bool[,] Diary=new bool[12,31];
         public bool occupied = false;
         public double pricePerDayPerAdult;
         public double pricePerDayPerChild;
         public int succesfulDeals;
+        public bool pool;
+        public bool garden;
+        public bool jacuzzi;
+        public bool childrenAttraction;
         public override string ToString()
         {
             string str = "";
             str += "HostingUnit Key: " + HostingUnitKey;
-            str +="\n"+ Owner.ToString();
+            str += Owner.ToString();
             str += "\nHostingUnit Name:" + HostingUnitName;
             str += "\nPrice per day for each adult: " + pricePerDayPerAdult;
             str += "\nPrice per day for each child: " + pricePerDayPerChild;
+            str += "\nnumber of succesful deals: " + succesfulDeals;
             return str;
         }
     }

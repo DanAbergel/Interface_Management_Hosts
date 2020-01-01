@@ -1,0 +1,4 @@
+﻿[*.cs]
+
+# CS0006: Fichier de métadonnées 'C:\Users\Dan Abergel\Source\Repos\Project01_0560_0158_dotNet5780\DS\bin\Debug\DS.exe' introuvable
+dotnet_diagnostic.CS0006.severity = error

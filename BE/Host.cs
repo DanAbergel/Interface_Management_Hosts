@@ -11,23 +11,22 @@ namespace BE
         public long HostKey = Configuration.StaticHostKey++;
         public string PrivateName;
         public string FamilyName;
-        public long PhoneNumber;
+        public string PhoneNumber;
         public string MailAddress;
-        public BankBranch Account;
+        public BankBranch Account=new BankBranch();
         public bool CollectionClearance;
-        public int numOfHostingUnit;
 
         public override string ToString()
         {
             string str = "";
-            str += "Name of Host: " + PrivateName + " " + FamilyName;
-            str += "Mail: " + MailAddress + "Phone number: " + PhoneNumber;
+            str += "\nName of Host: " + PrivateName + " " + FamilyName;
+            str += "\nMail: " + MailAddress + "\nPhone number: " + PhoneNumber;
             return str;
         }
         
        
     }
- }
+    }
     
         
         

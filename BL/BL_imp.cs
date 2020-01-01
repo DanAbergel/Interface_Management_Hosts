@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using BE;
+using DAL;
 
 namespace BL
 {
     class BL_imp : IBL
     {
-        DAL.IDAL newDal;
+        IDAL newDal;
         public BL_imp()//CTOR
         {
             newDal = DAL.FactoryAndSingletonDal.GetDAL();
@@ -21,7 +22,7 @@ namespace BL
         {
             //la verification de l'unicité du logement se fait en couche DAL
             if (!hostingUnit.Owner.CollectionClearance)
-                throw new KeyNotFoundException("The host did not signed CollectionClearance !!!");
+                throw new Exception("The host did not signed CollectionClearance !!!");
             hostingUnit.succesfulDeals = 0;
             newDal.addHostingUnit(hostingUnit);
         } 
