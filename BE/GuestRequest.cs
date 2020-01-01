@@ -10,10 +10,10 @@ namespace BE
     public class GuestRequest
     {
         public long guestRequestKey= Configuration.StaticGuestRequestKey++;
-        public Client client;
+        public Client client=new Client();
         public StatutRequirement StatusOfRequest;
         public bool canChangeStatusOfRequirement;
-        public DateTime RegistrationDate;
+        public DateTime RegistrationDate=DateTime.Now;
         public DateTime EntryDate;
         public DateTime ReleaseDate;
         public Area area;

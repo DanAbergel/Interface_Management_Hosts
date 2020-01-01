@@ -77,6 +77,71 @@ Please enter a number for choose option:
                         Console.WriteLine("\n{0}) {1}", index, item);
                         index++;
                     }
+                   
+                }
+                if (INT == 2)
+                {
+                    str= Console.ReadLine();
+                    long INT2 = long.Parse(str);
+                    newBL.deleteHostingUnit(INT2);
+                    int index1 = 1;
+                    foreach (var item in newBL.getAllHostingUnits())
+                    {
+                        Console.WriteLine("\n{0}) {1}", index1, item);
+                        index1++;
+                    }
+
+                }
+                if(INT==3)
+                {
+                    GuestRequest guestRequest=new GuestRequest();
+                    Console.Write("FamilyName: ");
+                    guestRequest.client.FamilyName = Console.ReadLine();
+                    Console.WriteLine();
+                    Console.Write("PrivateName: ");
+                    guestRequest.client.PrivateName = Console.ReadLine();
+                    Console.WriteLine();
+                    Console.Write("Mail address: ");
+                    guestRequest.client.MailAddress = Console.ReadLine();
+                    Console.WriteLine();
+                    Console.Write("PhoneNumber: ");
+                    guestRequest.client.NumberPhone = Console.ReadLine();
+                    Console.WriteLine();
+                    Console.Write("EntryDate: ");
+                    str= Console.ReadLine();
+                    guestRequest.EntryDate = DateTime.Parse(str);
+                    Console.WriteLine();
+                    Console.Write("ReleaseDate: ");
+                    str = Console.ReadLine();
+                    guestRequest.ReleaseDate = DateTime.Parse(str);
+                    Console.WriteLine();
+                    Console.Write("Area: ");
+                    str = Console.ReadLine();
+                    if (str.ToLower() == "center")
+                        guestRequest.area = BE.BE.Area.Center;
+                    if (str.ToLower() == "jerusalem")
+                        guestRequest.area = BE.BE.Area.Jerusalem;
+                    if (str.ToLower() == "north")
+                        guestRequest.area = BE.BE.Area.North;
+                    if (str.ToLower() == "south")
+                        guestRequest.area = BE.BE.Area.South;
+                    Console.Write("Type of Hosting");
+                    str = Console.ReadLine();
+                    if (str.ToLower() == "zimmer")
+                        guestRequest.type = BE.BE.theType.Zimmer;
+                    if (str.ToLower() == "hotel")
+                        guestRequest.type = BE.BE.theType.Hotel;
+                    if (str.ToLower() == "camping")
+                        guestRequest.type = BE.BE.theType.Camping;
+                    Console.WriteLine();
+                    Console.Write("Adults: ");
+                    str = Console.ReadLine();
+                    guestRequest.Adults = int.Parse(str);
+                    Console.WriteLine();
+                    Console.Write("Children: ");
+                    str = Console.ReadLine();
+                    guestRequest.Children = int.Parse(str);
+
                 }
             } while (INT != 0);
             Console.ReadKey();

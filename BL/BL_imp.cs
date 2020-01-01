@@ -46,13 +46,16 @@ namespace BL
         ////implementation de supression
         public void deleteHostingUnit(long HostingUnitKey)
         {
-            //verifie si le logement est occuppé et si c'est le cas il ne peut pas le supprimer
-            var result = from hostingUnit in newDal.getAllHostingUnits()
-                         where hostingUnit.HostingUnitKey == HostingUnitKey
-                         select hostingUnit;
-            foreach (var item in result) ;
-            if(!result.First().occupied)
-                newDal.deleteHostingUnit(HostingUnitKey);
+            if (newDal.HostingUnitExist(HostingUnitKey))
+            {
+                //verifie si le logement est occuppé et si c'est le cas il ne peut pas le supprimer
+                var result = from hostingUnit in newDal.getAllHostingUnits()
+                             where hostingUnit.HostingUnitKey == HostingUnitKey
+                             select hostingUnit;
+                foreach (var item in result) ;
+                if (!result.First().occupied)
+                    newDal.deleteHostingUnit(HostingUnitKey);
+            }
         }
         public void deleteGuestRequest(long guestRequestKey)
         {
