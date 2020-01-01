@@ -10,7 +10,7 @@ namespace DS
 {
 
 
-    static public class DataSource
+    public class DataSource
     {
         public static List<HostingUnit> hostingUnits=new List<HostingUnit>();
         public static List<Order> orders=new List<Order>();
