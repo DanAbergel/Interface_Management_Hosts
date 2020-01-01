@@ -66,7 +66,7 @@ namespace BL
         public void updateGuestRequest(GuestRequest updateGuestRequest)
         {
            
-
+            //!!!!//
         } 
         public void updateOrder(Order updateOrder)
         {
@@ -255,6 +255,46 @@ namespace BL
                 TotalGrouping.Add(Group);
             }
             return TotalGrouping;
+               
         }
+
+
+
+
+
+
+
+
+
+
+
+       public IEnumerable<IGrouping<BE.BE.Area, BE.GuestRequest>> GetRequestByArea()
+       {
+             return from guestRequest in newDal.getAllGuestRequest()
+                        group guestRequest by GuestRequest.area into f1
+                        select f1;
+       }
+
+       public IEnumerable<IGrouping<int, BE.GuestRequest>> GetRequestByTotalVacationers()
+       {
+            return from GuestRequest in newDal.getAllGuestRequest()
+                   group GuestRequest by GuestRequest.totalVacationers into f1
+                   select f1;
+       }
+
+       public IEnumerable<IGrouping<int, BE.Host>> GetHostByNumOfHostingUnit()
+       {
+            return from host in newDal.getAllHost()
+                   group host by host.numOfHostingUnit into f1
+                   select f1;
+       }
+
+
+        public IEnumerable<IGrouping<BE.BE.Area, BE.HostingUnit>> GetHostingUnitByArea()
+        {
+            return from HostingUnit in newDal.getAllHostingUnits()
+                   group HostingUnit by HostingUnit.area into f1
+                   select f1;
+        }    
     }
 }

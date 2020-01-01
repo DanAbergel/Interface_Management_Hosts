@@ -15,18 +15,19 @@ namespace BE
         public string MailAddress;
         public BankBranch Account;
         public bool CollectionClearance;
+        public int numOfHostingUnit;
 
         public override string ToString()
         {
             string str = "";
-            str += "Name of HOst: " + PrivateName + " " + FamilyName;
+            str += "Name of Host: " + PrivateName + " " + FamilyName;
             str += "Mail: " + MailAddress + "Phone number: " + PhoneNumber;
             return str;
         }
         
        
     }
-    }
+ }
     
         
         

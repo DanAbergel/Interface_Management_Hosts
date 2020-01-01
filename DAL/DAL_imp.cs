@@ -20,6 +20,7 @@ namespace DAL
             if (!HostingUnitExist(hostingUnit.HostingUnitKey))
             {
                 DataSource.hostingUnits.Add(hostingUnit);
+                hostingUnit.Owner.numOfHostingUnit++;
             }
             else
                 throw new KeyNotFoundException("le logement existe deja");
@@ -73,6 +74,11 @@ namespace DAL
         public List<Order> getAllOrders()
         {
             return new List<Order>(DataSource.orders);
+        }
+
+        public List<Host> getAllHost()
+        {
+            return new List<Host>(DataSource.hosts);
         }
 
         public void updateGuestRequest(GuestRequest updateGuestRequest)
