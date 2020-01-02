@@ -28,7 +28,7 @@ namespace BL
         } 
         public void addGuestRequest(GuestRequest guestRequest)
         {
-            if (differnceBetweenTwoDates(guestRequest.EntryDate,guestRequest.ReleaseDate) < 0)
+            if (guestRequest.EntryDate.CompareTo(guestRequest.EntryDate) > 0)
                 throw new Exception("Error !!! Entry date is later than release date ");
             if (guestRequest.EntryDate.CompareTo(guestRequest.ReleaseDate) == 0)
                 throw new Exception("Error !!! We accept only with at least one day between Entry and Release dates");
@@ -196,16 +196,24 @@ namespace BL
             int difference = 0;
             int daysInMonth;
             daysInMonth = DateTime.DaysInMonth(Begin.Year, Begin.Month);
-            for (int day = Begin.Day; day < daysInMonth; day++)
-                difference++;
-            for (int month = Begin.Month; month < End.Month; month++)
+            if (Begin.CompareTo(End) == 1)
+                return -1;
+            if (Begin.Month!=End.Month) {
+                for (int day = Begin.Day; day < daysInMonth; day++)
+                    difference++;
+                for (int month = Begin.Month+1; month < End.Month; month++)
+                {
+                    daysInMonth = DateTime.DaysInMonth(Begin.Year, month + 1);
+                    for (int day = 0; day < daysInMonth; day++)
+                        difference++;
+                }
+                for (int day = 0; day < End.Day; day++)
+                    difference++; }
+            else
             {
-                daysInMonth = DateTime.DaysInMonth(Begin.Year, month + 1);
-                for (int day = 0; day < daysInMonth; day++)
+                for (int i = Begin.Day; i < End.Day; i++)
                     difference++;
             }
-            for (int day = 0; day < End.Day; day++)
-                difference++;
             return difference;
         }
 

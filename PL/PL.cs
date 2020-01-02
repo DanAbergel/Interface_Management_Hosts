@@ -95,53 +95,38 @@ Please enter a number for choose option:
                 if(INT==3)
                 {
                     GuestRequest guestRequest=new GuestRequest();
-                    Console.Write("FamilyName: ");
-                    guestRequest.client.FamilyName = Console.ReadLine();
-                    Console.WriteLine();
-                    Console.Write("PrivateName: ");
-                    guestRequest.client.PrivateName = Console.ReadLine();
-                    Console.WriteLine();
-                    Console.Write("Mail address: ");
-                    guestRequest.client.MailAddress = Console.ReadLine();
-                    Console.WriteLine();
-                    Console.Write("PhoneNumber: ");
-                    guestRequest.client.NumberPhone = Console.ReadLine();
-                    Console.WriteLine();
-                    Console.Write("EntryDate: ");
-                    str= Console.ReadLine();
-                    guestRequest.EntryDate = DateTime.Parse(str);
-                    Console.WriteLine();
-                    Console.Write("ReleaseDate: ");
-                    str = Console.ReadLine();
-                    guestRequest.ReleaseDate = DateTime.Parse(str);
-                    Console.WriteLine();
-                    Console.Write("Area: ");
-                    str = Console.ReadLine();
-                    if (str.ToLower() == "center")
-                        guestRequest.area = BE.BE.Area.Center;
-                    if (str.ToLower() == "jerusalem")
-                        guestRequest.area = BE.BE.Area.Jerusalem;
-                    if (str.ToLower() == "north")
-                        guestRequest.area = BE.BE.Area.North;
-                    if (str.ToLower() == "south")
-                        guestRequest.area = BE.BE.Area.South;
-                    Console.Write("Type of Hosting");
-                    str = Console.ReadLine();
-                    if (str.ToLower() == "zimmer")
-                        guestRequest.type = BE.BE.theType.Zimmer;
-                    if (str.ToLower() == "hotel")
-                        guestRequest.type = BE.BE.theType.Hotel;
-                    if (str.ToLower() == "camping")
-                        guestRequest.type = BE.BE.theType.Camping;
-                    Console.WriteLine();
-                    Console.Write("Adults: ");
-                    str = Console.ReadLine();
-                    guestRequest.Adults = int.Parse(str);
-                    Console.WriteLine();
-                    Console.Write("Children: ");
-                    str = Console.ReadLine();
-                    guestRequest.Children = int.Parse(str);
-
+                   
+                    guestRequest.client.FamilyName = "Abergel";
+                    guestRequest.client.PrivateName = "Dan";
+                    guestRequest.client.MailAddress ="kjhbgv";
+                    guestRequest.client.NumberPhone = "48651";
+                    guestRequest.EntryDate = DateTime.Parse("1/2/2020");
+                    guestRequest.ReleaseDate = DateTime.Parse("15/3/2020");
+                    guestRequest.area = BE.BE.Area.Center;
+                    guestRequest.type = BE.BE.theType.Zimmer;
+                    guestRequest.Adults = int.Parse("3");
+                    guestRequest.Children = int.Parse("2");
+                    guestRequest.Pool = BE.BE.Criterion.NotInterested;
+                    guestRequest.Garden = BE.BE.Criterion.Possible;
+                    guestRequest.Jacuzzi = BE.BE.Criterion.Necessary;
+                    guestRequest.ChildrenAttractions = BE.BE.Criterion.NotInterested;
+                    newBL.addGuestRequest(guestRequest);
+                    guestRequest.client.FamilyName = "Abergel";
+                    guestRequest.client.PrivateName = "Dan";
+                    guestRequest.client.MailAddress = "kjhbgv";
+                    guestRequest.client.NumberPhone = "48651";
+                    guestRequest.EntryDate = DateTime.Parse("1/2/2020");
+                    guestRequest.ReleaseDate = DateTime.Parse("15/3/2020");
+                    guestRequest.area = BE.BE.Area.Center;
+                    guestRequest.type = BE.BE.theType.Zimmer;
+                    guestRequest.Adults = int.Parse("3");
+                    guestRequest.Children = int.Parse("2");
+                    guestRequest.Pool = BE.BE.Criterion.NotInterested;
+                    guestRequest.Garden = BE.BE.Criterion.Possible;
+                    guestRequest.Jacuzzi = BE.BE.Criterion.Necessary;
+                    guestRequest.ChildrenAttractions = BE.BE.Criterion.NotInterested;
+                    foreach (var item in newBL.getAllGuestRequest())
+                        Console.WriteLine(item);
                 }
             } while (INT != 0);
             Console.ReadKey();

@@ -17,7 +17,7 @@ namespace BE
         {
             string str="";
             str += "Name of Client: " + PrivateName + " " + FamilyName;
-            str += "Mail: " + MailAddress + " Phone number: " + NumberPhone;
+            str += "\nMail: " + MailAddress + "\nPhone number: " + NumberPhone;
             return str;
         }
     }

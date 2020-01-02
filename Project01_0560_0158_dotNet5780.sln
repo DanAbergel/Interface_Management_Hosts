@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29613.14
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Project01_0560_0158_dotNet5780", "ConsoleApp3\Project01_0560_0158_dotNet5780.csproj", "{B10A3174-EC69-47C8-B605-1F1AC822BD8A}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BE", "BE\BE.csproj", "{08FE3E97-5079-4211-BB61-BF61E6A70493}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAL", "DAL\DAL.csproj", "{E70A6012-9B64-4331-AE65-51209F7DA54B}"
@@ -26,10 +24,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{B10A3174-EC69-47C8-B605-1F1AC822BD8A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B10A3174-EC69-47C8-B605-1F1AC822BD8A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B10A3174-EC69-47C8-B605-1F1AC822BD8A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B10A3174-EC69-47C8-B605-1F1AC822BD8A}.Release|Any CPU.Build.0 = Release|Any CPU
 		{08FE3E97-5079-4211-BB61-BF61E6A70493}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{08FE3E97-5079-4211-BB61-BF61E6A70493}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{08FE3E97-5079-4211-BB61-BF61E6A70493}.Release|Any CPU.ActiveCfg = Release|Any CPU
