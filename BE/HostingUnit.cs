@@ -22,6 +22,7 @@ namespace BE
         public bool garden;
         public bool jacuzzi;
         public bool childrenAttraction;
+        public BE.Area area;
         public override string ToString()
         {
             string str = "";

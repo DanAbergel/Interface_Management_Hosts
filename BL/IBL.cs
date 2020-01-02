@@ -7,7 +7,7 @@ using BE;
 
 namespace BL
 {
-    interface IBL
+    public interface IBL
     { 
 
             #region fonctions logement    
@@ -43,10 +43,10 @@ namespace BL
     
             #region fonction grouping
 
-            IEnumerable<IGrouping<BE.BE.Area, BE.GuestRequest>> GetRequestByArea();
-            IEnumerable<IGrouping<int, BE.GuestRequest>> GetRequestByTotalVacationers();
-            IEnumerable<IGrouping<long, BE.Host>> GetHostByNumOfHostingUnit(bool sorted = false);
-            IEnumerable<IGrouping<BE.BE.Area, BE.HostingUnit>> GetHostingUnitByArea();
+            IEnumerable<IGrouping<BE.BE.Area,GuestRequest>> GetRequestByArea();
+            IEnumerable<IGrouping<int, GuestRequest>> GetRequestByTotalVacationers();
+            IEnumerable<IGrouping<int, Host>> GetHostByNumOfHostingUnit(bool sorted= false);
+            IEnumerable<IGrouping<BE.BE.Area, HostingUnit>> GetHostingUnitByArea();
 
             #endregion
         

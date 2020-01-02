@@ -272,25 +272,26 @@ namespace BL
 
 
 
-       public IEnumerable<IGrouping<BE.BE.Area, BE.GuestRequest>> GetRequestByArea()
+       public IEnumerable<IGrouping<BE.BE.Area,GuestRequest>> GetRequestByArea()
        {
              return from guestRequest in newDal.getAllGuestRequest()
-                        group guestRequest by GuestRequest.area into f1
+                        group guestRequest by guestRequest.area into f1
                         select f1;
        }
 
-       public IEnumerable<IGrouping<int, BE.GuestRequest>> GetRequestByTotalVacationers()
+       public IEnumerable<IGrouping<int,GuestRequest>> GetRequestByTotalVacationers()
        {
             return from GuestRequest in newDal.getAllGuestRequest()
-                   group GuestRequest by GuestRequest.totalVacationers into f1
+                   group GuestRequest by GuestRequest.Adults+GuestRequest.Children into f1
                    select f1;
        }
 
-       public IEnumerable<IGrouping<int, BE.Host>> GetHostByNumOfHostingUnit()
+       public IEnumerable<IGrouping<int, Host>> GetHostByNumOfHostingUnit(bool sorted)
        {
             return from host in newDal.getAllHost()
                    group host by host.numOfHostingUnit into f1
                    select f1;
+            
        }
 
 

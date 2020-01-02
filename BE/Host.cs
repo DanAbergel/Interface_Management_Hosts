@@ -15,7 +15,7 @@ namespace BE
         public string MailAddress;
         public BankBranch Account=new BankBranch();
         public bool CollectionClearance;
-
+        public int numOfHostingUnit;
         public override string ToString()
         {
             string str = "";
