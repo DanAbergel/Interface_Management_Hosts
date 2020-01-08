@@ -67,5 +67,10 @@ namespace WPF_PL
             clientGrid.Visibility = Visibility.Hidden;
             mainGrid.Visibility = Visibility.Visible;
         }
+
+        private void poolCheck_Checked(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
