@@ -6,37 +6,43 @@
         xmlns:local="clr-namespace:WPF_PL"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
+
+
+
+
+
+
+
     <Grid Name="GridFather">
+
+
+
+
         <Grid Name="mainGrid" ShowGridLines="False" Visibility="Hidden">
             <Grid.Background>
                 <ImageBrush ImageSource="D:\Belles Images\thumb2-hainan-island-4k-hotel-bungalow-sunset.jpg" Stretch="UniformToFill"/>
             </Grid.Background>
             <TextBlock Text="ברוכים הבאים " FontFamily="David" FontSize="50" HorizontalAlignment="Center" VerticalAlignment="Top" Foreground="YellowGreen"/>
-
-            <Button Name="buttonClient" Content="Client" HorizontalAlignment="Left" Margin="373,315,0,0" VerticalAlignment="Top" Width="75" Click="Client" RenderTransformOrigin="0.144,3.594" FontSize="25" Background="Aquamarine"  Foreground="Green" FontFamily="Gabriola" FontWeight="UltraBold"/>
-            <Button Name="buttonProprietaire" Content="Proprietaire" HorizontalAlignment="Left" Margin="81,314,0,0" VerticalAlignment="Top" Width="234" Click="Proprietaire" FontSize="25" Background="Aquamarine" Foreground="Green" FontWeight="UltraBold" FontFamily="Gabriola" RenderTransformOrigin="0.518,1.642" Height="46"/>
-            <Button Name="buttonAdministrateur" Content="Administrateur" HorizontalAlignment="Left" Margin="529,313,0,0" VerticalAlignment="Top" Width="171" FontSize="25"   Background="Aquamarine" Foreground="Green" FontWeight="UltraBold" FontFamily="Gabriola"  Click="buttonAdministrateur_Click" Height="46"/>
+            <Button Name="buttonClient" Content="Client" HorizontalAlignment="Left" Margin="375,326,0,0" VerticalAlignment="Top" Width="75" Click="Client" RenderTransformOrigin="0.144,3.594" FontSize="20" Background="Aquamarine"  Foreground="Green" FontFamily="Gabriola" FontWeight="UltraBold" Height="32"/>
+            <Button Name="buttonProprietaire" Content="Proprietaire" HorizontalAlignment="Left" Margin="147,327,0,0" VerticalAlignment="Top" Width="140" Click="Proprietaire" FontSize="20" Background="Aquamarine" Foreground="Green" FontWeight="UltraBold" FontFamily="Gabriola" RenderTransformOrigin="0.518,1.642" Height="33"/>
+            <Button Name="buttonAdministrateur" Content="Administrateur" HorizontalAlignment="Left" Margin="532,326,0,0" VerticalAlignment="Top" Width="171" FontSize="20"   Background="Aquamarine" Foreground="Green" FontWeight="UltraBold" FontFamily="Gabriola"  Click="buttonAdministrateur_Click" Height="34"/>
 
         </Grid>
 
 
-        <Grid Name="clientGrid" Visibility="Visible">
+        <Grid Name="clientGrid" Visibility="Hidden">
             <Grid.Background>
                 <ImageBrush ImageSource="D:\Belles Images\thumb2-hainan-island-4k-hotel-bungalow-sunset.jpg" Stretch="UniformToFill"/>
             </Grid.Background>
-            <Button Name="addGuestRequestButton" Content="הוספת בקשת אירוח" FontFamily="David" HorizontalAlignment="Left" Margin="64,223,0,0" VerticalAlignment="Top" Width="160" RenderTransformOrigin="1.051,-1.355" FontSize="17" Click="addGuestRequestButton_Click" Height="23" Background="Aquamarine" Foreground="Green" FontWeight="UltraBold"/>
-            <Button Name="updateGuestRequestButton" Content="עדכון בקשת אירוח" HorizontalAlignment="Left" Margin="323,219,0,0" VerticalAlignment="Top" Width="160" FontSize="17" FontFamily="David" Click="updateGuestRequestButton_Click" Height="25" Background="Aquamarine" Foreground="Green" FontWeight="UltraBold"/>
-            <Button Name="deleteGuestRequestButton" Content="מחיקת בקשת אירוח" HorizontalAlignment="Left" Margin="568,221,0,0" VerticalAlignment="Top" Width="162" RenderTransformOrigin="0.549,0.719" FontSize="17" FontFamily="David" Click="deleteGuestRequestButton_Click" Height="25" Background="Aquamarine" Foreground="Green" FontWeight="UltraBold"/>
-            <Button Name="returnButton" Content="חזור" HorizontalAlignment="Left" Margin="50,25,0,0" VerticalAlignment="Top" Width="75" FontSize="17" FontFamily="David" Click="returnButton_Click"/>
-
-
-
+            <Button Name="addGuestRequestButton" Content="הוספת בקשת אירוח" FontFamily="David" HorizontalAlignment="Left" Margin="87,336,0,0" VerticalAlignment="Top" Width="160" RenderTransformOrigin="1.051,-1.355" FontSize="17" Click="addGuestRequestButton_Click" Height="23" Background="Aquamarine" Foreground="Green" FontWeight="UltraBold"/>
+            <Button Name="updateGuestRequestButton" Content="עדכון בקשת אירוח" HorizontalAlignment="Left" Margin="337,334,0,0" VerticalAlignment="Top" Width="160" FontSize="17" FontFamily="David" Click="updateGuestRequestButton_Click" Height="25" Background="Aquamarine" Foreground="Green" FontWeight="UltraBold"/>
+            <Button Name="deleteGuestRequestButton" Content="מחיקת בקשת אירוח" HorizontalAlignment="Left" Margin="588,334,0,0" VerticalAlignment="Top" Width="162" RenderTransformOrigin="0.549,0.719" FontSize="17" FontFamily="David" Click="deleteGuestRequestButton_Click" Height="25" Background="Aquamarine" Foreground="Green" FontWeight="UltraBold"/>
+            <Button Name="returnButton" Content="חזור" HorizontalAlignment="Left" Margin="50,25,0,0" VerticalAlignment="Top" Width="75" FontSize="17" FontFamily="David" Click="returnButton_Click" Background="Aquamarine" Foreground="Green" FontWeight="UltraBold"/>
         </Grid>
 
 
         <Grid Name="proprietaireGrid" Visibility="Hidden">
             <Button Content="Button" HorizontalAlignment="Left" Margin="570,197,0,0" VerticalAlignment="Top" Width="75"/>
-
         </Grid>
 
         <Grid Name="administrateurGrid" Visibility="Hidden">
@@ -44,6 +50,12 @@
 
         </Grid>
 
+        <Grid Name="addGuestRequestGrid" Visibility="Visible">
+            <TextBlock Name="namePrivateTxt" Text="שם פרטי" HorizontalAlignment="Left" Margin="699,40,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" RenderTransformOrigin="13.853,0.738"/>
+            <TextBox Name="namePrivateTxtBox"  HorizontalAlignment="Left" Height="23" Margin="558,39,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.157,0.409"/>
+
+
+        </Grid>
     </Grid>
 </Window>
     
