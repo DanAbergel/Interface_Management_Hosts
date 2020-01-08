@@ -49,12 +49,13 @@ namespace WPF_PL
 
         private void updateGuestRequestButton_Click(object sender, RoutedEventArgs e)
         {
-
+            
         }
 
         private void addGuestRequestButton_Click(object sender, RoutedEventArgs e)
         {
-
+            clientGrid.Visibility = Visibility.Hidden;
+            addGuestRequestGrid.Visibility = Visibility.Visible;
         }
 
         private void deleteGuestRequestButton_Click(object sender, RoutedEventArgs e)
@@ -68,6 +69,11 @@ namespace WPF_PL
             mainGrid.Visibility = Visibility.Visible;
         }
 
+        private void returnButton_Click2(object sender, RoutedEventArgs e)
+        {
+            addGuestRequestGrid.Visibility = Visibility.Hidden;
+            clientGrid.Visibility = Visibility.Visible;
+        }
         private void poolCheck_Checked(object sender, RoutedEventArgs e)
         {
 

@@ -18,7 +18,7 @@
 
 
 
-        <Grid Name="mainGrid" ShowGridLines="False" Visibility="Hidden">
+        <Grid Name="mainGrid" ShowGridLines="False" Visibility="Visible">
             <Grid.Background>
                 <ImageBrush ImageSource="D:\Belles Images\thumb2-hainan-island-4k-hotel-bungalow-sunset.jpg" Stretch="UniformToFill"/>
             </Grid.Background>
@@ -51,7 +51,7 @@
 
         </Grid>
 
-        <Grid Name="addGuestRequestGrid" Visibility="Visible">
+        <Grid Name="addGuestRequestGrid" Visibility="Hidden">
             <Grid.Background>
                 <ImageBrush ImageSource="D:\Belles Images\Blue-and-green-abstract-space-curve_m.webp" Stretch="UniformToFill"/>
             </Grid.Background>
@@ -77,7 +77,7 @@
             <ComboBox HorizontalAlignment="Left" Margin="64,262,0,0" VerticalAlignment="Top" Width="38"/>
             <Label Name="LabelBeginDate" Content="תאריך תחילת האירוח" FontFamily="David" FontWeight="ExtraBlack" FontSize="16" HorizontalAlignment="Left" Margin="289,56,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.156,0.398"/>
             <Label Name="LabelEndDate" Content="תאריך סוף האירוח" FontFamily="David" FontWeight="ExtraBlack" FontSize="16" HorizontalAlignment="Left" Margin="48,56,0,0" VerticalAlignment="Top"/>
-            <Button Name="returnButton2" Content="חזור" HorizontalAlignment="Left" Margin="27,23,0,0" VerticalAlignment="Top" Width="75" FontSize="17" FontFamily="David" Click="returnButton_Click" Background="Aquamarine" Foreground="Green" FontWeight="UltraBold"/>
+            <Button Name="returnButton2" Content="חזור" HorizontalAlignment="Left" Margin="27,23,0,0" VerticalAlignment="Top" Width="75" FontSize="17" FontFamily="David" Click="returnButton_Click2" Background="Aquamarine" Foreground="Green" FontWeight="UltraBold"/>
 
 
         </Grid>
