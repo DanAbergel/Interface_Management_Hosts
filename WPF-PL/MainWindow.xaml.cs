@@ -24,8 +24,16 @@ namespace WPF_PL
         public MainWindow()
         {
             InitializeComponent();
-           
-            
+            for (int i = 0; i < 10; ++i)
+            {
+                ComboBoxItem newItem1 = new ComboBoxItem();
+                ComboBoxItem newItem2 = new ComboBoxItem();
+                newItem1.Content =  i;
+                newItem2.Content = i;
+                comboboxAdults.Items.Add(newItem1);
+                comboboxChildren.Items.Add(newItem2);
+            }
+
         }
      
        //fonction du boutton Client
@@ -77,6 +85,11 @@ namespace WPF_PL
         private void poolCheck_Checked(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+           
         }
     }
 }

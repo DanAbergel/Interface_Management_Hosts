@@ -23,9 +23,9 @@
                 <ImageBrush ImageSource="D:\Belles Images\thumb2-hainan-island-4k-hotel-bungalow-sunset.jpg" Stretch="UniformToFill"/>
             </Grid.Background>
             <TextBlock Text="ברוכים הבאים " FontFamily="David" FontSize="50" HorizontalAlignment="Center" VerticalAlignment="Top" Foreground="YellowGreen"/>
-            <Button Name="buttonClient" Content="Client" HorizontalAlignment="Left" Margin="375,326,0,0" VerticalAlignment="Top" Width="75" Click="Client" RenderTransformOrigin="0.144,3.594" FontSize="20" Background="Aquamarine"  Foreground="Green" FontFamily="Gabriola" FontWeight="UltraBold" Height="32"/>
-            <Button Name="buttonProprietaire" Content="Proprietaire" HorizontalAlignment="Left" Margin="147,327,0,0" VerticalAlignment="Top" Width="140" Click="Proprietaire" FontSize="20" Background="Aquamarine" Foreground="Green" FontWeight="UltraBold" FontFamily="Gabriola" RenderTransformOrigin="0.518,1.642" Height="33"/>
-            <Button Name="buttonAdministrateur" Content="Administrateur" HorizontalAlignment="Left" Margin="532,326,0,0" VerticalAlignment="Top" Width="171" FontSize="20"   Background="Aquamarine" Foreground="Green" FontWeight="UltraBold" FontFamily="Gabriola"  Click="buttonAdministrateur_Click" Height="34"/>
+            <Button Name="buttonClient" Content="אורח" HorizontalAlignment="Left" Margin="375,336,0,0" VerticalAlignment="Top" Width="75" Click="Client" RenderTransformOrigin="0.144,3.594" FontSize="20" Background="Aquamarine"  Foreground="Green" FontFamily="David" FontWeight="UltraBold" Height="22"/>
+            <Button Name="buttonProprietaire" Content="מארח" HorizontalAlignment="Left" Margin="172,336,0,0" VerticalAlignment="Top" Width="78" Click="Proprietaire" FontSize="20" Background="Aquamarine" Foreground="Green" FontWeight="UltraBold" FontFamily="David" RenderTransformOrigin="0.518,1.642" Height="24"/>
+            <Button Name="buttonAdministrateur" Content="מנהל" HorizontalAlignment="Left" Margin="581,336,0,0" VerticalAlignment="Top" Width="78" FontSize="20"   Background="Aquamarine" Foreground="Green" FontWeight="UltraBold" FontFamily="David"  Click="buttonAdministrateur_Click" Height="24" RenderTransformOrigin="-0.215,0.383"/>
             <TextBlock HorizontalAlignment="Left" Margin="729,80,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top"/>
 
         </Grid>
@@ -72,9 +72,9 @@
             <Calendar Name="CalendarBegin" HorizontalAlignment="Left" Margin="20,81,0,0" VerticalAlignment="Top"/>
             <Calendar Name="CalendarEnd" HorizontalAlignment="Left" Margin="269,81,0,0" VerticalAlignment="Top"/>
             <TextBlock Name="numChildrenTxt" Text="מס' ילדים" FontFamily="David" FontWeight="ExtraBlack" FontSize="16" HorizontalAlignment="Left" Margin="136,299,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" RenderTransformOrigin="0.609,1.817"/>
-            <ComboBox HorizontalAlignment="Left" Margin="64,299,0,0" VerticalAlignment="Top" Width="38" RenderTransformOrigin="0.023,0.634"/>
+            <ComboBox Name="comboboxChildren" HorizontalAlignment="Left" Margin="64,299,0,0" VerticalAlignment="Top" Width="38" RenderTransformOrigin="0.023,0.634"/>
             <TextBlock Name="numAdultsTxt" Text="מס' מבוגרים" FontFamily="David" FontWeight="ExtraBlack" FontSize="16" HorizontalAlignment="Left" Margin="121,262,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Height="19"/>
-            <ComboBox HorizontalAlignment="Left" Margin="64,262,0,0" VerticalAlignment="Top" Width="38"/>
+            <ComboBox Name="comboboxAdults" HorizontalAlignment="Left" Margin="64,262,0,0" VerticalAlignment="Top" Width="38" SelectionChanged="ComboBox_SelectionChanged"/>
             <Label Name="LabelBeginDate" Content="תאריך תחילת האירוח" FontFamily="David" FontWeight="ExtraBlack" FontSize="16" HorizontalAlignment="Left" Margin="289,56,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.156,0.398"/>
             <Label Name="LabelEndDate" Content="תאריך סוף האירוח" FontFamily="David" FontWeight="ExtraBlack" FontSize="16" HorizontalAlignment="Left" Margin="48,56,0,0" VerticalAlignment="Top"/>
             <Button Name="returnButton2" Content="חזור" HorizontalAlignment="Left" Margin="27,23,0,0" VerticalAlignment="Top" Width="75" FontSize="17" FontFamily="David" Click="returnButton_Click2" Background="Aquamarine" Foreground="Green" FontWeight="UltraBold"/>
