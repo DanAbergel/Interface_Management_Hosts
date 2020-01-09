@@ -39,16 +39,16 @@
             <Grid.Background>
                 <ImageBrush ImageSource="D:\Belles Images\thumb2-hainan-island-4k-hotel-bungalow-sunset.jpg" Stretch="UniformToFill"/>
             </Grid.Background>
-            <TextBlock Text="ברוכים הבאים " FontFamily="David" FontSize="45" HorizontalAlignment="Center" VerticalAlignment="Top" Foreground="YellowGreen" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3"/>
-            <Button Name="exit" Content="יציאה" HorizontalAlignment="Center"  VerticalAlignment="Center" Height="37" Width="110" FontSize="17" FontFamily="David" Click="returnButton_Click" Background="Aquamarine" Foreground="Green" FontWeight="UltraBold" Grid.Row="0" Grid.Column="0"/>
-            <Button Name="buttonClient" Content="אורח" HorizontalAlignment="Center"  VerticalAlignment="Bottom" Width="110" Click="Client"  FontSize="20" Background="Aquamarine"  Foreground="Green" FontFamily="David" FontWeight="UltraBold" Height="37" Grid.Row="4" Grid.Column="1"  ></Button>
-            <Button Name="buttonProprietaire" Content="מארח" HorizontalAlignment="Center"  VerticalAlignment="Bottom" Width="110" Click="Proprietaire" FontSize="20" Background="Aquamarine" Foreground="Green" FontWeight="UltraBold" FontFamily="David" Height="37" Grid.Row="4" Grid.Column="2" />
-            <Button Name="buttonAdministrateur" Content="מנהל" HorizontalAlignment="Center"  VerticalAlignment="Bottom" Width="110" FontSize="20"   Background="Aquamarine" Foreground="Green" FontWeight="UltraBold" FontFamily="David"  Click="buttonAdministrateur_Click" Height="37" Grid.Row="4" Grid.Column="3"  />
+            <TextBlock Text="ברוכים הבאים " FontFamily="David" FontSize="50" HorizontalAlignment="Center" VerticalAlignment="Top" Foreground="YellowGreen" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3"/>
+            <Button Name="exit" Content="יציאה" HorizontalAlignment="Center"  VerticalAlignment="Center" Height="37" Width="110" FontSize="23" FontFamily="David" Click="returnButton_Click" Background="Aquamarine" Foreground="Green" FontWeight="UltraBold" Grid.Row="0" Grid.Column="0"/>
+            <Button Name="buttonClient" Content="אורח" HorizontalAlignment="Center"  VerticalAlignment="Bottom" Width="130" Click="Client"  FontSize="23" Background="Aquamarine"  Foreground="Green" FontFamily="David" FontWeight="UltraBold" Height="40" Grid.Row="4" Grid.Column="1"  ></Button>
+            <Button Name="buttonProprietaire" Content="מארח" HorizontalAlignment="Center"  VerticalAlignment="Bottom" Width="130" Click="Proprietaire" FontSize="23" Background="Aquamarine" Foreground="Green" FontWeight="UltraBold" FontFamily="David" Height="40" Grid.Row="4" Grid.Column="2" />
+            <Button Name="buttonAdministrateur" Content="מנהל" HorizontalAlignment="Center"  VerticalAlignment="Bottom" Width="130" FontSize="23"   Background="Aquamarine" Foreground="Green" FontWeight="UltraBold" FontFamily="David"  Click="buttonAdministrateur_Click" Height="40" Grid.Row="4" Grid.Column="3"  />
 
         </Grid>
 
 
-        <Grid Name="clientGrid" Visibility="Visible">
+        <Grid Name="clientGrid" Visibility="Hidden">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
@@ -68,10 +68,10 @@
             <Grid.Background>
                 <ImageBrush ImageSource="D:\Belles Images\thumb2-hainan-island-4k-hotel-bungalow-sunset.jpg" Stretch="UniformToFill"/>
             </Grid.Background>
-            <Button Name="addGuestRequestButton" Content="הוספת בקשת אירוח" FontFamily="David" HorizontalAlignment="Center"  VerticalAlignment="Center" Width="180"  FontSize="17" Click="addGuestRequestButton_Click" Height="23"  Background="Aquamarine" Foreground="Green" FontWeight="UltraBold" Grid.Row="4" Grid.Column="2" />
-            <Button Name="updateGuestRequestButton" Content="עדכון בקשת אירוח" HorizontalAlignment="Center" VerticalAlignment="Center" Width="180" FontSize="17" FontFamily="David" Click="updateGuestRequestButton_Click" Height="25" Background="Aquamarine" Foreground="Green" FontWeight="UltraBold" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2"/>
-            <Button Name="deleteGuestRequestButton" Content="מחיקת בקשת אירוח" HorizontalAlignment="Center"  VerticalAlignment="Center" Width="180" RenderTransformOrigin="0.549,0.719" FontSize="17" FontFamily="David" Click="deleteGuestRequestButton_Click" Height="25" Background="Aquamarine" Foreground="Green" FontWeight="UltraBold" Grid.Row="4" Grid.Column="3" Grid.ColumnSpan="2"/>
-            <Button Name="returnButton" Content="חזור" HorizontalAlignment="Center" Margin="50,25,0,0" VerticalAlignment="Center" Width="100" FontSize="17" FontFamily="David" Click="returnButton_Click" Background="Aquamarine" Foreground="Green" FontWeight="UltraBold" Grid.Row="0" Grid.Column="0"/>
+            <Button Name="addGuestRequestButton" Content="הוספת בקשת אירוח" FontFamily="David" HorizontalAlignment="Center"  VerticalAlignment="Center" Width="170"  FontSize="20" Click="addGuestRequestButton_Click" Height="40"  Background="Aquamarine" Foreground="Green" FontWeight="UltraBold" Grid.Row="4" Grid.Column="2" />
+            <Button Name="updateGuestRequestButton" Content="עדכון בקשת אירוח" HorizontalAlignment="Center" VerticalAlignment="Center" Width="145" FontSize="20" FontFamily="David" Click="updateGuestRequestButton_Click" Height="40" Background="Aquamarine" Foreground="Green" FontWeight="UltraBold" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2"/>
+            <Button Name="deleteGuestRequestButton" Content="מחיקת בקשת אירוח" HorizontalAlignment="Center"  VerticalAlignment="Center" Width="155"  FontSize="20" FontFamily="David" Click="deleteGuestRequestButton_Click" Height="40" Background="Aquamarine" Foreground="Green" FontWeight="UltraBold" Grid.Row="4" Grid.Column="3" Grid.ColumnSpan="2"/>
+            <Button Name="returnButton" Content="חזור" HorizontalAlignment="Center"  VerticalAlignment="Center" Height="37" Width="130" FontSize="20" FontFamily="David" Click="returnButton_Click" Background="Aquamarine" Foreground="Green" FontWeight="UltraBold" Grid.Row="0" Grid.Column="0"/>
         </Grid>
 
 
@@ -84,33 +84,58 @@
 
         </Grid>
 
-        <Grid Name="addGuestRequestGrid" Visibility="Hidden">
+        <Grid Name="addGuestRequestGrid" Visibility="Visible">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+
+
+            </Grid.ColumnDefinitions>
             <Grid.Background>
                 <ImageBrush ImageSource="D:\Belles Images\Blue-and-green-abstract-space-curve_m.webp" Stretch="UniformToFill"/>
             </Grid.Background>
-            <TextBlock Name="namePrivateTxt" Text="שם פרטי" HorizontalAlignment="Left" Margin="697,73,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" RenderTransformOrigin="13.853,0.738" FontFamily="David" FontWeight="ExtraBlack" FontSize="16"/>
-            <TextBox Name="PrivateNameTxtBox"  HorizontalAlignment="Left" Height="20" Margin="546,73,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.157,0.409"/>
-            <TextBlock Name="FamilyNameTxt" Text="שם משפחה"  HorizontalAlignment="Left" Margin="683,103,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" RenderTransformOrigin="0.203,0.777" FontFamily="David" FontWeight="ExtraBlack" FontSize="16"/>
-            <TextBox Name="FamilyNameTxtBox"  HorizontalAlignment="Left" Height="20" Margin="546,102,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-            <TextBlock Name="TitreDroit" FontFamily="David" FontStyle="Italic" Foreground="DarkSalmon" FontWeight="ExtraLight"  FontSize="25" Text="פרטי התקשרות" HorizontalAlignment="Left" Margin="581,23,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" />
-            <TextBlock Name="MailTxt" Text="כתובת מייל" HorizontalAlignment="Left" Margin="686,132,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontFamily="David" FontWeight="ExtraBlack" FontSize="16"/>
-            <TextBox Name="MailTxtBox" HorizontalAlignment="Left" Height="20" Margin="546,132,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
-            <TextBlock Name="TelTxt" Text="מספר טלפון" Height="20" HorizontalAlignment="Left" Margin="683,163,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" RenderTransformOrigin="0.499,1.078" FontFamily="David" FontWeight="ExtraBlack" FontSize="16"/>
-            <TextBox Name="TelTxtBox" HorizontalAlignment="Left" Height="20" Margin="546,163,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-            <CheckBox Name="poolCheck" Content="בריכה" FontFamily="David"  FontWeight="ExtraBlack" FontSize="16" HorizontalAlignment="Left" Margin="394,299,0,0" VerticalAlignment="Top" RenderTransformOrigin="4.645,-6.171"/>
-            <CheckBox Name="gardenCheck" Content="גינה" FontFamily="David"  FontWeight="ExtraBlack" FontSize="16" HorizontalAlignment="Left" Margin="403,262,0,0" VerticalAlignment="Top"/>
-            <CheckBox Name="attractionsCheck" Content="אטרקציות לילדים" FontFamily="David"  FontWeight="ExtraBlack" FontSize="16" HorizontalAlignment="Left" Margin="324,332,0,0" VerticalAlignment="Top" RenderTransformOrigin="2.564,-2.118"/>
-            <CheckBox Name="jacuzziCheck" Content="ג'קוזי" IsChecked="False" FontFamily="David"  FontWeight="ExtraBlack" FontSize="16" HorizontalAlignment="Left" Margin="396,362,0,0" VerticalAlignment="Top"/>
-            <TextBlock Name="TitreGauche" Text="פרטי הבקשה" FontFamily="David" FontStyle="Italic" Foreground="DarkSalmon" FontWeight="ExtraLight"  FontSize="25" HorizontalAlignment="Left" Margin="180,23,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" RenderTransformOrigin="0.347,-0.562"/>
-            <Calendar Name="CalendarBegin" HorizontalAlignment="Left" Margin="20,81,0,0" VerticalAlignment="Top"/>
-            <Calendar Name="CalendarEnd" HorizontalAlignment="Left" Margin="269,81,0,0" VerticalAlignment="Top"/>
-            <TextBlock Name="numChildrenTxt" Text="מס' ילדים" FontFamily="David" FontWeight="ExtraBlack" FontSize="16" HorizontalAlignment="Left" Margin="136,299,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" RenderTransformOrigin="0.609,1.817"/>
-            <ComboBox Name="comboboxChildren" HorizontalAlignment="Left" Margin="64,299,0,0" VerticalAlignment="Top" Width="38" RenderTransformOrigin="0.023,0.634"/>
-            <TextBlock Name="numAdultsTxt" Text="מס' מבוגרים" FontFamily="David" FontWeight="ExtraBlack" FontSize="16" HorizontalAlignment="Left" Margin="121,262,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Height="19"/>
-            <ComboBox Name="comboboxAdults" HorizontalAlignment="Left" Margin="64,262,0,0" VerticalAlignment="Top" Width="38" SelectionChanged="ComboBox_SelectionChanged"/>
-            <Label Name="LabelBeginDate" Content="תאריך תחילת האירוח" FontFamily="David" FontWeight="ExtraBlack" FontSize="16" HorizontalAlignment="Left" Margin="289,56,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.156,0.398"/>
-            <Label Name="LabelEndDate" Content="תאריך סוף האירוח" FontFamily="David" FontWeight="ExtraBlack" FontSize="16" HorizontalAlignment="Left" Margin="48,56,0,0" VerticalAlignment="Top"/>
-            <Button Name="returnButton2" Content="חזור" HorizontalAlignment="Left" Margin="27,23,0,0" VerticalAlignment="Top" Width="75" FontSize="17" FontFamily="David" Click="returnButton_Click2" Background="Aquamarine" Foreground="Green" FontWeight="UltraBold"/>
+            <TextBlock Name="namePrivateTxt" Text="שם פרטי" HorizontalAlignment="Center"   VerticalAlignment="Center"  FontFamily="David" FontWeight="ExtraBlack" FontSize="18" Grid.Row="2" Grid.Column="5"/>
+            <TextBox Name="PrivateNameTxtBox"  HorizontalAlignment="Center" Height="20"   VerticalAlignment="Center" Width="120" Grid.Row="2" Grid.Column="4" />
+            <TextBlock Name="FamilyNameTxt" Text="שם משפחה"  HorizontalAlignment="Center"    VerticalAlignment="Center"  FontFamily="David" FontWeight="ExtraBlack" FontSize="18" Grid.Row="3" Grid.Column="5"/>
+            <TextBox Name="FamilyNameTxtBox"  HorizontalAlignment="Center" Height="20"   VerticalAlignment="Center" Width="120" Grid.Row="3" Grid.Column="4"/>
+            <TextBlock Name="TitreDroit" FontFamily="David" FontStyle="Italic" Foreground="DarkSalmon" FontWeight="ExtraLight"  FontSize="30" Text="פרטי התקשרות" HorizontalAlignment="Center"  TextWrapping="Wrap"  VerticalAlignment="Center" Grid.Row="0" Grid.Column="4" Grid.ColumnSpan="2" Grid.RowSpan="2" />
+            <TextBlock Name="MailTxt" Text="כתובת מייל" HorizontalAlignment="Center"   VerticalAlignment="Center" FontFamily="David" FontWeight="ExtraBlack" FontSize="18" Grid.Row="4" Grid.Column="5"/>
+            <TextBox Name="MailTxtBox" HorizontalAlignment="Center" Height="20" VerticalAlignment="Center" Width="120" Grid.Row="4" Grid.Column="4"/>
+            <TextBlock Name="TelTxt" Text="מספר טלפון" Height="20" HorizontalAlignment="Center"  VerticalAlignment="Center" FontFamily="David" FontWeight="ExtraBlack" FontSize="18" Grid.Row="5" Grid.Column="5"/>
+            <TextBox Name="TelTxtBox" HorizontalAlignment="Center" Height="20"  VerticalAlignment="Center" Width="120" Grid.Row="5" Grid.Column="4"/>
+            <CheckBox Name="poolCheck" Content="בריכה" FontFamily="David"  FontWeight="ExtraBlack" FontSize="16" HorizontalAlignment="Center"  VerticalAlignment="Center" Grid.Row="5" Grid.Column="2" Grid.ColumnSpan="2" />
+            <CheckBox Name="gardenCheck" Content="גינה" FontFamily="David"  FontWeight="ExtraBlack" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center"  Grid.Row="6" Grid.Column="2" Grid.ColumnSpan="2"/>
+            <CheckBox Name="attractionsCheck" Content="אטרקציות לילדים" FontFamily="David"  FontWeight="ExtraBlack" FontSize="16" HorizontalAlignment="Center"  VerticalAlignment="Center"  Grid.Row="7" Grid.Column="2" Grid.ColumnSpan="2" />
+            <CheckBox Name="jacuzziCheck" Content="ג'קוזי" IsChecked="False" FontFamily="David"  FontWeight="ExtraBlack" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center"  Grid.Row="8" Grid.Column="2" Grid.ColumnSpan="2"/>
+            <TextBlock Name="TitreGauche" Text="פרטי הבקשה" FontFamily="David" FontStyle="Italic" Foreground="DarkSalmon" FontWeight="ExtraLight"  FontSize="30" HorizontalAlignment="Center" VerticalAlignment="Center"  Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" Grid.RowSpan="2" />
+            <Calendar Name="CalendarBegin" HorizontalAlignment="Left"  VerticalAlignment="Center" Grid.Row="2" Grid.RowSpan="3" Grid.Column="2" Grid.ColumnSpan="2"/>
+            <Calendar Name="CalendarEnd" HorizontalAlignment="Center"  VerticalAlignment="Center" Grid.Row="2" Grid.RowSpan="3" Grid.Column="0" Grid.ColumnSpan="2"/>
+            <TextBlock Name="numChildrenTxt" Text="מס' ילדים" FontFamily="David" FontWeight="ExtraBlack" FontSize="16" HorizontalAlignment="Left"  VerticalAlignment="Center" Grid.Row="6" Grid.Column="1"/>
+            <ComboBox Name="comboboxChildren" HorizontalAlignment="Center"  VerticalAlignment="Center" Width="38" Grid.Row="6" Grid.Column="0" />
+            <TextBlock Name="numAdultsTxt" Text="מס' מבוגרים" FontFamily="David" FontWeight="ExtraBlack" FontSize="16" HorizontalAlignment="Left"  VerticalAlignment="Center" Height="19" Grid.Row="5" Grid.Column="1"/>
+            <ComboBox Name="comboboxAdults" HorizontalAlignment="Center"  VerticalAlignment="Center" Width="38" SelectionChanged="ComboBox_SelectionChanged" Grid.Row="5" Grid.Column="0" />
+            <Label Name="LabelBeginDate" Content="תאריך תחילת האירוח" FontFamily="David" FontWeight="ExtraBlack" FontSize="16" HorizontalAlignment="Left"  VerticalAlignment="Bottom" Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2" />
+            <Label Name="LabelEndDate" Content="תאריך סוף האירוח" FontFamily="David" FontWeight="ExtraBlack" FontSize="16" HorizontalAlignment="Center"  VerticalAlignment="Bottom" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"/>
+            <Button Name="returnButton2" Content="חזור" HorizontalAlignment="Center"  VerticalAlignment="Center" Width="75" FontSize="18" FontFamily="David" Click="returnButton_Click2" Background="Aquamarine" Foreground="Green" FontWeight="UltraBold" Grid.Row="0" Grid.Column="0"/>
+            <Button  Name="SendGuestRequest"  Content="הוסף"  Grid.Column="4" Grid.ColumnSpan="2" Grid.RowSpan="2" HorizontalAlignment="Center" Grid.Row="7" VerticalAlignment="Center" Width="75" FontFamily="David" Background="Aquamarine" FontSize="18" FontWeight="UltraBold" Foreground="Green"/>
+            <TextBlock Grid.Column="1" HorizontalAlignment="Left" Grid.Row="7" TextWrapping="Wrap" Text="איזור בארץ" VerticalAlignment="Center" FontSize="16" FontFamily="David" FontWeight="ExtraBlack"/>
+            <ComboBox  HorizontalAlignment="Center"  Grid.Row="7" VerticalAlignment="Center" Width="70"/>
 
 
         </Grid>
