@@ -18,27 +18,60 @@
 
 
 
-        <Grid Name="mainGrid" ShowGridLines="False" Visibility="Visible">
+        <Grid Name="mainGrid" ShowGridLines="False" Visibility="Hidden" >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
             <Grid.Background>
                 <ImageBrush ImageSource="D:\Belles Images\thumb2-hainan-island-4k-hotel-bungalow-sunset.jpg" Stretch="UniformToFill"/>
             </Grid.Background>
-            <TextBlock Text="ברוכים הבאים " FontFamily="David" FontSize="50" HorizontalAlignment="Center" VerticalAlignment="Top" Foreground="YellowGreen"/>
-            <Button Name="buttonClient" Content="אורח" HorizontalAlignment="Left" Margin="375,336,0,0" VerticalAlignment="Top" Width="75" Click="Client" RenderTransformOrigin="0.144,3.594" FontSize="20" Background="Aquamarine"  Foreground="Green" FontFamily="David" FontWeight="UltraBold" Height="22"/>
-            <Button Name="buttonProprietaire" Content="מארח" HorizontalAlignment="Left" Margin="172,336,0,0" VerticalAlignment="Top" Width="78" Click="Proprietaire" FontSize="20" Background="Aquamarine" Foreground="Green" FontWeight="UltraBold" FontFamily="David" RenderTransformOrigin="0.518,1.642" Height="24"/>
-            <Button Name="buttonAdministrateur" Content="מנהל" HorizontalAlignment="Left" Margin="581,336,0,0" VerticalAlignment="Top" Width="78" FontSize="20"   Background="Aquamarine" Foreground="Green" FontWeight="UltraBold" FontFamily="David"  Click="buttonAdministrateur_Click" Height="24" RenderTransformOrigin="-0.215,0.383"/>
-            <TextBlock HorizontalAlignment="Left" Margin="729,80,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top"/>
+            <TextBlock Text="ברוכים הבאים " FontFamily="David" FontSize="45" HorizontalAlignment="Center" VerticalAlignment="Top" Foreground="YellowGreen" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3"/>
+            <Button Name="exit" Content="יציאה" HorizontalAlignment="Center"  VerticalAlignment="Center" Height="37" Width="110" FontSize="17" FontFamily="David" Click="returnButton_Click" Background="Aquamarine" Foreground="Green" FontWeight="UltraBold" Grid.Row="0" Grid.Column="0"/>
+            <Button Name="buttonClient" Content="אורח" HorizontalAlignment="Center"  VerticalAlignment="Bottom" Width="110" Click="Client"  FontSize="20" Background="Aquamarine"  Foreground="Green" FontFamily="David" FontWeight="UltraBold" Height="37" Grid.Row="4" Grid.Column="1"  ></Button>
+            <Button Name="buttonProprietaire" Content="מארח" HorizontalAlignment="Center"  VerticalAlignment="Bottom" Width="110" Click="Proprietaire" FontSize="20" Background="Aquamarine" Foreground="Green" FontWeight="UltraBold" FontFamily="David" Height="37" Grid.Row="4" Grid.Column="2" />
+            <Button Name="buttonAdministrateur" Content="מנהל" HorizontalAlignment="Center"  VerticalAlignment="Bottom" Width="110" FontSize="20"   Background="Aquamarine" Foreground="Green" FontWeight="UltraBold" FontFamily="David"  Click="buttonAdministrateur_Click" Height="37" Grid.Row="4" Grid.Column="3"  />
 
         </Grid>
 
 
-        <Grid Name="clientGrid" Visibility="Hidden">
+        <Grid Name="clientGrid" Visibility="Visible">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
             <Grid.Background>
                 <ImageBrush ImageSource="D:\Belles Images\thumb2-hainan-island-4k-hotel-bungalow-sunset.jpg" Stretch="UniformToFill"/>
             </Grid.Background>
-            <Button Name="addGuestRequestButton" Content="הוספת בקשת אירוח" FontFamily="David" HorizontalAlignment="Left" Margin="87,336,0,0" VerticalAlignment="Top" Width="160" RenderTransformOrigin="1.051,-1.355" FontSize="17" Click="addGuestRequestButton_Click" Height="23" Background="Aquamarine" Foreground="Green" FontWeight="UltraBold"/>
-            <Button Name="updateGuestRequestButton" Content="עדכון בקשת אירוח" HorizontalAlignment="Left" Margin="337,334,0,0" VerticalAlignment="Top" Width="160" FontSize="17" FontFamily="David" Click="updateGuestRequestButton_Click" Height="25" Background="Aquamarine" Foreground="Green" FontWeight="UltraBold"/>
-            <Button Name="deleteGuestRequestButton" Content="מחיקת בקשת אירוח" HorizontalAlignment="Left" Margin="588,334,0,0" VerticalAlignment="Top" Width="162" RenderTransformOrigin="0.549,0.719" FontSize="17" FontFamily="David" Click="deleteGuestRequestButton_Click" Height="25" Background="Aquamarine" Foreground="Green" FontWeight="UltraBold"/>
-            <Button Name="returnButton" Content="חזור" HorizontalAlignment="Left" Margin="50,25,0,0" VerticalAlignment="Top" Width="75" FontSize="17" FontFamily="David" Click="returnButton_Click" Background="Aquamarine" Foreground="Green" FontWeight="UltraBold"/>
+            <Button Name="addGuestRequestButton" Content="הוספת בקשת אירוח" FontFamily="David" HorizontalAlignment="Center"  VerticalAlignment="Center" Width="180"  FontSize="17" Click="addGuestRequestButton_Click" Height="23"  Background="Aquamarine" Foreground="Green" FontWeight="UltraBold" Grid.Row="4" Grid.Column="2" />
+            <Button Name="updateGuestRequestButton" Content="עדכון בקשת אירוח" HorizontalAlignment="Center" VerticalAlignment="Center" Width="180" FontSize="17" FontFamily="David" Click="updateGuestRequestButton_Click" Height="25" Background="Aquamarine" Foreground="Green" FontWeight="UltraBold" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2"/>
+            <Button Name="deleteGuestRequestButton" Content="מחיקת בקשת אירוח" HorizontalAlignment="Center"  VerticalAlignment="Center" Width="180" RenderTransformOrigin="0.549,0.719" FontSize="17" FontFamily="David" Click="deleteGuestRequestButton_Click" Height="25" Background="Aquamarine" Foreground="Green" FontWeight="UltraBold" Grid.Row="4" Grid.Column="3" Grid.ColumnSpan="2"/>
+            <Button Name="returnButton" Content="חזור" HorizontalAlignment="Center" Margin="50,25,0,0" VerticalAlignment="Center" Width="100" FontSize="17" FontFamily="David" Click="returnButton_Click" Background="Aquamarine" Foreground="Green" FontWeight="UltraBold" Grid.Row="0" Grid.Column="0"/>
         </Grid>
 
 
