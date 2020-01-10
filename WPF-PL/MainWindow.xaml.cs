@@ -13,26 +13,23 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Net.Mail;
-
+using BE;
+using BL;
 namespace WPF_PL
 {
     /// <summary>
     /// Logique d'interaction pour MainWindow.xaml
     /// </summary>
+   
     public partial class MainWindow : Window
-    {
+    { 
+        IBL bl = BL.BLFactory.GetBL();
+        GuestRequest guestRequest;
         public MainWindow()
         {
+            
             InitializeComponent();
-            for (int i = 0; i < 10; ++i)
-            {
-                ComboBoxItem newItem1 = new ComboBoxItem();
-                ComboBoxItem newItem2 = new ComboBoxItem();
-                newItem1.Content =  i;
-                newItem2.Content = i;
-                comboboxAdults.Items.Add(newItem1);
-                comboboxChildren.Items.Add(newItem2);
-            }
+            
 
         }
      
@@ -64,6 +61,17 @@ namespace WPF_PL
         {
             clientGrid.Visibility = Visibility.Hidden;
             addGuestRequestGrid.Visibility = Visibility.Visible;
+            for (int i = 0; i < 10; ++i)
+            {
+                ComboBoxItem newItem1 = new ComboBoxItem();
+                ComboBoxItem newItem2 = new ComboBoxItem();
+                newItem1.Content =  i;
+                newItem2.Content = i;
+                comboboxAdults.Items.Add(newItem1);
+                comboboxChildren.Items.Add(newItem2);
+            }
+             guestRequest = new GuestRequest();
+           //this.addGuestRequestGrid.DataContext = guestRequest;
         }
 
         private void deleteGuestRequestButton_Click(object sender, RoutedEventArgs e)
@@ -82,14 +90,20 @@ namespace WPF_PL
             addGuestRequestGrid.Visibility = Visibility.Hidden;
             clientGrid.Visibility = Visibility.Visible;
         }
-        private void poolCheck_Checked(object sender, RoutedEventArgs e)
-        {
+       
+      
 
+        private void SendGuestRequest_Click(object sender, RoutedEventArgs e)
+        {
+            guestRequest.client.PrivateName = PrivateNameTxtBox.Text;
+            guestRequest.client.FamilyName = FamilyNameTxtBox.Text;
+            bl.addGuestRequest(guestRequest);
         }
 
-        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void returnButton_Click3(object sender, RoutedEventArgs e)
         {
-           
+            addHostingUnitGrid.Visibility = Visibility.Hidden;
+            clientGrid.Visibility = Visibility.Visible;
         }
     }
 }
