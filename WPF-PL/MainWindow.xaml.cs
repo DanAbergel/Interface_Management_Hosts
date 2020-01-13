@@ -29,7 +29,7 @@ namespace WPF_PL
         {
             
             InitializeComponent();
-            
+            SystemCommands.MaximizeWindow(this);
 
         }
      
@@ -104,6 +104,17 @@ namespace WPF_PL
         {
             addHostingUnitGrid.Visibility = Visibility.Hidden;
             clientGrid.Visibility = Visibility.Visible;
+        }
+
+        private void updateHosting_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void returnButton_Click4(object sender, RoutedEventArgs e)
+        {
+            proprietaireGrid.Visibility = Visibility.Hidden;
+            mainGrid.Visibility = Visibility.Visible;
         }
     }
 }

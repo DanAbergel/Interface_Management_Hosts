@@ -36,9 +36,9 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
-            <Grid.Background>
+            <!--Grid.Background>
                 <ImageBrush ImageSource="D:\Belles Images\thumb2-hainan-island-4k-hotel-bungalow-sunset.jpg" Stretch="UniformToFill"/>
-            </Grid.Background>
+            </-->
             <TextBlock Text="ברוכים הבאים " FontFamily="David" FontSize="50" HorizontalAlignment="Center" VerticalAlignment="Top" Foreground="YellowGreen" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3"/>
             <Button Name="exit" Content="יציאה" HorizontalAlignment="Center"  VerticalAlignment="Center" Height="37" Width="110" FontSize="23" FontFamily="David" Click="returnButton_Click" Background="Aquamarine" Foreground="Green" FontWeight="UltraBold" Grid.Row="0" Grid.Column="0"/>
             <Button Name="buttonClient" Content="אורח" HorizontalAlignment="Center"  VerticalAlignment="Bottom" Width="130" Click="Client"  FontSize="23" Background="Aquamarine"  Foreground="Green" FontFamily="David" FontWeight="UltraBold" Height="40" Grid.Row="4" Grid.Column="1"  ></Button>
@@ -65,9 +65,9 @@
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <Grid.Background>
+            <!--Grid.Background>
                 <ImageBrush ImageSource="D:\Belles Images\thumb2-hainan-island-4k-hotel-bungalow-sunset.jpg" Stretch="UniformToFill"/>
-            </Grid.Background>
+            </-->
             <Button Name="addGuestRequestButton" Content="הוספת בקשת אירוח" FontFamily="David" HorizontalAlignment="Center"  VerticalAlignment="Center" Width="170"  FontSize="20" Click="addGuestRequestButton_Click" Height="40"  Background="Aquamarine" Foreground="Green" FontWeight="UltraBold" Grid.Row="4" Grid.Column="2" />
             <Button Name="updateGuestRequestButton" Content="עדכון בקשת אירוח" HorizontalAlignment="Center" VerticalAlignment="Center" Width="145" FontSize="20" FontFamily="David" Click="updateGuestRequestButton_Click" Height="40" Background="Aquamarine" Foreground="Green" FontWeight="UltraBold" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2"/>
             <Button Name="deleteGuestRequestButton" Content="מחיקת בקשת אירוח" HorizontalAlignment="Center"  VerticalAlignment="Center" Width="155"  FontSize="20" FontFamily="David" Click="deleteGuestRequestButton_Click" Height="40" Background="Aquamarine" Foreground="Green" FontWeight="UltraBold" Grid.Row="4" Grid.Column="3" Grid.ColumnSpan="2"/>
@@ -76,7 +76,10 @@
 
 
         <Grid Name="proprietaireGrid" Visibility="Visible">
-            <Button Content="Button" HorizontalAlignment="Left" Margin="570,197,0,0" VerticalAlignment="Top" Width="75"/>
+            <Button Name="addHosting" Content="הוספת יחידת אירוח" HorizontalAlignment="Left" Margin="604,330,0,0" VerticalAlignment="Top" Width="113" Height="45"/>
+            <Button Name="returnButton4" Content="חזור" HorizontalAlignment="Center"  VerticalAlignment="Center" Height="37" Width="130" FontSize="20" FontFamily="David" Click="returnButton_Click4" Background="Aquamarine" Foreground="Green" FontWeight="UltraBold" Grid.Row="0" Grid.Column="0" Margin="32,22,630,360"/>
+            <Button Name="updateHosting" Content="עדכון יחידת אירוח" HorizontalAlignment="Left" Margin="357,330,0,0" VerticalAlignment="Top" Width="113" Height="45" Click="updateHosting_Click"/>
+            <Button Name="deleteHosting" Content="מחיקת יחידת אירוח" HorizontalAlignment="Left" Margin="129,330,0,0" VerticalAlignment="Top" Width="112" Height="45"/>
         </Grid>
 
         <Grid Name="administrateurGrid" Visibility="Hidden">
@@ -107,9 +110,9 @@
 
 
             </Grid.ColumnDefinitions>
-            <Grid.Background>
+            <!--Grid.Background>
                 <ImageBrush ImageSource="D:\Belles Images\Blue-and-green-abstract-space-curve_m.webp" Stretch="UniformToFill"/>
-            </Grid.Background>
+            </-->
             <TextBlock Name="namePrivateTxt" Text="שם פרטי"  HorizontalAlignment="Center"   VerticalAlignment="Center"  FontFamily="David" FontWeight="ExtraBlack" FontSize="18" Grid.Row="2" Grid.Column="5"/>
             <TextBox Name="PrivateNameTxtBox" Text="{Binding Client.PrivateName}" HorizontalAlignment="Center" Height="20"   VerticalAlignment="Center" Width="120" Grid.Row="2" Grid.Column="4" />
             <TextBlock Name="FamilyNameTxt" Text="שם משפחה"  HorizontalAlignment="Center"    VerticalAlignment="Center"  FontFamily="David" FontWeight="ExtraBlack" FontSize="18" Grid.Row="3" Grid.Column="5"/>
@@ -163,9 +166,9 @@
 
 
             </Grid.ColumnDefinitions>
-            <Grid.Background>
+            <!--Grid.Background>
                 <ImageBrush ImageSource="D:\Belles Images\images (4).jfif" Stretch="UniformToFill"/>
-            </Grid.Background>
+            </-->
             <TextBlock Name="namePrivateHostTxt" Text="שם פרטי"  HorizontalAlignment="Center"   VerticalAlignment="Center"  FontFamily="David" FontWeight="ExtraBlack" FontSize="18" Grid.Row="2" Grid.Column="5"/>
             <TextBox Name="PrivateNameHostTxtBox" Text="{Binding Client.PrivateName}" HorizontalAlignment="Center" Height="20"   VerticalAlignment="Center" Width="120" Grid.Row="2" Grid.Column="4" />
             <TextBlock Name="FamilyNameHostTxt" Text="שם משפחה"  HorizontalAlignment="Center"    VerticalAlignment="Center"  FontFamily="David" FontWeight="ExtraBlack" FontSize="18" Grid.Row="3" Grid.Column="5"/>
