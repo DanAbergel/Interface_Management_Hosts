@@ -75,11 +75,11 @@
         </Grid>
 
 
-        <Grid Name="proprietaireGrid" Visibility="Visible">
+        <Grid Name="proprietaireGrid" Visibility="Hidden">
             <Button Name="addHosting" Content="הוספת יחידת אירוח" HorizontalAlignment="Left" Margin="604,330,0,0" VerticalAlignment="Top" Width="113" Height="45"/>
             <Button Name="returnButton4" Content="חזור" HorizontalAlignment="Center"  VerticalAlignment="Center" Height="37" Width="130" FontSize="20" FontFamily="David" Click="returnButton_Click4" Background="Aquamarine" Foreground="Green" FontWeight="UltraBold" Grid.Row="0" Grid.Column="0" Margin="32,22,630,360"/>
             <Button Name="updateHosting" Content="עדכון יחידת אירוח" HorizontalAlignment="Left" Margin="357,330,0,0" VerticalAlignment="Top" Width="113" Height="45" Click="updateHosting_Click"/>
-            <Button Name="deleteHosting" Content="מחיקת יחידת אירוח" HorizontalAlignment="Left" Margin="129,330,0,0" VerticalAlignment="Top" Width="112" Height="45"/>
+            <Button Name="deleteHosting" Content="מחיקת יחידת אירוח" HorizontalAlignment="Left" Margin="129,330,0,0" VerticalAlignment="Top" Width="112" Height="45" Click="deleteHosting_Click"/>
         </Grid>
 
         <Grid Name="administrateurGrid" Visibility="Hidden">
@@ -203,6 +203,31 @@
 
         </Grid>
 
+        <Grid Name="deleteHostingUnitGrid" ShowGridLines="False">
+            <!--<Grid.Background >
+                <ImageBrush ImageSource="D:\Belles Images\beautiful-sea-wallpaper-background-picture-desktop-nu-wallpaper-hd.jpg"/>
+            </Grid.Background>-->
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Name="deleteHostingName"  FontSize="26" Foreground="White" Grid.Column="1" HorizontalAlignment="Center"  Grid.Row="1" TextWrapping="Wrap" Text="שם יחידת האירוח" VerticalAlignment="Center" Grid.ColumnSpan="3" />
+            <TextBox  Grid.Column="1" Grid.ColumnSpan="3" HorizontalAlignment="Center"   Grid.Row="1" TextWrapping="Wrap"  VerticalAlignment="Bottom" Width="150" Height="25"/>
+            <TextBlock Grid.Column="1" Grid.ColumnSpan="3" HorizontalAlignment="Center"  Grid.Row="2" TextWrapping="Wrap" Text="סיסמא" VerticalAlignment="Center" FontSize="26" Foreground="White"/>
+            <PasswordBox Grid.Column="1" Grid.ColumnSpan="3" HorizontalAlignment="Center"  Grid.Row="2" VerticalAlignment="Bottom" Height="25" Width="150" PasswordChar="*"/>
+            <Button Name="DeleteHosting"  Content="מחק" Grid.Column="2" HorizontalAlignment="Center"  Grid.Row="3" VerticalAlignment="Center" Width="100" Height="25" Background="Aquamarine" FontFamily="David" FontSize="25" Click="DeleteHosting_Click_1" />
+            <Button Content="חזור" HorizontalAlignment="Center"  VerticalAlignment="Center" Width="100" Height="25" FontFamily="David" Background="Aquamarine" FontSize="22" Click="return6"/>
+        </Grid>
 
     </Grid>
 </Window>

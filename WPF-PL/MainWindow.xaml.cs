@@ -116,5 +116,22 @@ namespace WPF_PL
             proprietaireGrid.Visibility = Visibility.Hidden;
             mainGrid.Visibility = Visibility.Visible;
         }
+
+        private void deleteHosting_Click(object sender, RoutedEventArgs e)
+        {
+            proprietaireGrid.Visibility = Visibility.Hidden;
+            deleteHostingUnitGrid.Visibility = Visibility.Visible;
+        }
+
+        private void DeleteHosting_Click_1(object sender, RoutedEventArgs e)
+        {
+            //bl.deleteHostingUnit();
+        }
+
+        private void return6(object sender, RoutedEventArgs e)
+        {
+            deleteHostingUnitGrid.Visibility = Visibility.Hidden;
+            proprietaireGrid.Visibility = Visibility.Visible;
+        }
     }
 }
