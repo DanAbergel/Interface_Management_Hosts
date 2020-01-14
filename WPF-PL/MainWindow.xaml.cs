@@ -25,12 +25,13 @@ namespace WPF_PL
     { 
         IBL bl = BL.BLFactory.GetBL();
         GuestRequest guestRequest;
+        HostingUnit hostingUnit;
         public MainWindow()
         {
             
             InitializeComponent();
             SystemCommands.MaximizeWindow(this);
-
+            
         }
      
        //fonction du boutton Client
@@ -132,6 +133,34 @@ namespace WPF_PL
         {
             deleteHostingUnitGrid.Visibility = Visibility.Hidden;
             proprietaireGrid.Visibility = Visibility.Visible;
+        }
+
+        private void returnButton5_Click(object sender, RoutedEventArgs e)
+        {
+            updateHostingUnitGrid.Visibility = Visibility.Hidden;
+            proprietaireGrid.Visibility = Visibility.Visible;
+        }
+
+        private void SendHostingUnitUpdate_Click(object sender, RoutedEventArgs e)
+        {
+            //bl.uptadeHostingUnit();
+        }
+
+        private void DeleteguestRequest_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void return_Click(object sender, RoutedEventArgs e)
+        {
+            deleteGuestRequestGrid.Visibility = Visibility.Hidden;
+            clientGrid.Visibility = Visibility.Visible;
+        }
+
+        private void addHosting_Click(object sender, RoutedEventArgs e)
+        {
+            proprietaireGrid.Visibility = Visibility.Hidden;
+            addHostingUnitGrid.Visibility = Visibility.Visible;
         }
     }
 }
