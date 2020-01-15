@@ -8,7 +8,7 @@ namespace BE
 {
     public class Host
     {
-        public long HostKey = Configuration.StaticHostKey++;
+        public string ID;
         public string PrivateName;
         public string FamilyName;
         public string PhoneNumber;

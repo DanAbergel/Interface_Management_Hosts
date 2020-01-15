@@ -15,7 +15,8 @@ namespace DAL
         void deleteHostingUnit(long HostingUnitKey);
         void uptadeHostingUnit(HostingUnit updateHostingUnit);
         List<HostingUnit> getAllHostingUnits();
-       
+        List<HostingUnit> getHostingUnits(Func<HostingUnit, bool> predicate = null);
+
         //fonctions requete
 
         void addGuestRequest(GuestRequest guestRequest);
@@ -42,6 +43,9 @@ namespace DAL
         bool HostingUnitExist(long HostingUnitKey);
         bool GuestRequestExist(long guestRequestKey);
         bool OrderExist(long HostingUnitKey);
+
+        HostingUnit GetHostingUnitByID(long ID);
+        GuestRequest GetGuestRequestByID(long ID);
 
 
     }

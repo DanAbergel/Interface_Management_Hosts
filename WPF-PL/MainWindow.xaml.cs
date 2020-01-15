@@ -192,6 +192,17 @@ namespace WPF_PL
            // bl.updateGuestRequest();
         }
 
-       
+        private void returnButton_Click8(object sender, RoutedEventArgs e)
+        {
+            administrateurGrid.Visibility = Visibility.Hidden;
+            mainGrid.Visibility = Visibility.Visible;
+        }
+
+        private void fermeture(object sender, RoutedEventArgs e)
+        {
+           
+                Close();
+           
+        }
     }
 }

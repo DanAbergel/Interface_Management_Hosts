@@ -308,6 +308,23 @@ namespace BL
             return from HostingUnit in newDal.getAllHostingUnits()
                    group HostingUnit by HostingUnit.area into f1
                    select f1;
-        }    
+        }
+
+        public HostingUnit GetHostingUnitByID(long ID)
+        {
+            throw new NotImplementedException();
+        }
+
+        public GuestRequest GetGuestRequestByID(long ID)
+        {
+            throw new NotImplementedException();
+        }
+
+
+
+        public List<HostingUnit> getHostingUnits(Func<HostingUnit, bool> p)
+        {
+            return newDal.getHostingUnits(p);
+        }
     }
 }
