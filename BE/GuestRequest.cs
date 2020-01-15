@@ -15,6 +15,7 @@ namespace BE
             client = new Client();
             guestRequestKey = Configuration.StaticGuestRequestKey++;
             RegistrationDate = DateTime.Now;
+            StatusOfRequest = StatutRequirement.Active;
         }
         public long guestRequestKey;
         public Client client { get; set; }

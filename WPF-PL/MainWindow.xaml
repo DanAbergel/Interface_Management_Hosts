@@ -102,7 +102,7 @@
 
         </Grid>
 
-        <Grid Name="addGuestRequestGrid" Visibility="Visible"  >
+        <Grid Name="addGuestRequestGrid" Visibility="Hidden"  >
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
@@ -145,12 +145,12 @@
             <Calendar Name="CalendarBegin" SelectedDate="{Binding Path=EntryDate}" HorizontalAlignment="Left"  VerticalAlignment="Center" Grid.Row="2" Grid.RowSpan="3" Grid.Column="2" Grid.ColumnSpan="2"/>
             <Calendar Name="CalendarEnd" SelectedDate="{Binding Path=ReleaseDate}" HorizontalAlignment="Center"  VerticalAlignment="Center" Grid.Row="2" Grid.RowSpan="3" Grid.Column="0" Grid.ColumnSpan="2"/>
             <TextBlock Name="numChildrenTxt" Text="מס' ילדים"  FontFamily="David" FontWeight="ExtraBlack" FontSize="16" HorizontalAlignment="Left"  VerticalAlignment="Center" Grid.Row="6" Grid.Column="1"/>
-            <ComboBox Name="comboboxChildren" HorizontalAlignment="Center"  VerticalAlignment="Center" Width="38" Grid.Row="6" Grid.Column="0" />
+            <ComboBox Name="comboboxChildren" SelectedItem="{Binding Path=Children}" HorizontalAlignment="Center"  VerticalAlignment="Center" Width="38" Grid.Row="6" Grid.Column="0" />
             <TextBlock Name="numAdultsTxt" Text="מס' מבוגרים" FontFamily="David" FontWeight="ExtraBlack" FontSize="16" HorizontalAlignment="Left"  VerticalAlignment="Center" Height="19" Grid.Row="5" Grid.Column="1"/>
-            <ComboBox Name="comboboxAdults" HorizontalAlignment="Center"  VerticalAlignment="Center" Width="38"  Grid.Row="5" Grid.Column="0" />
+            <ComboBox Name="comboboxAdults" SelectedItem="{Binding Path=Adults}" HorizontalAlignment="Center"  VerticalAlignment="Center" Width="38"  Grid.Row="5" Grid.Column="0" />
             <Label Name="LabelBeginDate" Content="תאריך תחילת האירוח" FontFamily="David" FontWeight="ExtraBlack" FontSize="16" HorizontalAlignment="Left"  VerticalAlignment="Bottom" Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2" />
             <Label Name="LabelEndDate" Content="תאריך סוף האירוח" FontFamily="David" FontWeight="ExtraBlack" FontSize="16" HorizontalAlignment="Center"  VerticalAlignment="Bottom" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"/>
-            <Button Name="returnButton2" Content="חזור" HorizontalAlignment="Center"  VerticalAlignment="Center" Width="75" FontSize="18" FontFamily="David" Click="returnButton_Click2" Background="Aquamarine" Foreground="Green" FontWeight="UltraBold" Grid.Row="0" Grid.Column="0"/>
+            <Button Name="returnFromAddGuestrequest" Content="חזור" HorizontalAlignment="Center"  VerticalAlignment="Center" Width="75" FontSize="18" FontFamily="David" Click="returnFromAddGuestRequest" Background="Aquamarine" Foreground="Green" FontWeight="UltraBold" Grid.Row="0" Grid.Column="0"/>
             <Button  Name="SendGuestRequest"  Content="הוסף"  Grid.Column="4" Grid.ColumnSpan="2" Grid.RowSpan="2" HorizontalAlignment="Center" Grid.Row="7" VerticalAlignment="Center" Width="75" FontFamily="David" Background="Aquamarine" FontSize="18" FontWeight="UltraBold" Foreground="Green" Click="SendGuestRequest_Click"/>
             <TextBlock Grid.Column="1" HorizontalAlignment="Left" Grid.Row="7" TextWrapping="Wrap" Text="איזור בארץ" VerticalAlignment="Center" FontSize="16" FontFamily="David" FontWeight="ExtraBlack"/>
             <ComboBox  HorizontalAlignment="Center"  Grid.Row="7" VerticalAlignment="Center" Width="70"/>
@@ -219,7 +219,33 @@
 
 
         </Grid>
-
+        
+        <Grid Name="deleteGuestRequestGrid"  Visibility="Hidden">
+            <!--<Grid.Background >
+                <ImageBrush ImageSource="D:\Belles Images\beautiful-sea-wallpaper-background-picture-desktop-nu-wallpaper-hd.jpg"/>
+            </Grid.Background>-->
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Name="deleteguestRequestName"  FontSize="26" Foreground="Black" Grid.Column="1" HorizontalAlignment="Center"  Grid.Row="1" TextWrapping="Wrap" Text="שם משתמש" VerticalAlignment="Center" Grid.ColumnSpan="3" />
+            <TextBox Name="nameDeletedguestRequest" Grid.Column="1" Grid.ColumnSpan="3" HorizontalAlignment="Center"   Grid.Row="1" TextWrapping="Wrap"  VerticalAlignment="Bottom" Width="150" Height="25"/>
+            <TextBlock Grid.Column="1" Grid.ColumnSpan="3" HorizontalAlignment="Center"  Grid.Row="2" TextWrapping="Wrap" Text="סיסמא" VerticalAlignment="Center" FontSize="26" Foreground="Black"/>
+            <PasswordBox Name="passwordguestRequest" Grid.Column="1" Grid.ColumnSpan="3" HorizontalAlignment="Center"  Grid.Row="2" VerticalAlignment="Bottom" Height="25" Width="150" PasswordChar="*"/>
+            <Button Name="DeleteguestRequest"  Content="מחק" Grid.Column="2" HorizontalAlignment="Center"  Grid.Row="3" VerticalAlignment="Center" Width="100" Height="25" Background="Aquamarine" FontFamily="David" FontSize="25" Click="DeleteguestRequest_Click"  />
+            <Button Name="return" Content="חזור" HorizontalAlignment="Center"  VerticalAlignment="Center" Width="100" Height="25" FontFamily="David" Background="Aquamarine" FontSize="22" Click="return_Click" />
+        </Grid>
+        
         <Grid Name="addHostingUnitGrid" Visibility="Hidden">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
@@ -261,13 +287,13 @@
             <CheckBox Name="jacuzziCheckHost" Content="ג'קוזי" IsChecked="False" FontFamily="David"  FontWeight="ExtraBlack" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center"  Grid.Row="8" Grid.Column="2" Grid.ColumnSpan="2"/>
             <TextBlock Name="TitreGaucheHost" Text="פרטי היחידה" FontFamily="David" FontStyle="Italic" Foreground="DarkSalmon" FontWeight="ExtraLight"  FontSize="30" HorizontalAlignment="Center" VerticalAlignment="Center"  Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" Grid.RowSpan="2" />
             <TextBlock Name="numChildrenHostTxt" Text="קיבולת ילדים" FontFamily="David" FontWeight="ExtraBlack" FontSize="16" HorizontalAlignment="Left"  VerticalAlignment="Center" Grid.Row="6" Grid.Column="1"/>
-            <ComboBox Name="comboboxChildrenHosting" HorizontalAlignment="Center"  VerticalAlignment="Center" Width="38" Grid.Row="6" Grid.Column="0" />
+            <ComboBox Name="comboboxChildrenHosting" SelectedItem="{Binding Path=Children}" HorizontalAlignment="Center"  VerticalAlignment="Center" Width="38" Grid.Row="6" Grid.Column="0" />
             <TextBlock Name="numAdultsHostingTxt" Text="קיבולת מבוגרים" FontFamily="David" FontWeight="ExtraBlack" FontSize="16" HorizontalAlignment="Left"  VerticalAlignment="Center" Height="19" Grid.Row="5" Grid.Column="1"/>
-            <ComboBox Name="comboboxAdultsHosting" HorizontalAlignment="Center"  VerticalAlignment="Center" Width="38"  Grid.Row="5" Grid.Column="0" />
+            <ComboBox Name="comboboxAdultsHosting" SelectedItem="{Binding Path=Adults}" HorizontalAlignment="Center"  VerticalAlignment="Center" Width="38"  Grid.Row="5" Grid.Column="0" />
             <Button Name="returnButton3" Content="חזור" HorizontalAlignment="Center"  VerticalAlignment="Center" Width="75" FontSize="18" FontFamily="David"  Background="Aquamarine" Foreground="Green" FontWeight="UltraBold" Grid.Row="0" Grid.Column="0" Click="returnButton3_Click"/>
             <Button  Name="SendHostingUnit"  Content="הוסף"  Grid.Column="4" Grid.ColumnSpan="2" Grid.RowSpan="2" HorizontalAlignment="Center" Grid.Row="7" VerticalAlignment="Center" Width="75" FontFamily="David" Background="Aquamarine" FontSize="18" FontWeight="UltraBold" Foreground="Green" Click="SendGuestRequest_Click"/>
             <TextBlock Name="AreaHostingUnitTxt"  Grid.Column="1" HorizontalAlignment="Left" Grid.Row="7" TextWrapping="Wrap" Text="איזור בארץ" VerticalAlignment="Center" FontSize="16" FontFamily="David" FontWeight="ExtraBlack"/>
-            <ComboBox Name="AreaCombobox" HorizontalAlignment="Center"  Grid.Row="7" VerticalAlignment="Center" Width="70"/>
+            <ComboBox Name="AreaCombobox" HorizontalAlignment="Center"  Grid.Row="7" VerticalAlignment="Center" Width="70" />
             <TextBlock Name="NameHostingUnit" Text="שם היחידה" FontFamily="David" FontSize="16" FontWeight="ExtraBlack" Grid.Column="3" HorizontalAlignment="Left"  Grid.Row="2" TextWrapping="Wrap"  VerticalAlignment="Center" />
             <TextBox Name="NameHostingUnitTxtBox"   Grid.ColumnSpan="2" Grid.Column="2" HorizontalAlignment="Left" Height="23" Grid.Row="2" TextWrapping="Wrap"  VerticalAlignment="Center" Width="120"/>
             <TextBlock Name="addressHostingUnit" Text="כתובת היחידה" FontFamily="David" FontSize="16" FontWeight="ExtraBlack" Grid.Column="1" HorizontalAlignment="Left"  Grid.Row="2" TextWrapping="Wrap"  VerticalAlignment="Center"/>
@@ -340,6 +366,7 @@
             <TextBlock Grid.Column="5" HorizontalAlignment="Center"  Grid.Row="6" FontSize="18" FontFamily="David" FontWeight="ExtraBlack" Text="סיסמא" VerticalAlignment="Center"/>
 
         </Grid>
+
         <Grid Name="deleteHostingUnitGrid" ShowGridLines="False" Visibility="Hidden">
             <!--<Grid.Background >
                 <ImageBrush ImageSource="D:\Belles Images\beautiful-sea-wallpaper-background-picture-desktop-nu-wallpaper-hd.jpg"/>
@@ -366,31 +393,7 @@
             <Button Name="returnDeleteHosting" Content="חזור" HorizontalAlignment="Center"  VerticalAlignment="Center" Width="100" Height="25" FontFamily="David" Background="Aquamarine" FontSize="22" Click="return6"/>
         </Grid>
 
-        <Grid Name="deleteGuestRequestGrid" ShowGridLines="False" Visibility="Hidden">
-            <!--<Grid.Background >
-                <ImageBrush ImageSource="D:\Belles Images\beautiful-sea-wallpaper-background-picture-desktop-nu-wallpaper-hd.jpg"/>
-            </Grid.Background>-->
-            <Grid.RowDefinitions>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
-            <TextBlock Name="deleteguestRequestName"  FontSize="26" Foreground="White" Grid.Column="1" HorizontalAlignment="Center"  Grid.Row="1" TextWrapping="Wrap" Text="שם יחידת האירוח" VerticalAlignment="Center" Grid.ColumnSpan="3" />
-            <TextBox Name="nameDeletedguestRequest" Grid.Column="1" Grid.ColumnSpan="3" HorizontalAlignment="Center"   Grid.Row="1" TextWrapping="Wrap"  VerticalAlignment="Bottom" Width="150" Height="25"/>
-            <TextBlock Grid.Column="1" Grid.ColumnSpan="3" HorizontalAlignment="Center"  Grid.Row="2" TextWrapping="Wrap" Text="סיסמא" VerticalAlignment="Center" FontSize="26" Foreground="White"/>
-            <PasswordBox Name="passwordguestRequest" Grid.Column="1" Grid.ColumnSpan="3" HorizontalAlignment="Center"  Grid.Row="2" VerticalAlignment="Bottom" Height="25" Width="150" PasswordChar="*"/>
-            <Button Name="DeleteguestRequest"  Content="מחק" Grid.Column="2" HorizontalAlignment="Center"  Grid.Row="3" VerticalAlignment="Center" Width="100" Height="25" Background="Aquamarine" FontFamily="David" FontSize="25" Click="DeleteguestRequest_Click"  />
-            <Button Name="return" Content="חזור" HorizontalAlignment="Center"  VerticalAlignment="Center" Width="100" Height="25" FontFamily="David" Background="Aquamarine" FontSize="22" Click="return_Click" />
-        </Grid>
+       
     </Grid>
 </Window>
     

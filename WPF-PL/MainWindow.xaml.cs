@@ -26,21 +26,12 @@ namespace WPF_PL
         IBL bl = BL.BLFactory.GetBL();
         GuestRequest guestRequest;
         HostingUnit hostingUnit;
+        BE.BE.Area area;
         public MainWindow()
         {
-
-           
-
             InitializeComponent();
-
-
             SystemCommands.MaximizeWindow(this);
             IBL bl = BL.BLFactory.GetBL();
-
-            
-
-
-
         }
      
        //fonction du boutton Client
@@ -64,7 +55,8 @@ namespace WPF_PL
         //fonction du boutton updateGuestRequest
         private void updateGuestRequestButton_Click(object sender, RoutedEventArgs e)
         {
-            
+            clientGrid.Visibility = Visibility.Hidden;
+            updateGuestRequestGrid.Visibility = Visibility.Visible;
         }
 
         private void addGuestRequestButton_Click(object sender, RoutedEventArgs e)
@@ -88,6 +80,7 @@ namespace WPF_PL
                 comboboxAdults.Items.Add(newItem1);
                 comboboxChildren.Items.Add(newItem2);
             }
+            comboboxAdults.DataContext = Enum.GetValues(typeof(BE.BE.Area));
 
 
         }
@@ -103,7 +96,7 @@ namespace WPF_PL
             mainGrid.Visibility = Visibility.Visible;
         }
 
-        private void returnButton_Click2(object sender, RoutedEventArgs e)
+        private void returnFromAddGuestRequest(object sender, RoutedEventArgs e)
         {
             addGuestRequestGrid.Visibility = Visibility.Hidden;
             clientGrid.Visibility = Visibility.Visible;
@@ -115,6 +108,9 @@ namespace WPF_PL
         {
           
             bl.addGuestRequest(guestRequest);
+            MessageBox.Show("your guest request was added","Succesful request",MessageBoxButton.OK,MessageBoxImage.Information );
+            addGuestRequestGrid.Visibility = Visibility.Hidden;
+            clientGrid.Visibility = Visibility.Visible;
         }
 
         private void returnButton_Click3(object sender, RoutedEventArgs e)
@@ -195,5 +191,7 @@ namespace WPF_PL
         {
            // bl.updateGuestRequest();
         }
+
+       
     }
 }
