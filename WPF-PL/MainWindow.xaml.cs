@@ -162,5 +162,11 @@ namespace WPF_PL
             proprietaireGrid.Visibility = Visibility.Hidden;
             addHostingUnitGrid.Visibility = Visibility.Visible;
         }
+
+        private void returnButton3_Click(object sender, RoutedEventArgs e)
+        {
+            addHostingUnitGrid.Visibility = Visibility.Hidden;
+            proprietaireGrid.Visibility = Visibility.Visible;
+        }
     }
 }

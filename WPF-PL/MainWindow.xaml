@@ -75,7 +75,7 @@
         </Grid>
 
 
-        <Grid Name="proprietaireGrid" Visibility="Visible">
+        <Grid Name="proprietaireGrid" Visibility="Hidden">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
@@ -159,7 +159,7 @@
 
         </Grid>
 
-        <Grid Name="addHostingUnitGrid" Visibility="Hidden">
+        <Grid Name="addHostingUnitGrid" Visibility="Visible">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
@@ -203,7 +203,7 @@
             <ComboBox Name="comboboxChildrenHosting" HorizontalAlignment="Center"  VerticalAlignment="Center" Width="38" Grid.Row="6" Grid.Column="0" />
             <TextBlock Name="numAdultsHostingTxt" Text="קיבולת מבוגרים" FontFamily="David" FontWeight="ExtraBlack" FontSize="16" HorizontalAlignment="Left"  VerticalAlignment="Center" Height="19" Grid.Row="5" Grid.Column="1"/>
             <ComboBox Name="comboboxAdultsHosting" HorizontalAlignment="Center"  VerticalAlignment="Center" Width="38"  Grid.Row="5" Grid.Column="0" />
-            <Button Name="returnButton3" Content="חזור" HorizontalAlignment="Center"  VerticalAlignment="Center" Width="75" FontSize="18" FontFamily="David" Click="returnButton_Click3" Background="Aquamarine" Foreground="Green" FontWeight="UltraBold" Grid.Row="0" Grid.Column="0"/>
+            <Button Name="returnButton3" Content="חזור" HorizontalAlignment="Center"  VerticalAlignment="Center" Width="75" FontSize="18" FontFamily="David"  Background="Aquamarine" Foreground="Green" FontWeight="UltraBold" Grid.Row="0" Grid.Column="0" Click="returnButton3_Click"/>
             <Button  Name="SendHostingUnit"  Content="הוסף"  Grid.Column="4" Grid.ColumnSpan="2" Grid.RowSpan="2" HorizontalAlignment="Center" Grid.Row="7" VerticalAlignment="Center" Width="75" FontFamily="David" Background="Aquamarine" FontSize="18" FontWeight="UltraBold" Foreground="Green" Click="SendGuestRequest_Click"/>
             <TextBlock Name="AreaHostingUnitTxt"  Grid.Column="1" HorizontalAlignment="Left" Grid.Row="7" TextWrapping="Wrap" Text="איזור בארץ" VerticalAlignment="Center" FontSize="16" FontFamily="David" FontWeight="ExtraBlack"/>
             <ComboBox Name="AreaCombobox" HorizontalAlignment="Center"  Grid.Row="7" VerticalAlignment="Center" Width="70"/>
