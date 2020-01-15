@@ -28,10 +28,19 @@ namespace WPF_PL
         HostingUnit hostingUnit;
         public MainWindow()
         {
-            
+
+           
+
             InitializeComponent();
+
+
             SystemCommands.MaximizeWindow(this);
+            IBL bl = BL.BLFactory.GetBL();
+
             
+
+
+
         }
      
        //fonction du boutton Client
@@ -52,7 +61,7 @@ namespace WPF_PL
             mainGrid.Visibility = Visibility.Hidden;
             administrateurGrid.Visibility = Visibility.Visible;
         }
-
+        //fonction du boutton updateGuestRequest
         private void updateGuestRequestButton_Click(object sender, RoutedEventArgs e)
         {
             
@@ -62,17 +71,25 @@ namespace WPF_PL
         {
             clientGrid.Visibility = Visibility.Hidden;
             addGuestRequestGrid.Visibility = Visibility.Visible;
+
+            //initialisation du guestRequest
+            guestRequest = new GuestRequest();
+           
+            this.addGuestRequestGrid.DataContext = guestRequest;
+
+
+            //initialisation des combobox
             for (int i = 0; i < 10; ++i)
             {
                 ComboBoxItem newItem1 = new ComboBoxItem();
                 ComboBoxItem newItem2 = new ComboBoxItem();
-                newItem1.Content =  i;
+                newItem1.Content = i;
                 newItem2.Content = i;
                 comboboxAdults.Items.Add(newItem1);
                 comboboxChildren.Items.Add(newItem2);
             }
-             guestRequest = new GuestRequest();
-           //this.addGuestRequestGrid.DataContext = guestRequest;
+
+
         }
 
         private void deleteGuestRequestButton_Click(object sender, RoutedEventArgs e)
@@ -80,7 +97,7 @@ namespace WPF_PL
 
         }
 
-        private void returnButton_Click(object sender, RoutedEventArgs e)
+        private void returnFromGuest(object sender, RoutedEventArgs e)
         {
             clientGrid.Visibility = Visibility.Hidden;
             mainGrid.Visibility = Visibility.Visible;
@@ -96,8 +113,7 @@ namespace WPF_PL
 
         private void SendGuestRequest_Click(object sender, RoutedEventArgs e)
         {
-            guestRequest.client.PrivateName = PrivateNameTxtBox.Text;
-            guestRequest.client.FamilyName = FamilyNameTxtBox.Text;
+          
             bl.addGuestRequest(guestRequest);
         }
 
@@ -167,6 +183,17 @@ namespace WPF_PL
         {
             addHostingUnitGrid.Visibility = Visibility.Hidden;
             proprietaireGrid.Visibility = Visibility.Visible;
+        }
+
+        private void returnFromUpdateGuestRequest_Click(object sender, RoutedEventArgs e)
+        {
+            updateGuestRequestGrid.Visibility = Visibility.Hidden;
+            proprietaireGrid.Visibility = Visibility.Visible;
+        }
+
+        private void SendGuestRequestUpdate_Click(object sender, RoutedEventArgs e)
+        {
+           // bl.updateGuestRequest();
         }
     }
 }

@@ -8,10 +8,10 @@ namespace BE
 {
     public class Client
     {
-        public string PrivateName;
-        public string FamilyName;
-        public string MailAddress;
-        public string NumberPhone;
+        public string PrivateName { get; set; }
+        public string FamilyName { get; set; }
+        public string MailAddress { get; set; }
+        public string NumberPhone { get; set; }
         public BankBranch bank;
         public override string ToString()
         {

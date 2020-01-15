@@ -9,24 +9,31 @@ namespace BE
 {
     public class GuestRequest
     {
-        public long guestRequestKey= Configuration.StaticGuestRequestKey++;
-        public Client client=new Client();
-        public StatutRequirement StatusOfRequest;
-        public bool canChangeStatusOfRequirement;
-        public DateTime RegistrationDate=DateTime.Now;
-        public DateTime EntryDate;
-        public DateTime ReleaseDate;
-        public Area area;
-        public string SubArea;
-        public theType type;
-        public int Adults;
-        public int Children;
-        public int totalVacationers ;
-        public Criterion Pool;
-        public Criterion Jacuzzi;
-        public Criterion Garden;
-        public Criterion ChildrenAttractions;
-        
+
+        public GuestRequest()
+        {
+            client = new Client();
+            guestRequestKey = Configuration.StaticGuestRequestKey++;
+            RegistrationDate = DateTime.Now;
+        }
+        public long guestRequestKey;
+        public Client client { get; set; }
+        public StatutRequirement StatusOfRequest { get; set; }
+        public bool canChangeStatusOfRequirement { get; set; }
+        public DateTime RegistrationDate;
+        public DateTime EntryDate { get; set; }
+        public DateTime ReleaseDate { get; set; }
+        public Area area { get; set; }
+        public string SubArea { get; set; }
+        public theType type { get; set; }
+        public int Adults { get; set; }
+        public int Children { get; set; }
+        public int totalVacationers { get; set; }
+        public Criterion Pool { get; set; }
+        public Criterion Jacuzzi { get; set; }
+        public Criterion Garden { get; set; }
+        public Criterion ChildrenAttractions { get; set; }
+
         public override string ToString()
         {
             string str = "";
