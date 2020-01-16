@@ -9,13 +9,13 @@ namespace BE
     public class Host
     {
         public long HostKey = Configuration.StaticHostKey++;
-        public string PrivateName;
-        public string FamilyName;
-        public string PhoneNumber;
-        public string MailAddress;
+        public string PrivateName { get; set; }
+        public string FamilyName { get; set; }
+        public string PhoneNumber { get; set; }
+        public string MailAddress { get; set; }
         public BankBranch Account=new BankBranch();
-        public bool CollectionClearance;
-        public int numOfHostingUnit;
+        public bool CollectionClearance { get; set; }
+        public int numOfHostingUnit { get; set; }
         public override string ToString()
         {
             string str = "";

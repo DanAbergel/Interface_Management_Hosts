@@ -56,10 +56,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="GUESTrequest.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -67,9 +63,6 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="GUESTrequest.xaml.cs">
-      <DependentUpon>GUESTrequest.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -94,6 +87,25 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="Properties\DataSources\App.datasource" />
+    <None Include="Properties\DataSources\BE.BankBranch.datasource" />
+    <None Include="Properties\DataSources\BE.BE+Area.datasource" />
+    <None Include="Properties\DataSources\BE.BE+Criterion.datasource" />
+    <None Include="Properties\DataSources\BE.BE+Status.datasource" />
+    <None Include="Properties\DataSources\BE.BE+StatutRequirement.datasource" />
+    <None Include="Properties\DataSources\BE.BE+theType.datasource" />
+    <None Include="Properties\DataSources\BE.BE.datasource" />
+    <None Include="Properties\DataSources\BE.Client.datasource" />
+    <None Include="Properties\DataSources\BE.GuestRequest.datasource" />
+    <None Include="Properties\DataSources\BE.Host.datasource" />
+    <None Include="Properties\DataSources\BE.HostingUnit.datasource" />
+    <None Include="Properties\DataSources\BE.Order.datasource" />
+    <None Include="Properties\DataSources\BL.BL.datasource" />
+    <None Include="Properties\DataSources\BL.BLFactory.datasource" />
+    <None Include="Properties\DataSources\BL.IBL.datasource" />
+    <None Include="Properties\DataSources\MainWindow.datasource" />
+    <None Include="Properties\DataSources\WPF_PL.Properties.Resources.datasource" />
+    <None Include="Properties\DataSources\WPF_PL.Properties.Settings.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

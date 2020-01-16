@@ -6,12 +6,35 @@ using System.Threading.Tasks;
 
 namespace BE
 {
-    public class BE
+    public static class BE
     {
-        public enum theType { Zimmer, Hotel, Camping }
-        public enum Area { North, South, Center, Jerusalem }
-        public enum Status { NotYetAddressed, MailSent, Closed_Absence, Closed_Demanded }
-        public enum StatutRequirement { Active, DealClosed, Closed }
-        public enum Criterion { Necessary, Possible, NotInterested }
+        public enum theType
+        {
+            Zimmer,
+            Hotel,
+            Camping
+        }
+        public enum Area {
+            North,
+            South,
+            Center,
+            Jerusalem
+        }
+        public enum Status { 
+            NotYetAddressed,
+            MailSent,
+            Closed_Absence,
+            Closed_Demanded
+        }
+        public enum StatutRequirement {
+            Active,
+            DealClosed,
+            Closed
+        }
+        public enum Criterion {
+            Necessary,
+            Possible,
+            NotInterested
+        }
     }
 }

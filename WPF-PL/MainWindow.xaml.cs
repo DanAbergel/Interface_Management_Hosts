@@ -26,12 +26,107 @@ namespace WPF_PL
         IBL bl = BL.BLFactory.GetBL();
         GuestRequest guestRequest;
         HostingUnit hostingUnit;
-        BE.BE.Area area;
+        ComboBoxItem newItem;
         public MainWindow()
         {
             InitializeComponent();
             SystemCommands.MaximizeWindow(this);
             IBL bl = BL.BLFactory.GetBL();
+            guestRequest = new GuestRequest();
+           //initialiser les combobox area
+            for (int i = 0; i < 4; i++)
+            { 
+                 newItem = new ComboBoxItem();//add guestRequest combobox
+                newItem.Content = (BE.BE.Area)i;
+                comboboxArea.Items.Add(newItem);
+
+                newItem = new ComboBoxItem();//update guestRequest Combobox
+                newItem.Content = (BE.BE.Area)i;
+                comboboxAreaUpdate.Items.Add(newItem);
+
+                newItem = new ComboBoxItem();//add HostingUnit combobox
+                newItem.Content = (BE.BE.Area)i;
+                comboboxAreaHostingUnit.Items.Add(newItem);
+
+                newItem = new ComboBoxItem();//update HostingUnit combobox
+                newItem.Content = (BE.BE.Area)i;
+                comboboxAreaUpdateHostingUnit.Items.Add(newItem);
+            } 
+            //initialiser le combox adults et children
+            for (int i = 0; i < 10; i++)
+            {
+                newItem = new ComboBoxItem();//add adults to combobox guestRequest
+                newItem.Content = i;
+                comboboxAdults.Items.Add(newItem);
+
+                newItem = new ComboBoxItem();//update adults to update guestRequest
+                newItem.Content = i;
+                comboboxAdultsUpdate.Items.Add(newItem);
+
+
+                newItem = new ComboBoxItem();//add adults to combobox guestRequest
+                newItem.Content = i;
+                comboboxAdultsHosting.Items.Add(newItem);
+
+                newItem = new ComboBoxItem();//update adults to update guestRequest
+                newItem.Content = i;
+                comboboxAdultsHostingUpdate.Items.Add(newItem);
+
+
+                newItem = new ComboBoxItem();//add children to combobox guestRequest
+                newItem.Content = i;
+                comboboxChildren.Items.Add(newItem);
+
+                newItem = new ComboBoxItem();//update children to update guestRequest
+                newItem.Content = i;
+                comboboxChildrenUpdate.Items.Add(newItem);
+
+                newItem = new ComboBoxItem();//add children to combobox guestRequest
+                newItem.Content = i;
+                comboboxChildrenHosting.Items.Add(newItem);
+
+                newItem = new ComboBoxItem();//update children to update guestRequest
+                newItem.Content = i;
+                comboboxChildrenHostingUpdate.Items.Add(newItem);
+            }
+            //initialiser le combobox des selections
+            for(int i=0;i<3;i++)
+            {
+                newItem = new ComboBoxItem();//add guestRequest
+                newItem.Content = (BE.BE.Criterion)i;
+                jacuzziCombobox.Items.Add(newItem);
+
+                newItem = new ComboBoxItem();//update guestRequest
+                newItem.Content = (BE.BE.Criterion)i;
+                jacuzziUpdateCombobox.Items.Add(newItem);
+
+
+                newItem = new ComboBoxItem();//add guestRequest
+                newItem.Content = (BE.BE.Criterion)i;
+                poolCombobox.Items.Add(newItem);
+
+                newItem = new ComboBoxItem();//update guestRequest
+                newItem.Content = (BE.BE.Criterion)i;
+                poolUpdateCombobox.Items.Add(newItem);
+
+
+                newItem = new ComboBoxItem();//add guestRequest
+                newItem.Content = (BE.BE.Criterion)i;
+                gardenCombobox.Items.Add(newItem);
+
+                newItem = new ComboBoxItem();//update guestRequest
+                newItem.Content = (BE.BE.Criterion)i;
+                gardenUpdateCombobox.Items.Add(newItem);
+
+
+                newItem = new ComboBoxItem();//add guestRequest
+                newItem.Content = (BE.BE.Criterion)i;
+                attractionsCombobox.Items.Add(newItem);
+
+                newItem = new ComboBoxItem();//update guestRequest
+                newItem.Content = (BE.BE.Criterion)i;
+                attractionsUpdateCombobox.Items.Add(newItem);
+            }
         }
      
        //fonction du boutton Client
@@ -63,31 +158,13 @@ namespace WPF_PL
         {
             clientGrid.Visibility = Visibility.Hidden;
             addGuestRequestGrid.Visibility = Visibility.Visible;
-
-            //initialisation du guestRequest
-            guestRequest = new GuestRequest();
-           
             this.addGuestRequestGrid.DataContext = guestRequest;
-
-
-            //initialisation des combobox
-            for (int i = 0; i < 10; ++i)
-            {
-                ComboBoxItem newItem1 = new ComboBoxItem();
-                ComboBoxItem newItem2 = new ComboBoxItem();
-                newItem1.Content = i;
-                newItem2.Content = i;
-                comboboxAdults.Items.Add(newItem1);
-                comboboxChildren.Items.Add(newItem2);
-            }
-            comboboxAdults.DataContext = Enum.GetValues(typeof(BE.BE.Area));
-
-
         }
 
         private void deleteGuestRequestButton_Click(object sender, RoutedEventArgs e)
         {
-
+            clientGrid.Visibility = Visibility.Hidden;
+            deleteGuestRequestGrid.Visibility = Visibility.Visible;
         }
 
         private void returnFromGuest(object sender, RoutedEventArgs e)
@@ -101,8 +178,6 @@ namespace WPF_PL
             addGuestRequestGrid.Visibility = Visibility.Hidden;
             clientGrid.Visibility = Visibility.Visible;
         }
-       
-      
 
         private void SendGuestRequest_Click(object sender, RoutedEventArgs e)
         {
@@ -121,7 +196,8 @@ namespace WPF_PL
 
         private void updateHosting_Click(object sender, RoutedEventArgs e)
         {
-
+            proprietaireGrid.Visibility = Visibility.Hidden;
+            updateHostingUnitGrid.Visibility = Visibility.Visible;
         }
 
         private void returnButton_Click4(object sender, RoutedEventArgs e)
@@ -192,6 +268,10 @@ namespace WPF_PL
            // bl.updateGuestRequest();
         }
 
-       
+        private void returnFromUpdateGuestrequest_Click(object sender, RoutedEventArgs e)
+        {
+            updateGuestRequestGrid.Visibility = Visibility.Hidden;
+            clientGrid.Visibility = Visibility.Visible;
+        }
     }
 }
