@@ -8,13 +8,14 @@ namespace BE
 {
     public class HostingUnit
     {
-        public long HostingUnitKey = Configuration.StaticHostingUnitKey++;
+
+        public long HostingUnitKey { get; set; }
         public int capacityAdults { get; set; }
         public int capacityChildren { get; set; }
-        public Host Owner=new Host();
+        public Host Owner { get; set; }
         public string HostingUnitName { get; set; }
         public string address { get; set; }
-        public bool[,] Diary = new bool[12, 31];
+        public bool[,] Diary { get; set; }
         public bool occupied { get; set; }
         public double pricePerDayPerAdult { get; set; }
         public double pricePerDayPerChild { get; set; }
@@ -24,6 +25,12 @@ namespace BE
         public bool jacuzzi { get; set; }
         public bool childrenAttraction { get; set; }
         public BE.Area area { get; set; }
+        public HostingUnit()
+        {
+            HostingUnitKey = Configuration.StaticHostingUnitKey++;
+            Owner = new Host();
+            Diary = new bool[12, 31];
+        }
         public override string ToString()
         {
             string str = "";
