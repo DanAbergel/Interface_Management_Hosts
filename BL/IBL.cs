@@ -16,15 +16,19 @@ namespace BL
             void deleteHostingUnit(long HostingUnitKey);
             void uptadeHostingUnit(HostingUnit updateHostingUnit);
             List<HostingUnit> getAllHostingUnits();
-            
-            #endregion
-            
+            HostingUnit GetHostingUnitByID(long ID);
+            List<HostingUnit> getHostingUnits(Func<HostingUnit, bool> p);
+
+
+        #endregion
+
             #region fonctions requete
 
             void addGuestRequest(GuestRequest guestRequest);
             void deleteGuestRequest(long guestRequestKey);
             void updateGuestRequest(GuestRequest updateGuestRequest);
             List<GuestRequest> getAllGuestRequest();
+            GuestRequest GetGuestRequestByID(long ID);
             #endregion
 
             #region fonctions commande en cours

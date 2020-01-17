@@ -12,14 +12,14 @@ namespace DAL
     {
         public void addGuestRequest(GuestRequest guestRequest)
         {
-            DataSource.guestRequests.Add(guestRequest);
+            DataSource.guestRequests.Add(guestRequest.Clone());
         }
 
         public void addHostingUnit(HostingUnit hostingUnit)
         {
             if (!HostingUnitExist(hostingUnit.HostingUnitKey))
             {
-                DataSource.hostingUnits.Add(hostingUnit);
+                DataSource.hostingUnits.Add(hostingUnit.Clone());
                 hostingUnit.Owner.numOfHostingUnit++;
             }
             else
@@ -29,7 +29,7 @@ namespace DAL
 
         public void addOrder(Order order)
         {
-            DataSource.orders.Add(order);
+            DataSource.orders.Add(order.Clone());
         }
 
         public void deleteHostingUnit(long HostingUnitKey)
@@ -89,7 +89,7 @@ namespace DAL
                               where GuestRequest.guestRequestKey == updateGuestRequest.guestRequestKey
                               select GuestRequest).First();
                 DataSource.guestRequests.Remove(result);
-                DataSource.guestRequests.Add(updateGuestRequest);
+                DataSource.guestRequests.Add(updateGuestRequest.Clone());
             }
             else
                 throw new KeyNotFoundException("la requete n existe pas");
@@ -103,7 +103,7 @@ namespace DAL
                               where Order.HostingUnitKey == updateOrder.HostingUnitKey
                               select Order).First();
                 DataSource.orders.Remove(result);
-                DataSource.orders.Add(updateOrder);
+                DataSource.orders.Add(updateOrder.Clone());
             }
             else
                 throw new KeyNotFoundException("aucune commande n'a été trouve");
@@ -117,7 +117,7 @@ namespace DAL
                               where HostingUnit.HostingUnitKey == updateHostingUnit.HostingUnitKey
                               select HostingUnit).First();
                 DataSource.hostingUnits.Remove(result);
-                DataSource.hostingUnits.Add(updateHostingUnit);
+                DataSource.hostingUnits.Add(updateHostingUnit.Clone());
             }
             else
                 throw new KeyNotFoundException("le logement n'est pas existant");
@@ -158,6 +158,36 @@ namespace DAL
             else
                 return true;
 
+        }
+
+
+        public HostingUnit GetHostingUnitByID(long HostingUnitKey)
+        {
+            if (HostingUnitExist(HostingUnitKey))
+            {
+                return (from HostingUnit in DataSource.hostingUnits
+                        where HostingUnit.HostingUnitKey == HostingUnitKey
+                        select new HostingUnit()).FirstOrDefault();
+            }
+            throw new KeyNotFoundException("היחידה לא קיים");
+        }
+
+        public GuestRequest GetGuestRequestByID(long guestRequestKey)
+        {
+            if (GuestRequestExist(guestRequestKey))
+            {
+                return (from GuestRequest in DataSource.guestRequests
+                        where GuestRequest.guestRequestKey == guestRequestKey
+                        select new GuestRequest()).FirstOrDefault();
+            }
+            throw new KeyNotFoundException("הבקשה לא קיים");
+        }
+
+
+
+        public List<HostingUnit> getHostingUnits(Func<HostingUnit, bool> predicate = null)
+        {
+            return DataSource.hostingUnits.Where(predicate).Select(hu => (HostingUnit)hu.Clone()).ToList();
         }
 
     }

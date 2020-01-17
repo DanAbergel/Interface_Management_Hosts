@@ -8,14 +8,14 @@ namespace BE
 {
     public class Host
     {
-        public long HostKey = Configuration.StaticHostKey++;
-        public string PrivateName { get; set; }
-        public string FamilyName { get; set; }
-        public string PhoneNumber { get; set; }
-        public string MailAddress { get; set; }
+        public string ID;
+        public string PrivateName;
+        public string FamilyName;
+        public string PhoneNumber;
+        public string MailAddress;
         public BankBranch Account=new BankBranch();
-        public bool CollectionClearance { get; set; }
-        public int numOfHostingUnit { get; set; }
+        public bool CollectionClearance;
+        public int numOfHostingUnit;
         public override string ToString()
         {
             string str = "";

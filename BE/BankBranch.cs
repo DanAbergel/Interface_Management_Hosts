@@ -8,11 +8,11 @@ namespace BE
 {
     public class BankBranch
     {
-        private int BankNumber;
-        private string BankName;
-        private int BranchNumber;
-        private string BranchAddress;
-        private string BranchCity;
+        public int BankNumber;
+        public string BankName;
+        public int BranchNumber;
+        public string BranchAddress;
+        public string BranchCity;
 
 
         public override string ToString()

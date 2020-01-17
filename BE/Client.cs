@@ -8,6 +8,7 @@ namespace BE
 {
     public class Client
     {
+        public string ID { get; set; }
         public string PrivateName { get; set; }
         public string FamilyName { get; set; }
         public string MailAddress { get; set; }
