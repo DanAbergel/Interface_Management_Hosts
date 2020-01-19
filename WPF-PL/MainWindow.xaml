@@ -19,7 +19,7 @@
 
 
 
-        <Grid Name="mainGrid" ShowGridLines="False" Visibility="Hidden"  >
+        <Grid Name="mainGrid" ShowGridLines="False" Visibility="Visible"  >
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
@@ -124,7 +124,7 @@
 
         </Grid>
 
-        <Grid Name="addGuestRequestGrid" Visibility="Visible"  >
+        <Grid Name="addGuestRequestGrid" Visibility="Hidden"  >
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
