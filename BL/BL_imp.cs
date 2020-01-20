@@ -319,12 +319,35 @@ namespace BL
         {
             throw new NotImplementedException();
         }
-
-
-
-        public List<HostingUnit> getHostingUnits(Func<HostingUnit, bool> p)
+        //verifie pour touts les hostingunits les conditions de compatibilite avec le guestRequest
+        public List<HostingUnit> getHostingUnits(GuestRequest guestRequest)
         {
-            return newDal.getHostingUnits(p);
+            List<HostingUnit> List = (from hostingUnit in newDal.getAllHostingUnits()
+                                         where verification(hostingUnit, guestRequest)
+                                         select hostingUnit).ToList();
+            return List;
+        }
+
+        //verifie les conditions
+        bool verification(HostingUnit hostingUnit , GuestRequest guestRequest)
+        {
+            if (guestRequest.area != hostingUnit.area)
+                return false;
+            if (guestRequest.Adults < hostingUnit.capacityAdults)
+                return false;
+            if (guestRequest.Children < hostingUnit.capacityChildren)
+                return false;
+            if (guestRequest.ChildrenAttractions==BE.BE.Criterion.Necessary&&!hostingUnit.childrenAttraction)
+                return false;
+            if (guestRequest.Garden == BE.BE.Criterion.Necessary && !hostingUnit.garden)
+                return false;
+            if (guestRequest.Pool == BE.BE.Criterion.Necessary && !hostingUnit.pool)
+                return false;
+            if (guestRequest.Jacuzzi == BE.BE.Criterion.Necessary && !hostingUnit.jacuzzi)
+                return false;
+            if (!SearchForFreeDates(guestRequest.EntryDate, guestRequest.ReleaseDate, hostingUnit.Diary))
+                return false;
+            return true;
         }
     }
 }

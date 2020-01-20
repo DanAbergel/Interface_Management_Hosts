@@ -57,12 +57,8 @@ namespace WPF_PL
         /// </summary>
         /// <param name="buttomsOfMainGrid"></param>
         /// <param name="e"></param>
-        //fonction du boutton Client
-        private void Client(object sender, RoutedEventArgs e)
-        {
-            mainGrid.Visibility = Visibility.Hidden;
-            clientGrid.Visibility = Visibility.Visible;
-        }
+       
+       
         //fonction du boutton proprietaire
         private void Proprietaire(object sender, RoutedEventArgs e)
         {
@@ -80,46 +76,6 @@ namespace WPF_PL
         {
             Close();
         }
-
-
-
-        /// <summary>
-        /// bouttons de la page client
-        /// </summary>
-        /// <param name="buttomsOfClientGrid"></param>
-        /// <param name="e"></param>
-        //fonction du boutton updateGuestRequest
-        private void updateGuestRequest(object sender, RoutedEventArgs e)
-        {
-            clientGrid.Visibility = Visibility.Hidden;
-            updateGuestRequestGrid.Visibility = Visibility.Visible;
-            guestRequest = new GuestRequest();
-            this.updateGuestRequestGrid.DataContext = guestRequest;
-        }
-        //fonction du boutton addGuestRequest
-        private void addGuestRequest(object sender, RoutedEventArgs e)
-        {
-            clientGrid.Visibility = Visibility.Hidden;
-            addGuestRequestGrid.Visibility = Visibility.Visible;
-            guestRequest = new GuestRequest();
-            this.addGuestRequestGrid.DataContext = guestRequest;
-        }
-        //fonction du boutton deleteGuestRequest
-        private void deleteGuestRequestButton_Click(object sender, RoutedEventArgs e)
-        {
-            clientGrid.Visibility = Visibility.Hidden;
-            deleteGuestRequestGrid.Visibility = Visibility.Visible;
-            guestRequest = new GuestRequest();
-        }
-        ////fonction du boutton return dans le grid Guest
-        private void returnFromGuest(object sender, RoutedEventArgs e)
-        {
-            clientGrid.Visibility = Visibility.Hidden;
-            mainGrid.Visibility = Visibility.Visible;
-        }
-
-
-
 
         /// <summary>
         /// bouttons de la page proprietaire
@@ -147,7 +103,7 @@ namespace WPF_PL
         private void deleteHostingUnit(object sender, RoutedEventArgs e)
         {
             proprietaireGrid.Visibility = Visibility.Hidden;
-            deleteHostingUnitGrid.Visibility = Visibility.Visible;
+            mainGrid.Visibility = Visibility.Visible;
         }
         //fonction du boutton return dans le grid proprietaire 
         private void returnFromProprietaireT(object sender, RoutedEventArgs e)
@@ -167,7 +123,7 @@ namespace WPF_PL
         private void returnFromAddGuestRequest(object sender, RoutedEventArgs e)
         {
             addGuestRequestGrid.Visibility = Visibility.Hidden;
-            clientGrid.Visibility = Visibility.Visible;
+            mainGrid.Visibility = Visibility.Visible;
         }
         //fonction du boutton send dans la page addGuestRequest
         private void SendGuestRequest_Click(object sender, RoutedEventArgs e)
@@ -180,7 +136,7 @@ namespace WPF_PL
             bl.addGuestRequest(guestRequest);
             MessageBox.Show("your guest request was added", "Succesful request", MessageBoxButton.OK, MessageBoxImage.Information);
             addGuestRequestGrid.Visibility = Visibility.Hidden;
-            clientGrid.Visibility = Visibility.Visible;
+            mainGrid.Visibility = Visibility.Visible;
         }
 
 
@@ -193,7 +149,7 @@ namespace WPF_PL
         private void returnFromUpdateGuestrequest_Click(object sender, RoutedEventArgs e)
         {
             updateGuestRequestGrid.Visibility = Visibility.Hidden;
-            clientGrid.Visibility = Visibility.Visible;
+           
         }
         //fonction du boutton send dans la page updateGuestRequest
         private void SendUpdateGuestRequest_Click(object sender, RoutedEventArgs e)
@@ -206,7 +162,7 @@ namespace WPF_PL
             bl.updateGuestRequest(guestRequest);
             MessageBox.Show("your guest request was updated", "Succesful update", MessageBoxButton.OK, MessageBoxImage.Information);
             updateGuestRequestGrid.Visibility = Visibility.Hidden;
-            clientGrid.Visibility = Visibility.Visible;
+            mainGrid.Visibility = Visibility.Visible;
         }
 
 
@@ -216,12 +172,6 @@ namespace WPF_PL
         /// </summary>
         /// <param name="buttomOfDeleteGuestRequest"></param>
         /// <param name="e"></param>
-        //fonction du boutton return dans le grid deleteGuestRequest
-        private void return_Click(object sender, RoutedEventArgs e)
-        {
-            deleteGuestRequestGrid.Visibility = Visibility.Hidden;
-            clientGrid.Visibility = Visibility.Visible;
-        }
         //fonction du boutton delete dans le grid deleteGuestRequest
         private void DeleteguestRequest_Click(object sender, RoutedEventArgs e)
         {
@@ -238,6 +188,31 @@ namespace WPF_PL
         //fonction du boutton send dans la page addHostingUnit
         private void SendHostingUnit_Click(object sender, RoutedEventArgs e)
         {
+            if (PrivateNameHostTxtBox == null)
+                SendHostingUnit.IsEnabled = false;
+            if (FamilyNameHostTxtBox == null)
+                SendHostingUnit.IsEnabled = false;
+            if (MailHostTxtBox == null)
+                SendHostingUnit.IsEnabled = false;
+            if (TelHostTxtBox == null)
+                SendHostingUnit.IsEnabled = false;
+            if (FamilyNameHostTxtBox == null)
+                SendHostingUnit.IsEnabled = false;
+            if (FamilyNameHostTxtBox == null)
+                SendHostingUnit.IsEnabled = false;
+            if (FamilyNameHostTxtBox == null)
+                SendHostingUnit.IsEnabled = false;
+            if (numChildrenHostTxtBox == null)
+                SendHostingUnit.IsEnabled = false;
+            if (numAdultsHostingTxtBox== null)
+                SendHostingUnit.IsEnabled = false;
+            if (addressHostingUnit == null)
+                SendHostingUnit.IsEnabled = false;
+            if (NameHostingUnit == null)
+                SendHostingUnit.IsEnabled = false;
+            if (comboboxAreaHostingUnit== null)
+                SendHostingUnit.IsEnabled = false;
+
             hostingUnit.area = (BE.BE.Area)comboboxAreaHostingUnit.SelectedValue;
             bl.addHostingUnit(hostingUnit);
         }
@@ -280,11 +255,7 @@ namespace WPF_PL
             bl.deleteHostingUnit(hostingUnit.HostingUnitKey);
         }
         //fonction du boutton return dans le grid deleteHostingUnit
-        private void returnFromDeleteHostingUnit(object sender, RoutedEventArgs e)
-        {
-            deleteHostingUnitGrid.Visibility = Visibility.Hidden;
-            proprietaireGrid.Visibility = Visibility.Visible;
-        }
+     
 
 
 
@@ -302,6 +273,16 @@ namespace WPF_PL
         {
             administrateurGrid.Visibility = Visibility.Hidden;
             mainGrid.Visibility = Visibility.Visible;
+        }
+
+        private void addOrder(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
         }
 
        

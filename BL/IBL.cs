@@ -17,7 +17,7 @@ namespace BL
             void uptadeHostingUnit(HostingUnit updateHostingUnit);
             List<HostingUnit> getAllHostingUnits();
             HostingUnit GetHostingUnitByID(long ID);
-            List<HostingUnit> getHostingUnits(Func<HostingUnit, bool> p);
+            List<HostingUnit> getHostingUnits(GuestRequest guestRequest);
 
 
         #endregion
