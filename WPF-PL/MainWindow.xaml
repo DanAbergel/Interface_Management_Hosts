@@ -160,7 +160,7 @@
 
         </Grid>
 
-        <Grid Name="updateGuestRequestGrid" Visibility="Visible">
+        <Grid Name="updateGuestRequestGrid" Visibility="Hidden">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
@@ -344,7 +344,7 @@
 
         </Grid>
 
-        <Grid Name="addOrderGrid" Visibility="Hidden">
+        <Grid Name="addOrderGrid" Visibility="Visible">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
@@ -365,11 +365,11 @@
 
 
             </Grid.ColumnDefinitions>
-            <TextBlock Grid.Column="3" Grid.ColumnSpan="2" Text="בחר יחידת אירוח" FontSize="30" FontWeight="ExtraBlack" FontFamily="David" HorizontalAlignment="Left" Margin="7,3,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Height="23" RenderTransformOrigin="0.502,-0.161"/>
-            <ComboBox Grid.Column="2" HorizontalAlignment="Left" Margin="4.4,4,0,0" Grid.Row="1" VerticalAlignment="Top" Width="120" Height="30"/>
+            <TextBlock Grid.Column="3" Grid.ColumnSpan="2" Text="בחר יחידת אירוח" FontSize="30" FontWeight="ExtraBlack" FontFamily="David" HorizontalAlignment="Left" Margin="7,3,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Height="23" />
+            <ComboBox Name="selection" Grid.Column="2" HorizontalAlignment="Left" Margin="4.4,4,0,0" Grid.Row="1" VerticalAlignment="Top" Width="120" Height="30" />
             <Button Content="הזמן" HorizontalAlignment="Left" Margin="18.4,9,0,0" VerticalAlignment="Top" Width="120" Height="39" Grid.Column="2" Grid.Row="4" Click="addOrder"/>
-            <Button Content="עדכן הזמנה" Grid.Column="3" HorizontalAlignment="Left" Margin="29,11,0,0" Grid.Row="4" VerticalAlignment="Top" Width="102" Height="42" Click="Button_Click"/>
-            <Button Content="מחק הזמנה" Grid.Column="1" HorizontalAlignment="Left" Margin="20.8,10,0,0" Grid.Row="4" VerticalAlignment="Top" Width="117" Height="43" RenderTransformOrigin="0.267,0.521"/>
+            <Button Content="עדכן הזמנה" Grid.Column="3" HorizontalAlignment="Left" Margin="29,11,0,0" Grid.Row="4" VerticalAlignment="Top" Width="102" Height="42" Click="updateGuestRequest" />
+            <Button Content="מחק הזמנה" Grid.Column="1" HorizontalAlignment="Left" Margin="20.8,10,0,0" Grid.Row="4" VerticalAlignment="Top" Width="117" Height="43" RenderTransformOrigin="0.267,0.521" Click="delete"/>
             <Rectangle Grid.ColumnSpan="3" Grid.Column="1" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="178" Margin="3.8,64,0,0" Grid.Row="1" Grid.RowSpan="3" Stroke="Black" VerticalAlignment="Top" Width="466"/>
             <CheckBox Content="CheckBox" HorizontalAlignment="Left" VerticalAlignment="Top"/>
         </Grid>

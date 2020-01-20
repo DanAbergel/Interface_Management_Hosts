@@ -26,6 +26,7 @@ namespace WPF_PL
         IBL bl = BL.BLFactory.GetBL();
         GuestRequest guestRequest;
         HostingUnit hostingUnit;
+        Order order;
         ComboBoxItem newItem;
         public MainWindow()
         {
@@ -146,7 +147,14 @@ namespace WPF_PL
             MessageBox.Show("your guest request was added", "Succesful request", MessageBoxButton.OK, MessageBoxImage.Information);
             addGuestRequestGrid.Visibility = Visibility.Hidden;
             addOrderGrid.Visibility = Visibility.Visible;
-        }
+            List<HostingUnit> list = bl.getHostingUnits(guestRequest);
+            foreach (HostingUnit hostingUnit in list)
+            {
+                ComboBoxItem item = new ComboBoxItem();
+                item.Content = hostingUnit.HostingUnitName;
+                selection.Items.Add(item);
+            }
+            order = new Order();       }
 
 
         /// <summary>
@@ -263,14 +271,18 @@ namespace WPF_PL
 
         private void addOrder(object sender, RoutedEventArgs e)
         {
-
+            bl.addOrder(order);
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void deleteGuestRequest(object sender, RoutedEventArgs e)
         {
-
+            bl.deleteGuestRequest(guestRequest.guestRequestKey);
         }
 
-       
+        private void updateGuestRequest(object sender, RoutedEventArgs e)
+        {
+            addOrderGrid.Visibility = Visibility.Hidden;
+            addGuestRequestGrid.Visibility = Visibility.Visible;
+            updateGuestRequestGrid.DataContext = guestRequest;        }
     }
 }
