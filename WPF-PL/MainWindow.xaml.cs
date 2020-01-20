@@ -48,6 +48,8 @@ namespace WPF_PL
             comboboxAreaUpdate.ItemsSource = Enum.GetValues(typeof(BE.BE.Area));
             comboboxAreaHostingUnit.ItemsSource = Enum.GetValues(typeof(BE.BE.Area));
             comboboxAreaUpdateHostingUnit.ItemsSource = Enum.GetValues(typeof(BE.BE.Area));
+
+            comboboxType.ItemsSource = Enum.GetValues(typeof(BE.BE.theType));
         }
 
 
@@ -70,6 +72,11 @@ namespace WPF_PL
         {
             mainGrid.Visibility = Visibility.Hidden;
             administrateurGrid.Visibility = Visibility.Visible;
+        } 
+        private void Client(object sender, RoutedEventArgs e)
+        {
+            mainGrid.Visibility = Visibility.Hidden;
+            addGuestRequestGrid.Visibility = Visibility.Visible;
         }
         //fonction du boutton de sortie du programme
         private void fermeture(object sender, RoutedEventArgs e)
@@ -128,15 +135,17 @@ namespace WPF_PL
         //fonction du boutton send dans la page addGuestRequest
         private void SendGuestRequest_Click(object sender, RoutedEventArgs e)
         {
+           
             guestRequest.area = (BE.BE.Area)comboboxArea.SelectedValue;
             guestRequest.Pool = (BE.BE.Criterion)poolCombobox.SelectedValue;
             guestRequest.Pool = (BE.BE.Criterion)gardenCombobox.SelectedValue;
             guestRequest.Pool = (BE.BE.Criterion)attractionsCombobox.SelectedValue;
             guestRequest.Pool = (BE.BE.Criterion)jacuzziCombobox.SelectedValue;
+            guestRequest.type = (BE.BE.theType)comboboxType.SelectedValue;
             bl.addGuestRequest(guestRequest);
             MessageBox.Show("your guest request was added", "Succesful request", MessageBoxButton.OK, MessageBoxImage.Information);
             addGuestRequestGrid.Visibility = Visibility.Hidden;
-            mainGrid.Visibility = Visibility.Visible;
+            addOrderGrid.Visibility = Visibility.Visible;
         }
 
 
@@ -159,6 +168,7 @@ namespace WPF_PL
             guestRequest.Pool = (BE.BE.Criterion)gardenCombobox.SelectedValue;
             guestRequest.Pool = (BE.BE.Criterion)attractionsCombobox.SelectedValue;
             guestRequest.Pool = (BE.BE.Criterion)jacuzziCombobox.SelectedValue;
+            guestRequest.type = (BE.BE.theType)comboboxType.SelectedValue;
             bl.updateGuestRequest(guestRequest);
             MessageBox.Show("your guest request was updated", "Succesful update", MessageBoxButton.OK, MessageBoxImage.Information);
             updateGuestRequestGrid.Visibility = Visibility.Hidden;
@@ -188,31 +198,7 @@ namespace WPF_PL
         //fonction du boutton send dans la page addHostingUnit
         private void SendHostingUnit_Click(object sender, RoutedEventArgs e)
         {
-            if (PrivateNameHostTxtBox == null)
-                SendHostingUnit.IsEnabled = false;
-            if (FamilyNameHostTxtBox == null)
-                SendHostingUnit.IsEnabled = false;
-            if (MailHostTxtBox == null)
-                SendHostingUnit.IsEnabled = false;
-            if (TelHostTxtBox == null)
-                SendHostingUnit.IsEnabled = false;
-            if (FamilyNameHostTxtBox == null)
-                SendHostingUnit.IsEnabled = false;
-            if (FamilyNameHostTxtBox == null)
-                SendHostingUnit.IsEnabled = false;
-            if (FamilyNameHostTxtBox == null)
-                SendHostingUnit.IsEnabled = false;
-            if (numChildrenHostTxtBox == null)
-                SendHostingUnit.IsEnabled = false;
-            if (numAdultsHostingTxtBox== null)
-                SendHostingUnit.IsEnabled = false;
-            if (addressHostingUnit == null)
-                SendHostingUnit.IsEnabled = false;
-            if (NameHostingUnit == null)
-                SendHostingUnit.IsEnabled = false;
-            if (comboboxAreaHostingUnit== null)
-                SendHostingUnit.IsEnabled = false;
-
+           
             hostingUnit.area = (BE.BE.Area)comboboxAreaHostingUnit.SelectedValue;
             bl.addHostingUnit(hostingUnit);
         }
