@@ -142,11 +142,9 @@ namespace WPF_PL
         //fonction du boutton send dans la page addGuestRequest
         private void SendGuestRequest_Click(object sender, RoutedEventArgs e)
         {
-
-           foreach(ComboBoxItem item in selection.Items)
-            {
-                selection.Items.Remove(item.Content);
-            }
+            for (int i = 0; i < selection.Items.Count; i++)
+                selection.Items.RemoveAt(i);
+            
             if (verifyifAddOrUpdate == 0)
             { 
                 guestRequest.area = (BE.BE.Area)comboboxArea.SelectedValue;
@@ -295,11 +293,12 @@ namespace WPF_PL
 
          private void selection_SelectionChanged(object sender, SelectionChangedEventArgs e)//bon
         {
-            string name = "";
-            name = ((ComboBoxItem)selection.SelectedItem).Content.ToString();
-            foreach (HostingUnit hosting in list)
-                if (hosting.HostingUnitName == name)
-                    contentRectangle.Text= hosting.ToString();
+            if (selection.Items.Count>0) {
+                string name = "";
+                name = ((ComboBoxItem)selection.SelectedItem).Content.ToString();
+                foreach (HostingUnit hosting in list)
+                    if (hosting.HostingUnitName == name)
+                        contentRectangle.Text = hosting.ToString(); }
         }
 
         private void deleteGuestRequest(object sender, RoutedEventArgs e)//ok
