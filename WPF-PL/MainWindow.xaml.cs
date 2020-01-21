@@ -28,6 +28,7 @@ namespace WPF_PL
         HostingUnit hostingUnit;
         Order order;
         string str;
+        int verifyifAddOrUpdate = 0;
         public MainWindow()
         {
             InitializeComponent();
@@ -145,11 +146,22 @@ namespace WPF_PL
             guestRequest.Pool = (BE.BE.Criterion)attractionsCombobox.SelectedValue;
             guestRequest.Pool = (BE.BE.Criterion)jacuzziCombobox.SelectedValue;
             guestRequest.type = (BE.BE.theType)comboboxType.SelectedValue;
-            bl.addGuestRequest(guestRequest);
-            MessageBox.Show("your guest request was added", "Succesful request", MessageBoxButton.OK, MessageBoxImage.Information);
+            if (verifyifAddOrUpdate == 0)
+            {
+                bl.addGuestRequest(guestRequest);
+                MessageBox.Show("your guest request was added", "Succesful add request", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            else
+            {
+                bl.updateGuestRequest(guestRequest);
+                MessageBox.Show("your guest request was updated", "Succesful update request", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            //ferme la page add ou update
             addGuestRequestGrid.Visibility = Visibility.Hidden;
             addOrderGrid.Visibility = Visibility.Visible;
+            //initialise le combobox selection
             List<HostingUnit> list = bl.getHostingUnits(guestRequest);
+            selection = new ComboBox();
             foreach (HostingUnit hostingUnit in list)
             {
                 ComboBoxItem item = new ComboBoxItem();
@@ -159,10 +171,12 @@ namespace WPF_PL
             order = new Order();
             contentRectangle.DataContext = str;
             string name = selection.SelectedValue as string;
-            HostingUnit Unit = (from hostingunit in list
+           List< HostingUnit> Unit = (from hostingunit in list
                                        where hostingunit.HostingUnitName == name
-                                       select hostingunit).FirstOrDefault();
-            str = Unit.ToString();
+                                       select hostingunit).ToList();
+            foreach (HostingUnit hosting in Unit) ;
+                
+            //str = Unit.ToString();
         }
 
 
@@ -306,5 +320,7 @@ namespace WPF_PL
             addOrderGrid.Visibility = Visibility.Hidden;
             updateGuestRequestGrid.Visibility = Visibility.Visible;
             updateGuestRequestGrid.DataContext = guestRequest;        }
+
+      
     }
 }
