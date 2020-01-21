@@ -27,7 +27,9 @@ namespace WPF_PL
         GuestRequest guestRequest;
         HostingUnit hostingUnit;
         Order order;
-        string str;
+        List<HostingUnit> list;
+        string str="";
+        int size = 0;
         int verifyifAddOrUpdate = 0;
         public MainWindow()
         {
@@ -52,6 +54,7 @@ namespace WPF_PL
             comboboxAreaUpdateHostingUnit.ItemsSource = Enum.GetValues(typeof(BE.BE.Area));
 
             comboboxType.ItemsSource = Enum.GetValues(typeof(BE.BE.theType));
+            comboboxTypeUpdate.ItemsSource = Enum.GetValues(typeof(BE.BE.theType));
         }
 
 
@@ -139,29 +142,41 @@ namespace WPF_PL
         //fonction du boutton send dans la page addGuestRequest
         private void SendGuestRequest_Click(object sender, RoutedEventArgs e)
         {
-           
-            guestRequest.area = (BE.BE.Area)comboboxArea.SelectedValue;
-            guestRequest.Pool = (BE.BE.Criterion)poolCombobox.SelectedValue;
-            guestRequest.Pool = (BE.BE.Criterion)gardenCombobox.SelectedValue;
-            guestRequest.Pool = (BE.BE.Criterion)attractionsCombobox.SelectedValue;
-            guestRequest.Pool = (BE.BE.Criterion)jacuzziCombobox.SelectedValue;
-            guestRequest.type = (BE.BE.theType)comboboxType.SelectedValue;
-            if (verifyifAddOrUpdate == 0)
+
+           foreach(ComboBoxItem item in selection.Items)
             {
+                selection.Items.Remove(item.Content);
+            }
+            if (verifyifAddOrUpdate == 0)
+            { 
+                guestRequest.area = (BE.BE.Area)comboboxArea.SelectedValue;
+                guestRequest.Pool = (BE.BE.Criterion)poolCombobox.SelectedValue;
+                guestRequest.Garden = (BE.BE.Criterion)gardenCombobox.SelectedValue;
+                guestRequest.ChildrenAttractions = (BE.BE.Criterion)attractionsCombobox.SelectedValue;
+                guestRequest.Jacuzzi = (BE.BE.Criterion)jacuzziCombobox.SelectedValue;
+                guestRequest.type = (BE.BE.theType)comboboxType.SelectedValue;
                 bl.addGuestRequest(guestRequest);
                 MessageBox.Show("your guest request was added", "Succesful add request", MessageBoxButton.OK, MessageBoxImage.Information);
+            addGuestRequestGrid.Visibility = Visibility.Hidden;
+                verifyifAddOrUpdate += 1;
             }
             else
             {
+                guestRequest.area = (BE.BE.Area)comboboxAreaUpdate.SelectedValue;
+                guestRequest.Pool = (BE.BE.Criterion)poolUpdateCombobox.SelectedValue;
+                guestRequest.Garden = (BE.BE.Criterion)gardenUpdateCombobox.SelectedValue;
+                guestRequest.ChildrenAttractions = (BE.BE.Criterion)attractionsUpdateCombobox.SelectedValue;
+                guestRequest.Jacuzzi = (BE.BE.Criterion)jacuzziUpdateCombobox.SelectedValue;
+                guestRequest.type = (BE.BE.theType)comboboxTypeUpdate.SelectedValue;
                 bl.updateGuestRequest(guestRequest);
                 MessageBox.Show("your guest request was updated", "Succesful update request", MessageBoxButton.OK, MessageBoxImage.Information);
+                updateGuestRequestGrid.Visibility = Visibility.Hidden;
             }
             //ferme la page add ou update
-            addGuestRequestGrid.Visibility = Visibility.Hidden;
             addOrderGrid.Visibility = Visibility.Visible;
             //initialise le combobox selection
-            List<HostingUnit> list = bl.getHostingUnits(guestRequest);
-            selection = new ComboBox();
+             list = bl.getHostingUnits(guestRequest);
+            
             foreach (HostingUnit hostingUnit in list)
             {
                 ComboBoxItem item = new ComboBoxItem();
@@ -169,14 +184,8 @@ namespace WPF_PL
                 selection.Items.Add(item);
             }
             order = new Order();
-            contentRectangle.DataContext = str;
-            string name = selection.SelectedValue as string;
-           List< HostingUnit> Unit = (from hostingunit in list
-                                       where hostingunit.HostingUnitName == name
-                                       select hostingunit).ToList();
-            foreach (HostingUnit hosting in Unit) ;
-                
-            //str = Unit.ToString();
+           
+           
         }
 
 
@@ -189,22 +198,9 @@ namespace WPF_PL
         private void returnFromUpdateGuestrequest_Click(object sender, RoutedEventArgs e)
         {
             updateGuestRequestGrid.Visibility = Visibility.Hidden;
-           
+            addOrderGrid.Visibility = Visibility.Visible;
         }
-        //fonction du boutton send dans la page updateGuestRequest
-        private void SendUpdateGuestRequest_Click(object sender, RoutedEventArgs e)
-        {
-            guestRequest.area = (BE.BE.Area)comboboxArea.SelectedValue;
-            guestRequest.Pool = (BE.BE.Criterion)poolCombobox.SelectedValue;
-            guestRequest.Pool = (BE.BE.Criterion)gardenCombobox.SelectedValue;
-            guestRequest.Pool = (BE.BE.Criterion)attractionsCombobox.SelectedValue;
-            guestRequest.Pool = (BE.BE.Criterion)jacuzziCombobox.SelectedValue;
-            guestRequest.type = (BE.BE.theType)comboboxType.SelectedValue;
-            bl.updateGuestRequest(guestRequest);
-            MessageBox.Show("your guest request was updated", "Succesful update", MessageBoxButton.OK, MessageBoxImage.Information);
-            updateGuestRequestGrid.Visibility = Visibility.Hidden;
-            mainGrid.Visibility = Visibility.Visible;
-        }
+      
 
 
 
@@ -274,36 +270,42 @@ namespace WPF_PL
         {
             bl.deleteHostingUnit(hostingUnit.HostingUnitKey);
         }
-        //fonction du boutton return dans le grid deleteHostingUnit
+       
      
 
 
 
 
 
-        
 
 
+         /// <summary>
+         /// fonctions de la page addOrder
+         /// </summary>
+         /// <param name="AddOrderGrid"></param>
+         /// <param name="e"></param>
 
-       
-
-        
-
-        private void returnFromAdministrateur(object sender, RoutedEventArgs e)
+        private void addOrder(object sender, RoutedEventArgs e)//ok
         {
-            administrateurGrid.Visibility = Visibility.Hidden;
+            bl.addOrder(order);
+            MessageBox.Show("Your reservation has been sent to the Host!!!", "Reservation", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+            addOrderGrid.Visibility = Visibility.Hidden;
             mainGrid.Visibility = Visibility.Visible;
         }
 
-        private void addOrder(object sender, RoutedEventArgs e)
+         private void selection_SelectionChanged(object sender, SelectionChangedEventArgs e)//bon
         {
-            bl.addOrder(order);
+            string name = "";
+            name = ((ComboBoxItem)selection.SelectedItem).Content.ToString();
+            foreach (HostingUnit hosting in list)
+                if (hosting.HostingUnitName == name)
+                    contentRectangle.Text= hosting.ToString();
         }
 
-        private void deleteGuestRequest(object sender, RoutedEventArgs e)
+        private void deleteGuestRequest(object sender, RoutedEventArgs e)//ok
         {
-         
-            MessageBoxResult result= MessageBox.Show("are you sure to delete?", "", MessageBoxButton.YesNo, MessageBoxImage.Question);
+
+            MessageBoxResult result = MessageBox.Show("are you sure to delete?", "", MessageBoxButton.YesNo, MessageBoxImage.Question);
             if (result == MessageBoxResult.Yes)
             {
                 bl.deleteGuestRequest(guestRequest.guestRequestKey);
@@ -311,16 +313,44 @@ namespace WPF_PL
                 addOrderGrid.Visibility = Visibility.Hidden;
                 mainGrid.Visibility = Visibility.Visible;
             }
-
-        
+            verifyifAddOrUpdate = 0;
         }
-
-        private void updateGuestRequest(object sender, RoutedEventArgs e)
+        private void updateGuestRequest(object sender, RoutedEventArgs e)//bon
         {
             addOrderGrid.Visibility = Visibility.Hidden;
             updateGuestRequestGrid.Visibility = Visibility.Visible;
-            updateGuestRequestGrid.DataContext = guestRequest;        }
+            updateGuestRequestGrid.DataContext = guestRequest;
+           
+        }
+       
 
-      
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+        private void returnFromAdministrateur(object sender, RoutedEventArgs e)
+        {
+            administrateurGrid.Visibility = Visibility.Hidden;
+            mainGrid.Visibility = Visibility.Visible;
+        }
+
+       
+       
+        
+        
+
+       
+
+       
     }
 }

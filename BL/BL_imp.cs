@@ -69,8 +69,7 @@ namespace BL
         }
         public void updateGuestRequest(GuestRequest updateGuestRequest)
         {
-           
-            //!!!!//
+            newDal.updateGuestRequest(updateGuestRequest);
         } 
         public void updateOrder(Order updateOrder)
         {

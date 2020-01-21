@@ -19,7 +19,7 @@
 
 
 
-        <Grid Name="mainGrid" ShowGridLines="False" Visibility="Hidden"  >
+        <Grid Name="mainGrid" ShowGridLines="False" Visibility="Visible"  >
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
@@ -160,7 +160,7 @@
 
         </Grid>
 
-        <Grid Name="updateGuestRequestGrid" Visibility="Visible">
+        <Grid Name="updateGuestRequestGrid" Visibility="Hidden">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
@@ -212,7 +212,7 @@
             <TextBox Name="comboboxAdultsUpdate" Text="{Binding Path=Adults}" HorizontalAlignment="Center"  VerticalAlignment="Center" Width="54"  Grid.Row="3" Grid.Column="0" Margin="33,13.8,45.8,15.4" />
             <Label Name="LabelBeginDateUpdate" Content="מתאריך" FontFamily="David" FontWeight="ExtraBlack" FontSize="16" HorizontalAlignment="Left"  VerticalAlignment="Center" Grid.Row="2" Grid.Column="3"  Height="24" />
             <Label Name="LabelEndDateUpdate" Content="לתאריך" FontFamily="David" FontWeight="ExtraBlack" FontSize="16" HorizontalAlignment="Center"  VerticalAlignment="Center" Grid.Row="2" Grid.Column="1" Width="64"/>
-            <Button Name="returnFromUpdateGuestrequest" Content="חזור" HorizontalAlignment="Center"  VerticalAlignment="Center" Width="75" FontSize="18" FontFamily="David" Click="returnFromAddGuestRequest" Background="Aquamarine" Foreground="Green" FontWeight="UltraBold" Grid.Row="0" Grid.Column="0"/>
+            <Button Name="returnFromUpdateGuestrequest" Content="חזור" HorizontalAlignment="Center"  VerticalAlignment="Center" Width="75" FontSize="18" FontFamily="David" Click="returnFromUpdateGuestrequest_Click" Background="Aquamarine" Foreground="Green" FontWeight="UltraBold" Grid.Row="0" Grid.Column="0"/>
             <Button  Name="UpdateGuestRequest"  Content="עדכן" HorizontalAlignment="Center" Grid.Row="7" VerticalAlignment="Center" Width="94" FontFamily="David" Background="Aquamarine" FontSize="18" FontWeight="UltraBold" Foreground="Green"  Margin="29,36.8,9.8,22" Height="34" Grid.RowSpan="2" Click="SendGuestRequest_Click"/>
             <TextBlock Grid.Column="1" HorizontalAlignment="Left" Grid.Row="5" TextWrapping="Wrap" Text="איזור בארץ" VerticalAlignment="Center" FontSize="16" FontFamily="David" FontWeight="ExtraBlack" Margin="6.2,14.4,0,16.8"/>
             <ComboBox Name="comboboxAreaUpdate"  HorizontalAlignment="Center"  Grid.Row="5" VerticalAlignment="Center" Width="90" Margin="21,11.4,21.8,10.8" Height="25" RenderTransformOrigin="0.675,-2.426"/>
@@ -267,7 +267,7 @@
             <TextBlock Name="numAdultsHostingTxt" Text="קיבולת מבוגרים" FontFamily="David" FontWeight="ExtraBlack" FontSize="16" HorizontalAlignment="Left"  VerticalAlignment="Center" Height="19" Grid.Row="5" Grid.Column="1"/>
             <TextBox Name="numAdultsHostingTxtBox" Text="{Binding Path=capacityAdults}" HorizontalAlignment="Center"  VerticalAlignment="Center" Width="50"  Grid.Row="5" Grid.Column="0" Margin="47,12.6,35.8,15.8" />
             <Button Name="returnButton3" Content="חזור" HorizontalAlignment="Center"  VerticalAlignment="Center" Width="75" FontSize="18" FontFamily="David"  Background="Aquamarine" Foreground="Green" FontWeight="UltraBold" Grid.Row="0" Grid.Column="0" Click="returnFromAddHostingUnit"/>
-            <Button  Name="SendHostingUnit" IsEnabled="{Binding ElementName=clearanceCheckbox, Path=IsChecked}"  Content="הוסף"  Grid.Column="4" Grid.ColumnSpan="2" Grid.RowSpan="2" HorizontalAlignment="Center" Grid.Row="7" VerticalAlignment="Center" Width="75" FontFamily="David" Background="Aquamarine" FontSize="18" FontWeight="UltraBold" Foreground="Green" Click="SendGuestRequest_Click" />
+            <Button  Name="SendHostingUnit" IsEnabled="{Binding ElementName=clearanceCheckbox, Path=IsChecked}"  Content="הוסף"  Grid.Column="4" Grid.ColumnSpan="2" Grid.RowSpan="2" HorizontalAlignment="Center" Grid.Row="7" VerticalAlignment="Center" Width="75" FontFamily="David" Background="Aquamarine" FontSize="18" FontWeight="UltraBold" Foreground="Green" Click="SendHostingUnit_Click" />
             <TextBlock Name="AreaHostingUnitTxt"  Grid.Column="1" HorizontalAlignment="Left" Grid.Row="7" TextWrapping="Wrap" Text="איזור בארץ" VerticalAlignment="Center" FontSize="16" FontFamily="David" FontWeight="ExtraBlack"/>
             <ComboBox Name="comboboxAreaHostingUnit" HorizontalAlignment="Center"  Grid.Row="7" VerticalAlignment="Center" Width="70" />
             <TextBlock Name="NameHostingUnit" Text="שם היחידה" FontFamily="David" FontSize="16" FontWeight="ExtraBlack" Grid.Column="3" HorizontalAlignment="Left"  Grid.Row="2" TextWrapping="Wrap"  VerticalAlignment="Center" />
@@ -366,12 +366,12 @@
 
             </Grid.ColumnDefinitions>
             <TextBlock Grid.Column="3" Grid.ColumnSpan="2" Text="בחר יחידת אירוח" FontSize="30" FontWeight="ExtraBlack" FontFamily="David" HorizontalAlignment="Left" Margin="7,3,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Height="23" />
-            <ComboBox Name="selection" Grid.Column="2" HorizontalAlignment="Left" Margin="4.4,4,0,0" Grid.Row="1" VerticalAlignment="Top" Width="120" Height="30" />
+            <ComboBox Name="selection" Grid.Column="2" HorizontalAlignment="Left" Margin="4.4,4,0,0" Grid.Row="1" VerticalAlignment="Top" Width="120" Height="30" SelectionChanged="selection_SelectionChanged" />
             <Button Content="הזמן" HorizontalAlignment="Left" Margin="18.4,9,0,0" VerticalAlignment="Top" Width="120" Height="39" Grid.Column="2" Grid.Row="4" Click="addOrder"/>
             <Button Content="עדכן הזמנה" Grid.Column="3" HorizontalAlignment="Left" Margin="29,11,0,0" Grid.Row="4" VerticalAlignment="Top" Width="102" Height="42" Click="updateGuestRequest" />
             <Button Content="מחק הזמנה" Grid.Column="1" HorizontalAlignment="Left" Margin="20.8,10,0,0" Grid.Row="4" VerticalAlignment="Top" Width="117" Height="43" RenderTransformOrigin="0.267,0.521" Click="deleteGuestRequest"/>
             <Rectangle Name="contentOfHostingUnit" Fill="Aqua" Grid.ColumnSpan="3" Grid.Column="1"  HorizontalAlignment="Left" Height="178" Margin="3.8,64,0,0" Grid.Row="1" Grid.RowSpan="3"  VerticalAlignment="Top" Width="466"/>
-            <TextBlock Name="contentRectangle" Text="{Binding Path=str}" Foreground="Blue" Grid.ColumnSpan="3" Grid.Column="1"  HorizontalAlignment="Left" Height="142" Margin="23.8,82,0,0" Grid.Row="1" Grid.RowSpan="3"  VerticalAlignment="Top" Width="425"/>
+            <TextBlock Name="contentRectangle" Text="{Binding Path=str, Mode=TwoWay}" Foreground="Blue" Grid.ColumnSpan="3" Grid.Column="1"  HorizontalAlignment="Left" Height="142" Margin="23.8,82,0,0" Grid.Row="1" Grid.RowSpan="3"  VerticalAlignment="Top" Width="425"/>
         </Grid>
 
 
