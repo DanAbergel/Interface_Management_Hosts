@@ -30,16 +30,23 @@ namespace BE
             HostingUnitKey = Configuration.StaticHostingUnitKey++;
             Owner = new Host();
             Diary = new bool[12, 31];
+            for (int i = 0; i < 12; i++)
+                for (int j = 0; j < 31; j++)
+                    Diary[i, j] = true;
         }
         public override string ToString()
         {
             string str = "";
-            str += "HostingUnit Key: " + HostingUnitKey;
+            str += "HostingUnit Key:  " + HostingUnitKey;
             str += Owner.ToString();
             str += "\nHostingUnit Name:" + HostingUnitName;
-            str += "\nPrice per day for each adult: " + pricePerDayPerAdult;
-            str += "\nPrice per day for each child: " + pricePerDayPerChild;
-            str += "\nnumber of succesful deals: " + succesfulDeals;
+            str+=(BE.Area.Center==area)?"Area:  Center":"";
+            str += (BE.Area.Jerusalem == area) ? "Area:  Jerusalem" : "";
+            str += (BE.Area.North == area) ? "Area:  North" : "";
+            str += (BE.Area.South == area) ? "Area:  South" : "";
+            str += "\nPrice per day for each adult:  " + pricePerDayPerAdult;
+            str += "\nPrice per day for each child:  " + pricePerDayPerChild;
+            str += "\nnumber of succesful deals:  " + succesfulDeals;
             return str;
         }
     }

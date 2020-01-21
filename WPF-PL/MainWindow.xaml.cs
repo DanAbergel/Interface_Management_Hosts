@@ -27,7 +27,7 @@ namespace WPF_PL
         GuestRequest guestRequest;
         HostingUnit hostingUnit;
         Order order;
-        ComboBoxItem newItem;
+        string str;
         public MainWindow()
         {
             InitializeComponent();
@@ -78,6 +78,8 @@ namespace WPF_PL
         {
             mainGrid.Visibility = Visibility.Hidden;
             addGuestRequestGrid.Visibility = Visibility.Visible;
+            guestRequest = new GuestRequest();
+            addGuestRequestGrid.DataContext = guestRequest;
         }
         //fonction du boutton de sortie du programme
         private void fermeture(object sender, RoutedEventArgs e)
@@ -154,7 +156,14 @@ namespace WPF_PL
                 item.Content = hostingUnit.HostingUnitName;
                 selection.Items.Add(item);
             }
-            order = new Order();       }
+            order = new Order();
+            contentRectangle.DataContext = str;
+            string name = selection.SelectedValue as string;
+            HostingUnit Unit = (from hostingunit in list
+                                       where hostingunit.HostingUnitName == name
+                                       select hostingunit).FirstOrDefault();
+            str = Unit.ToString();
+        }
 
 
         /// <summary>
@@ -209,6 +218,9 @@ namespace WPF_PL
            
             hostingUnit.area = (BE.BE.Area)comboboxAreaHostingUnit.SelectedValue;
             bl.addHostingUnit(hostingUnit);
+            MessageBox.Show("your hosting unit was added", "add HostingUnit", MessageBoxButton.OK, MessageBoxImage.Information);
+            addHostingUnitGrid.Visibility = Visibility.Hidden;
+            mainGrid.Visibility = Visibility.Visible;
         }
         //fonction du boutton return dans le grid addHostingUnit
         private void returnFromAddHostingUnit(object sender, RoutedEventArgs e)
@@ -276,13 +288,23 @@ namespace WPF_PL
 
         private void deleteGuestRequest(object sender, RoutedEventArgs e)
         {
-            bl.deleteGuestRequest(guestRequest.guestRequestKey);
+         
+            MessageBoxResult result= MessageBox.Show("are you sure to delete?", "", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            if (result == MessageBoxResult.Yes)
+            {
+                bl.deleteGuestRequest(guestRequest.guestRequestKey);
+                MessageBox.Show("your request has been deleted", "successfull delete", MessageBoxButton.OK, MessageBoxImage.Information);
+                addOrderGrid.Visibility = Visibility.Hidden;
+                mainGrid.Visibility = Visibility.Visible;
+            }
+
+        
         }
 
         private void updateGuestRequest(object sender, RoutedEventArgs e)
         {
             addOrderGrid.Visibility = Visibility.Hidden;
-            addGuestRequestGrid.Visibility = Visibility.Visible;
+            updateGuestRequestGrid.Visibility = Visibility.Visible;
             updateGuestRequestGrid.DataContext = guestRequest;        }
     }
 }

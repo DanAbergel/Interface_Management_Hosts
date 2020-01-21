@@ -121,34 +121,45 @@ namespace BL
         ////autres fonctions
         public bool SearchForFreeDates(DateTime Entry, DateTime End, bool[,] Diary)
         {
-            int daysInMonth = DateTime.DaysInMonth(Entry.Year, Entry.Month);
-            for (int day = Entry.Day - 1; day < daysInMonth; day++)//verifie le premier mois de la requete
+            int daysInMonth ;
+            if (Entry.Month==End.Month)
             {
-                if (!Diary[Entry.Month - 1, day])//si il trouve un jour qui est occuppe il arrete la boucle et rend false
-                    return false;
-            }
-            /*seulement si pour l instant il n a trouve aucun probleme il continue a verifier 
-             les mois qui sont entre le mois du debut et le mois de la fin*/
-
-            for (int month = Entry.Month; month < End.Month - 1; month++)
-            {
-                daysInMonth = DateTime.DaysInMonth(Entry.Year, month + 1);
-                for (int day = 0; day < daysInMonth; day++)
-                    if (!Diary[month, day])
+                for(int day=Entry.Day;day<End.Day;day++)
+                {
+                    if (!Diary[Entry.Month, day])
                         return false;
+                }
+                return true;//si il n a vu aucun probleme dans les dates
             }
+            else {
+                daysInMonth = DateTime.DaysInMonth(Entry.Year, Entry.Month);
+                for (int day = Entry.Day - 1; day < daysInMonth; day++)//verifie le premier mois de la requete
+                {
+                    if (!Diary[Entry.Month - 1, day])//si il trouve un jour qui est occuppe il arrete la boucle et rend false
+                        return false;
+                }
+                /*seulement si pour l instant il n a trouve aucun probleme il continue a verifier 
+                 les mois qui sont entre le mois du debut et le mois de la fin*/
 
-            /*seulement si pour l instant il n a trouve aucun probleme il continue a verifier 
-            le dernier mois */
-            daysInMonth = DateTime.DaysInMonth(Entry.Year, End.Month - 1);
-            for (int day = 0; day < daysInMonth; day++)
-            {
-                if (!Diary[End.Month - 1, day])
-                    return false;
-            }
-            /*si il n a pas retourne de false jusque maintenant ca veut dire qu'il n'y'a aucun probleme
-             et donc il renvoie une valeur true qui signifie que les dates demandées sont valides */
-            return true;
+                for (int month = Entry.Month; month < End.Month - 1; month++)
+                {
+                    daysInMonth = DateTime.DaysInMonth(Entry.Year, month + 1);
+                    for (int day = 0; day < daysInMonth; day++)
+                        if (!Diary[month, day])
+                            return false;
+                }
+
+                /*seulement si pour l instant il n a trouve aucun probleme il continue a verifier 
+                le dernier mois */
+                daysInMonth = DateTime.DaysInMonth(Entry.Year, End.Month - 1);
+                for (int day = 0; day < daysInMonth; day++)
+                {
+                    if (!Diary[End.Month - 1, day])
+                        return false;
+                }
+                /*si il n a pas retourne de false jusque maintenant ca veut dire qu'il n'y'a aucun probleme
+                 et donc il renvoie une valeur true qui signifie que les dates demandées sont valides */
+                return true; }
         }
 
         Order calculateTotalPriceWithComission(Order order)
@@ -156,7 +167,7 @@ namespace BL
             double priceForsAdults,priceForChildrens,TotalComission;
             priceForsAdults = order.guestRequest.Adults * order.hostingUnitReserved.pricePerDayPerAdult;
             priceForChildrens = order.guestRequest.Children * order.hostingUnitReserved.pricePerDayPerChild;
-            TotalComission = 10 * differnceBetweenTwoDates(order.guestRequest.EntryDate, order.guestRequest.ReleaseDate);
+            TotalComission = 10 * differenceBetweenTwoDates(order.guestRequest.EntryDate, order.guestRequest.ReleaseDate);
             order.TotalPrice=priceForsAdults+priceForChildrens+TotalComission;
             return order;
         }
@@ -172,7 +183,7 @@ namespace BL
         }
 
         //calcule la difference de dates entre la date d'aujourd'hui et une date de fin
-        public int differnceBetweenTwoDates(DateTime End)
+        public int differenceBetweenTwoDates(DateTime End)
         {
             int difference=0;
             DateTime today = DateTime.Today;
@@ -191,7 +202,7 @@ namespace BL
             return difference;
         }
         //calcule la difference de dates avec une date de debut et une de fin
-        public int differnceBetweenTwoDates(DateTime Begin ,DateTime End)
+        public int differenceBetweenTwoDates(DateTime Begin ,DateTime End)
         {
             int difference = 0;
             int daysInMonth;
@@ -224,18 +235,30 @@ namespace BL
 
         public void assignDatesForAHostingUnit(DateTime Entry,DateTime Exit,HostingUnit unit)
         {
-            int daysInMonth = DateTime.DaysInMonth(Entry.Year, Entry.Month);
-            for (int day = Entry.Day - 1; day < daysInMonth; day++)
-                unit.Diary[Entry.Month - 1, day] = true;
-            for (int month = Entry.Month; month < Exit.Month; month++)
+            int daysInMonth;
+            if (Entry.Month == Exit.Month)
             {
-                daysInMonth = DateTime.DaysInMonth(Entry.Year, month);
-                for (int day = 0; day < daysInMonth; day++)
-                    unit.Diary[month, day] = true;
+                for (int day = Entry.Day; day < Exit.Day; day++)
+                {
+                    unit.Diary[Entry.Month, day] = false;
+                }
             }
-            for (int day = 0; day < Exit.Day; day++)
-                unit.Diary[Exit.Month - 1, day] = true;
+            else
+            {
+                daysInMonth = DateTime.DaysInMonth(Entry.Year, Entry.Month);
+                for (int day = Entry.Day - 1; day < daysInMonth; day++)
+                    unit.Diary[Entry.Month - 1, day] = false;
+                for (int month = Entry.Month; month < Exit.Month; month++)
+                {
+                    daysInMonth = DateTime.DaysInMonth(Entry.Year, month);
+                    for (int day = 0; day < daysInMonth; day++)
+                        unit.Diary[month, day] = false;
+                }
+                for (int day = 0; day < Exit.Day; day++)
+                    unit.Diary[Exit.Month - 1, day] = false;
+            }
         }
+
         public List<Order> updatesOrderFromDate(int days)
         {
             List<Order> listTmp=new List<Order>();

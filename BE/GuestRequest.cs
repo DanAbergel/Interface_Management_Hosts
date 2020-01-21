@@ -17,8 +17,9 @@ namespace BE
             RegistrationDate = DateTime.Now;
             StatusOfRequest = StatutRequirement.Active;
             canChangeStatusOfRequirement = true;
+            bank = new BankBranch();
         }
-        public long guestRequestKey;
+        public long guestRequestKey { get; set; }
         public Client client { get; set; }
         public StatutRequirement StatusOfRequest { get; set; }
         public bool canChangeStatusOfRequirement { get; set; }
@@ -35,7 +36,7 @@ namespace BE
         public Criterion Jacuzzi { get; set; }
         public Criterion Garden { get; set; }
         public Criterion ChildrenAttractions { get; set; }
-
+        public BankBranch bank { get; set; }
         public override string ToString()
         {
             string str = "";

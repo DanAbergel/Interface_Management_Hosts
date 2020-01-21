@@ -113,7 +113,7 @@ namespace DAL
                 FamilyName = orignal.FamilyName,
                 MailAddress = orignal.MailAddress,
                 NumberPhone = orignal.NumberPhone,
-                bank = Clone(orignal.bank)
+               // bank = Clone(orignal.bank)
             };
             return target;
         }

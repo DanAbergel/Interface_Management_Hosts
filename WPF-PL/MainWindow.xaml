@@ -278,7 +278,7 @@
             <TextBox Name="priceAdultsTxtbox" Text="{Binding Path=pricePerDayPerAdult}" Grid.ColumnSpan="2" Grid.Column="2" HorizontalAlignment="Left" Height="23"  Grid.Row="3"  TextWrapping="Wrap"  VerticalAlignment="Center" Width="120"/>
             <TextBlock Name="priceChildrenTxt" Text="מחיר לילד" FontFamily="David" FontSize="16" FontWeight="ExtraBlack" Grid.Column="1" HorizontalAlignment="Left"  Grid.Row="3" TextWrapping="Wrap" VerticalAlignment="Center"/>
             <TextBox Name="priceChildrenTxtbox" Text="{Binding Path=pricePerDayPerChild}" HorizontalAlignment="Center" Height="23" Grid.Row="3"  TextWrapping="Wrap"  VerticalAlignment="Center" Width="120"/>
-            <CheckBox Name="clearanceCheckbox" Content="אישור גבייה" FontSize="17" FontWeight="ExtraBlack" FontFamily="David" Grid.Column="5" HorizontalAlignment="Left" Margin="11.4,13.2,0,0" Grid.Row="6" VerticalAlignment="Top"/>
+            <CheckBox Name="clearanceCheckbox" IsChecked="{Binding Path=Owner.CollectionClearance}" Content="אישור גבייה" FontSize="17" FontWeight="ExtraBlack" FontFamily="David" Grid.Column="5" HorizontalAlignment="Left" Margin="11.4,13.2,0,0" Grid.Row="6" VerticalAlignment="Top"/>
 
 
         </Grid>
@@ -369,9 +369,9 @@
             <ComboBox Name="selection" Grid.Column="2" HorizontalAlignment="Left" Margin="4.4,4,0,0" Grid.Row="1" VerticalAlignment="Top" Width="120" Height="30" />
             <Button Content="הזמן" HorizontalAlignment="Left" Margin="18.4,9,0,0" VerticalAlignment="Top" Width="120" Height="39" Grid.Column="2" Grid.Row="4" Click="addOrder"/>
             <Button Content="עדכן הזמנה" Grid.Column="3" HorizontalAlignment="Left" Margin="29,11,0,0" Grid.Row="4" VerticalAlignment="Top" Width="102" Height="42" Click="updateGuestRequest" />
-            <Button Content="מחק הזמנה" Grid.Column="1" HorizontalAlignment="Left" Margin="20.8,10,0,0" Grid.Row="4" VerticalAlignment="Top" Width="117" Height="43" RenderTransformOrigin="0.267,0.521" Click="delete"/>
-            <Rectangle Grid.ColumnSpan="3" Grid.Column="1" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="178" Margin="3.8,64,0,0" Grid.Row="1" Grid.RowSpan="3" Stroke="Black" VerticalAlignment="Top" Width="466"/>
-            <CheckBox Content="CheckBox" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+            <Button Content="מחק הזמנה" Grid.Column="1" HorizontalAlignment="Left" Margin="20.8,10,0,0" Grid.Row="4" VerticalAlignment="Top" Width="117" Height="43" RenderTransformOrigin="0.267,0.521" Click="deleteGuestRequest"/>
+            <Rectangle Name="contentOfHostingUnit" Fill="Aqua" Grid.ColumnSpan="3" Grid.Column="1"  HorizontalAlignment="Left" Height="178" Margin="3.8,64,0,0" Grid.Row="1" Grid.RowSpan="3"  VerticalAlignment="Top" Width="466"/>
+            <TextBlock Name="contentRectangle" Text="{Binding Path=str}" Foreground="Blue" Grid.ColumnSpan="3" Grid.Column="1"  HorizontalAlignment="Left" Height="142" Margin="23.8,82,0,0" Grid.Row="1" Grid.RowSpan="3"  VerticalAlignment="Top" Width="425"/>
         </Grid>
 
 

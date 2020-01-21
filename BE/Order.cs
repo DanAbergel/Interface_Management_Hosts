@@ -9,18 +9,20 @@ namespace BE
 {
     public class Order
     {
-        public long HostingUnitKey;
-        public long GuestRequestKey;
-        public long OrderKey;
-        public Status status=Status.NotYetAddressed;//valeur par defaut
-        public DateTime CreateDate;
-        public DateTime OrderDate;
-        public HostingUnit hostingUnitReserved;
-        public GuestRequest guestRequest;
-        public double TotalPrice;
-        public DateTime lastModification;
-        
-       
+        public long HostingUnitKey { get; set; }
+        public long GuestRequestKey { get; set; }
+        public long OrderKey { get; set; }
+        public Status status { get; set; }
+        public DateTime OrderDate { get; set; }
+        public HostingUnit hostingUnitReserved { get; set; }
+        public GuestRequest guestRequest { get; set; }
+        public double TotalPrice { get; set; }
+        public DateTime lastModification { get; set; }
+
+        public Order()
+        {
+            status = Status.NotYetAddressed;//valeur par defaut
+        }
 
         public override string ToString()
         {
@@ -30,7 +32,6 @@ namespace BE
             str += "\nOrder Key: " + OrderKey;
             str += hostingUnitReserved.ToString();
             str += "\nStatus: " + status;
-            str += "\nCreateDate: " + CreateDate;
             str += "\nOrderDate: " + OrderDate + "\n";
             return str;
         }
