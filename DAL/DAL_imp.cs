@@ -97,10 +97,10 @@ namespace DAL
 
         public void updateOrder(Order updateOrder)
         {
-            if (OrderExist(updateOrder.HostingUnitKey))
+            if (OrderExist(updateOrder.OrderKey))
             {
                 var result = (from Order in DataSource.orders
-                              where Order.HostingUnitKey == updateOrder.HostingUnitKey
+                              where Order.OrderKey == updateOrder.OrderKey
                               select Order).First();
                 DataSource.orders.Remove(result);
                 DataSource.orders.Add(updateOrder.Clone());
@@ -151,7 +151,7 @@ namespace DAL
         public bool OrderExist(long HostingUnitKey)
         {
             Order tmp = (from Order in DataSource.orders
-                         where Order.HostingUnitKey == HostingUnitKey
+                         where Order.OrderKey== HostingUnitKey
                          select Order).FirstOrDefault();
             if (tmp == default(Order))
                 return false;

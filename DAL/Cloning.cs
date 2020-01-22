@@ -77,11 +77,10 @@ namespace DAL
         }
 
         public static Order Clone(this Order original)
-        {
-            Order target = new Order
+        { 
+            Order target = new Order()
             {
-                HostingUnitKey = original.HostingUnitKey,
-                GuestRequestKey = original.GuestRequestKey,
+                guestRequest = Clone(original.guestRequest),
                 OrderKey = original.OrderKey,
                 hostingUnitReserved = Clone(original.hostingUnitReserved)
             };

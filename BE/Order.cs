@@ -9,8 +9,7 @@ namespace BE
 {
     public class Order
     {
-        public long HostingUnitKey { get; set; }
-        public long GuestRequestKey { get; set; }
+       
         public long OrderKey { get; set; }
         public Status status { get; set; }
         public DateTime OrderDate { get; set; }
@@ -21,18 +20,16 @@ namespace BE
 
         public Order()
         {
+            OrderKey = ++Configuration.StaticOrder;
             status = Status.NotYetAddressed;//valeur par defaut
+            OrderDate =lastModification= DateTime.Now;
         }
-
         public override string ToString()
         {
             string str = "";
-            str += "Hosting Unit Key: " + HostingUnitKey;
-            str += "\nGuest Request Key: " + GuestRequestKey;
-            str += "\nOrder Key: " + OrderKey;
+            str += "\nOrder Key:" + OrderKey;
+            str += "\nOrderDate:" + OrderDate + "\n";
             str += hostingUnitReserved.ToString();
-            str += "\nStatus: " + status;
-            str += "\nOrderDate: " + OrderDate + "\n";
             return str;
         }
     }

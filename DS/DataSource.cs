@@ -15,10 +15,7 @@ namespace DS
         public static List<GuestRequest> guestRequests=new List<GuestRequest>();
         public static List<BankBranch> allBankAccounts=new List<BankBranch>();
         public static List<Host> hosts = new List<Host>();
-        static void Main(string[] args)
-        {
-
-        }
+        static void Main() { }
         
         
     }

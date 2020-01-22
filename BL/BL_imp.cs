@@ -28,11 +28,13 @@ namespace BL
         } 
         public void addGuestRequest(GuestRequest guestRequest)
         {
-            if (guestRequest.EntryDate.CompareTo(guestRequest.EntryDate) > 0)
-                throw new Exception("Error !!! Entry date is later than release date ");
-            if (guestRequest.EntryDate.CompareTo(guestRequest.ReleaseDate) == 0)
-                throw new Exception("Error !!! We accept only with at least one day between Entry and Release dates");
-            newDal.addGuestRequest(guestRequest);
+
+                if (guestRequest.EntryDate.CompareTo(guestRequest.EntryDate) > 0)
+                    throw new Exception("Error !!! Entry date is later than release date ");
+                if (guestRequest.EntryDate.CompareTo(guestRequest.ReleaseDate) == 0)
+                    throw new Exception("Error !!! We accept only with at least one day between Entry and Release dates");
+                newDal.addGuestRequest(guestRequest);
+            
         }
         public void addOrder(Order order)
         {
@@ -227,10 +229,7 @@ namespace BL
             return difference;
         }
 
-        public int succesfulDealsForHostingUnit(HostingUnit unit)
-        {
-            return unit.succesfulDeals;
-        }
+       
 
         public void assignDatesForAHostingUnit(DateTime Entry,DateTime Exit,HostingUnit unit)
         {

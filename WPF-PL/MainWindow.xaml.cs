@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Net.Mail;
+using System.Net.Mail;
 using BE;
 using BL;
 namespace WPF_PL
@@ -55,6 +56,11 @@ namespace WPF_PL
 
             comboboxType.ItemsSource = Enum.GetValues(typeof(BE.BE.theType));
             comboboxTypeUpdate.ItemsSource = Enum.GetValues(typeof(BE.BE.theType));
+
+            //CalendarBegin.SelectedDate=DateTime.Today;
+               
+
+
         }
 
 
@@ -64,8 +70,8 @@ namespace WPF_PL
         /// </summary>
         /// <param name="buttomsOfMainGrid"></param>
         /// <param name="e"></param>
-       
-       
+
+
         //fonction du boutton proprietaire
         private void Proprietaire(object sender, RoutedEventArgs e)
         {
@@ -83,7 +89,9 @@ namespace WPF_PL
             mainGrid.Visibility = Visibility.Hidden;
             addGuestRequestGrid.Visibility = Visibility.Visible;
             guestRequest = new GuestRequest();
+            guestRequest.EntryDate =guestRequest.ReleaseDate= DateTime.Today;
             addGuestRequestGrid.DataContext = guestRequest;
+
         }
         //fonction du boutton de sortie du programme
         private void fermeture(object sender, RoutedEventArgs e)
@@ -142,48 +150,55 @@ namespace WPF_PL
         //fonction du boutton send dans la page addGuestRequest
         private void SendGuestRequest_Click(object sender, RoutedEventArgs e)
         {
-            for (int i = 0; i < selection.Items.Count; i++)
-                selection.Items.RemoveAt(i);
-            
-            if (verifyifAddOrUpdate == 0)
-            { 
-                guestRequest.area = (BE.BE.Area)comboboxArea.SelectedValue;
-                guestRequest.Pool = (BE.BE.Criterion)poolCombobox.SelectedValue;
-                guestRequest.Garden = (BE.BE.Criterion)gardenCombobox.SelectedValue;
-                guestRequest.ChildrenAttractions = (BE.BE.Criterion)attractionsCombobox.SelectedValue;
-                guestRequest.Jacuzzi = (BE.BE.Criterion)jacuzziCombobox.SelectedValue;
-                guestRequest.type = (BE.BE.theType)comboboxType.SelectedValue;
-                bl.addGuestRequest(guestRequest);
-                MessageBox.Show("your guest request was added", "Succesful add request", MessageBoxButton.OK, MessageBoxImage.Information);
-            addGuestRequestGrid.Visibility = Visibility.Hidden;
-                verifyifAddOrUpdate += 1;
-            }
-            else
+            try
             {
-                guestRequest.area = (BE.BE.Area)comboboxAreaUpdate.SelectedValue;
-                guestRequest.Pool = (BE.BE.Criterion)poolUpdateCombobox.SelectedValue;
-                guestRequest.Garden = (BE.BE.Criterion)gardenUpdateCombobox.SelectedValue;
-                guestRequest.ChildrenAttractions = (BE.BE.Criterion)attractionsUpdateCombobox.SelectedValue;
-                guestRequest.Jacuzzi = (BE.BE.Criterion)jacuzziUpdateCombobox.SelectedValue;
-                guestRequest.type = (BE.BE.theType)comboboxTypeUpdate.SelectedValue;
-                bl.updateGuestRequest(guestRequest);
-                MessageBox.Show("your guest request was updated", "Succesful update request", MessageBoxButton.OK, MessageBoxImage.Information);
-                updateGuestRequestGrid.Visibility = Visibility.Hidden;
+                for (int i = 0; i < selection.Items.Count; i++)
+                    selection.Items.RemoveAt(i);
+
+                if (verifyifAddOrUpdate == 0)
+                {
+                    guestRequest.area = (BE.BE.Area)comboboxArea.SelectedValue;
+                    guestRequest.Pool = (BE.BE.Criterion)poolCombobox.SelectedValue;
+                    guestRequest.Garden = (BE.BE.Criterion)gardenCombobox.SelectedValue;
+                    guestRequest.ChildrenAttractions = (BE.BE.Criterion)attractionsCombobox.SelectedValue;
+                    guestRequest.Jacuzzi = (BE.BE.Criterion)jacuzziCombobox.SelectedValue;
+                    guestRequest.type = (BE.BE.theType)comboboxType.SelectedValue;
+                    bl.addGuestRequest(guestRequest);
+                    MessageBox.Show("your guest request was added", "Succesful add request", MessageBoxButton.OK, MessageBoxImage.Information);
+                    addGuestRequestGrid.Visibility = Visibility.Hidden;
+                    verifyifAddOrUpdate += 1;
+                }
+                else//it's an update guestRequest
+                {
+                    guestRequest.area = (BE.BE.Area)comboboxAreaUpdate.SelectedValue;
+                    guestRequest.Pool = (BE.BE.Criterion)poolUpdateCombobox.SelectedValue;
+                    guestRequest.Garden = (BE.BE.Criterion)gardenUpdateCombobox.SelectedValue;
+                    guestRequest.ChildrenAttractions = (BE.BE.Criterion)attractionsUpdateCombobox.SelectedValue;
+                    guestRequest.Jacuzzi = (BE.BE.Criterion)jacuzziUpdateCombobox.SelectedValue;
+                    guestRequest.type = (BE.BE.theType)comboboxTypeUpdate.SelectedValue;
+                    bl.updateGuestRequest(guestRequest);
+                    MessageBox.Show("your guest request was updated", "Succesful update request", MessageBoxButton.OK, MessageBoxImage.Information);
+                    updateGuestRequestGrid.Visibility = Visibility.Hidden;
+                }
+
+
+                //ferme la page add ou update
+                addOrderGrid.Visibility = Visibility.Visible;
+
+
+                //initialise le combobox selection
+                list = bl.getHostingUnits(guestRequest);
+                foreach (HostingUnit hostingUnit in list)
+                {
+                    ComboBoxItem item = new ComboBoxItem();
+                    item.Content = hostingUnit.HostingUnitName;
+                    selection.Items.Add(item);
+                }
             }
-            //ferme la page add ou update
-            addOrderGrid.Visibility = Visibility.Visible;
-            //initialise le combobox selection
-             list = bl.getHostingUnits(guestRequest);
-            
-            foreach (HostingUnit hostingUnit in list)
+            catch(Exception message)
             {
-                ComboBoxItem item = new ComboBoxItem();
-                item.Content = hostingUnit.HostingUnitName;
-                selection.Items.Add(item);
+                MessageBox.Show(message.Message, "ERROR", MessageBoxButton.OK, MessageBoxImage.Error);
             }
-            order = new Order();
-           
-           
         }
 
 
@@ -285,20 +300,55 @@ namespace WPF_PL
 
         private void addOrder(object sender, RoutedEventArgs e)//ok
         {
+            order = new Order();
+            order.guestRequest = guestRequest;
+            order.hostingUnitReserved = hostingUnit;
             bl.addOrder(order);
-            MessageBox.Show("Your reservation has been sent to the Host!!!", "Reservation", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+
+
+            //preparation pour envoyer le mail
+            str = "";//initialize the string
+            str += "Hello Mr" + order.guestRequest.client.FamilyName;
+            str += "\nWe have received your message concerning your reservation of " + order.OrderDate;
+            str += "\nhere are the details of your reservation:\n";
+            str += order.ToString();
+            MessageBox.Show("Your reservation has been sent to the Host!!!\nYou will get a mail to confirm your reservation.", "Reservation", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+            MailMessage mail = new MailMessage();
+            mail.To.Add("danabergel1995@gmail.com");
+            mail.From = new MailAddress("danabergelCsharp@gmail.com");
+            mail.Subject = "Information about reservation hosting";
+            mail.Body = str;
+            mail.IsBodyHtml = false;
+            SmtpClient smtp = new SmtpClient();
+            smtp.Host = "smtp.gmail.com";
+            smtp.Credentials = new System.Net.NetworkCredential("danabergelCsharp@gmail.com", "dan170895");
+            smtp.EnableSsl = true;
+            try
+            {
+                smtp.Send(mail);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Exception in Mail", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
             addOrderGrid.Visibility = Visibility.Hidden;
             mainGrid.Visibility = Visibility.Visible;
         }
 
          private void selection_SelectionChanged(object sender, SelectionChangedEventArgs e)//bon
         {
-            if (selection.Items.Count>0) {
+            if (selection.Items.Count > 0)
+            {
+                hostingUnit = new HostingUnit();
                 string name = "";
                 name = ((ComboBoxItem)selection.SelectedItem).Content.ToString();
                 foreach (HostingUnit hosting in list)
                     if (hosting.HostingUnitName == name)
-                        contentRectangle.Text = hosting.ToString(); }
+                    {
+                        contentRectangle.Text = hosting.ToString();
+                        hostingUnit = hosting;//for reservation
+                    }
+            }
         }
 
         private void deleteGuestRequest(object sender, RoutedEventArgs e)//ok

@@ -37,6 +37,33 @@ namespace BE
         public Criterion Garden { get; set; }
         public Criterion ChildrenAttractions { get; set; }
         public BankBranch bank { get; set; }
+        public int numOfDays(DateTime Begin,DateTime End)
+        {
+            int difference = 0;
+            int daysInMonth;
+            daysInMonth = DateTime.DaysInMonth(Begin.Year, Begin.Month);
+            if (Begin.CompareTo(End) == 1)
+                return -1;
+            if (Begin.Month != End.Month)
+            {
+                for (int day = Begin.Day; day < daysInMonth; day++)
+                    difference++;
+                for (int month = Begin.Month + 1; month < End.Month; month++)
+                {
+                    daysInMonth = DateTime.DaysInMonth(Begin.Year, month + 1);
+                    for (int day = 0; day < daysInMonth; day++)
+                        difference++;
+                }
+                for (int day = 0; day < End.Day; day++)
+                    difference++;
+            }
+            else
+            {
+                for (int i = Begin.Day; i < End.Day; i++)
+                    difference++;
+            }
+            return difference;
+        }
         public override string ToString()
         {
             string str = "";
