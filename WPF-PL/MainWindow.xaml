@@ -365,13 +365,13 @@
 
 
             </Grid.ColumnDefinitions>
-            <TextBlock Grid.Column="3" Grid.ColumnSpan="2" Text="בחר יחידת אירוח" FontSize="30" FontWeight="ExtraBlack" FontFamily="David" HorizontalAlignment="Left" Margin="7,3,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Height="23" />
-            <ComboBox Name="selection" Grid.Column="2" HorizontalAlignment="Left" Margin="4.4,4,0,0" Grid.Row="1" VerticalAlignment="Top" Width="120" Height="30" SelectionChanged="selection_SelectionChanged" />
-            <Button Content="הזמן" HorizontalAlignment="Left" Margin="18.4,9,0,0" VerticalAlignment="Top" Width="120" Height="39" Grid.Column="2" Grid.Row="4" Click="addOrder"/>
-            <Button Content="עדכן הזמנה" Grid.Column="3" HorizontalAlignment="Left" Margin="29,11,0,0" Grid.Row="4" VerticalAlignment="Top" Width="102" Height="42" Click="updateGuestRequest" />
-            <Button Content="מחק הזמנה" Grid.Column="1" HorizontalAlignment="Left" Margin="20.8,10,0,0" Grid.Row="4" VerticalAlignment="Top" Width="117" Height="43" RenderTransformOrigin="0.267,0.521" Click="deleteGuestRequest"/>
-            <Rectangle Name="contentOfHostingUnit" Fill="Aqua" Grid.ColumnSpan="3" Grid.Column="1"  HorizontalAlignment="Left" Height="178" Margin="3.8,64,0,0" Grid.Row="1" Grid.RowSpan="3"  VerticalAlignment="Top" Width="466"/>
-            <TextBlock Name="contentRectangle" Text="{Binding Path=str, Mode=TwoWay}" Foreground="Blue" Grid.ColumnSpan="3" Grid.Column="1"  HorizontalAlignment="Left" Height="142" Margin="23.8,82,0,0" Grid.Row="1" Grid.RowSpan="3"  VerticalAlignment="Top" Width="425"/>
+            <TextBlock Grid.Column="3" Grid.ColumnSpan="2" Text="בחר יחידת אירוח" FontSize="30" FontWeight="ExtraBlack" FontFamily="David" HorizontalAlignment="Left" Grid.Row="0" TextWrapping="Wrap" VerticalAlignment="Bottom" Height="23" />
+            <ComboBox Name="selection" Grid.Column="1" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Bottom" Width="250" Height="35" SelectionChanged="selection_SelectionChanged" Grid.ColumnSpan="2"  />
+            <Button Name="reserved" Content="הזמן" IsEnabled="False" HorizontalAlignment="Center" FontFamily="David" FontSize="23" FontStyle="Italic" FontWeight="ExtraBlack" Foreground="Green" Background="Aquamarine"  VerticalAlignment="Center" Width="150" Height="50" Grid.Column="3" Grid.Row="3" Click="addOrder"/>
+            <Button Content="עדכן הזמנה" Grid.Column="3" HorizontalAlignment="Center" FontFamily="David" FontSize="23" FontStyle="Italic" FontWeight="ExtraBlack" Foreground="Green" Background="Aquamarine"  Grid.Row="1" VerticalAlignment="Center" Width="150" Height="50" Click="updateGuestRequest" />
+            <Button Content="מחק הזמנה" Grid.Column="3" HorizontalAlignment="Center"  Grid.Row="2" FontFamily="David" FontSize="23" FontStyle="Italic" FontWeight="ExtraBlack" Foreground="Green" Background="Aquamarine" VerticalAlignment="Center" Width="150" Height="50"  Click="deleteGuestRequest"/>
+            <Rectangle Name="contentOfHostingUnit" Fill="Beige" Grid.ColumnSpan="4"  HorizontalAlignment="Center" Height="400"   VerticalAlignment="Center" Width="400" Grid.RowSpan="5" Margin="118,-4,117.2,-72"/>
+            <TextBlock Name="contentRectangle" Text="{Binding Path=str, Mode=TwoWay}" Foreground="Brown" Grid.ColumnSpan="4"  HorizontalAlignment="Center" Height="350"   VerticalAlignment="Center" Width="350" Grid.RowSpan="5" Margin="118,-4,117.2,-72" />
         </Grid>
 
 

@@ -354,9 +354,9 @@ namespace BL
         {
             if (guestRequest.area != hostingUnit.area)
                 return false;
-            if (guestRequest.Adults < hostingUnit.capacityAdults)
+            if (guestRequest.Adults > hostingUnit.capacityAdults)
                 return false;
-            if (guestRequest.Children < hostingUnit.capacityChildren)
+            if (guestRequest.Children > hostingUnit.capacityChildren)
                 return false;
             if (guestRequest.ChildrenAttractions==BE.BE.Criterion.Necessary&&!hostingUnit.childrenAttraction)
                 return false;

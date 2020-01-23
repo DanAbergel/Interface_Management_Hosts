@@ -29,8 +29,11 @@ namespace BE
             string str = "";
             str += "\nOrder Key:" + OrderKey;
             str += "\nOrderDate:" + OrderDate + "\n";
+            str += "Details of HostingUnit reserved:\n";
             str += hostingUnitReserved.ToString();
-            return str;
+            str += "The total price of your reservation is " + TotalPrice + " shequels\n";
+            str += "We wish you good holidays !\n";
+                return str;
         }
     }
 }

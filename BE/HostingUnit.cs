@@ -39,11 +39,25 @@ namespace BE
             string str = "";
             str += "HostingUnit Key:  " + HostingUnitKey;
             str += Owner.ToString();
-            str += "\nHostingUnit Name:" + HostingUnitName;
-            str+=(BE.Area.Center==area)?"Area:  Center":"";
-            str += (BE.Area.Jerusalem == area) ? "Area:  Jerusalem" : "";
-            str += (BE.Area.North == area) ? "Area:  North" : "";
-            str += (BE.Area.South == area) ? "Area:  South" : "";
+            str += "\nHostingUnit Name:" + HostingUnitName+"\n";
+            if(BE.Area.Center==area)
+            str+="Area: Center";
+            if(BE.Area.Jerusalem == area)
+            str += "Area: Jerusalem";
+            if(BE.Area.North == area)
+            str += "Area: North";
+            if(BE.Area.South == area)
+            str += "Area: South";
+            if (pool || garden || jacuzzi || childrenAttraction)
+                str += "\nThe HostingUnit contents: ";
+            if (pool)
+                str += "Pool";
+            if (garden)
+                str += "\n\t\t\tGarden";
+            if (jacuzzi)
+                str += "\n\t\t\tJacuzzi";
+            if (childrenAttraction)
+                str += "\n\t\tAttractions for children";
             str += "\nPrice per day for each adult:  " + pricePerDayPerAdult;
             str += "\nPrice per day for each child:  " + pricePerDayPerChild;
             str += "\nnumber of succesful deals:  " + succesfulDeals;

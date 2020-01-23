@@ -91,6 +91,7 @@ namespace WPF_PL
             guestRequest = new GuestRequest();
             guestRequest.EntryDate =guestRequest.ReleaseDate= DateTime.Today;
             addGuestRequestGrid.DataContext = guestRequest;
+            contentRectangle.Text = "";
 
         }
         //fonction du boutton de sortie du programme
@@ -300,15 +301,17 @@ namespace WPF_PL
 
         private void addOrder(object sender, RoutedEventArgs e)//ok
         {
+            contentRectangle.Text = "";
             order = new Order();
             order.guestRequest = guestRequest;
             order.hostingUnitReserved = hostingUnit;
+            order.TotalPrice = guestRequest.numOfDays() * (guestRequest.Adults * hostingUnit.pricePerDayPerAdult + guestRequest.Children * hostingUnit.pricePerDayPerChild);
             bl.addOrder(order);
 
 
             //preparation pour envoyer le mail
             str = "";//initialize the string
-            str += "Hello Mr" + order.guestRequest.client.FamilyName;
+            str += "Hello Mr " + order.guestRequest.client.FamilyName;
             str += "\nWe have received your message concerning your reservation of " + order.OrderDate;
             str += "\nhere are the details of your reservation:\n";
             str += order.ToString();
@@ -349,6 +352,7 @@ namespace WPF_PL
                         hostingUnit = hosting;//for reservation
                     }
             }
+            reserved.IsEnabled = true;
         }
 
         private void deleteGuestRequest(object sender, RoutedEventArgs e)//ok
