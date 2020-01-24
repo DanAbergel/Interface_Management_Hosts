@@ -38,9 +38,9 @@ namespace BL
         }
         public void addOrder(Order order)
         {
-            //if (!SearchForFreeDates(order.guestRequest.EntryDate, order.guestRequest.ReleaseDate, order.hostingUnitReserved.Diary))
-              //  throw new KeyNotFoundException("The demanded dates are not available for this hosting unit");
             newDal.addOrder(order);
+            //assign in the diary new dates occupied
+            assignDatesForAHostingUnit(order.guestRequest.EntryDate, order.guestRequest.ReleaseDate, order.hostingUnitReserved);
         }
 
 
@@ -163,7 +163,7 @@ namespace BL
                 return true; }
         }
 
-        Order calculateTotalPriceWithComission(Order order)
+        public Order calculateTotalPriceWithComission(Order order)
         {
             double priceForsAdults,priceForChildrens,TotalComission;
             priceForsAdults = order.guestRequest.Adults * order.hostingUnitReserved.pricePerDayPerAdult;

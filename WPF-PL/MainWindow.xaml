@@ -366,12 +366,12 @@
 
             </Grid.ColumnDefinitions>
             <TextBlock Grid.Column="3" Grid.ColumnSpan="2" Text="בחר יחידת אירוח" FontSize="30" FontWeight="ExtraBlack" FontFamily="David" HorizontalAlignment="Left" Grid.Row="0" TextWrapping="Wrap" VerticalAlignment="Bottom" Height="23" />
-            <ComboBox Name="selection" Grid.Column="1" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Bottom" Width="250" Height="35" SelectionChanged="selection_SelectionChanged" Grid.ColumnSpan="2"  />
+            <ComboBox Name="selection"  Grid.Column="1" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Bottom" Width="250" Height="35" SelectionChanged="selection_SelectionChanged" Grid.ColumnSpan="2"  />
             <Button Name="reserved" Content="הזמן" IsEnabled="False" HorizontalAlignment="Center" FontFamily="David" FontSize="23" FontStyle="Italic" FontWeight="ExtraBlack" Foreground="Green" Background="Aquamarine"  VerticalAlignment="Center" Width="150" Height="50" Grid.Column="3" Grid.Row="3" Click="addOrder"/>
             <Button Content="עדכן הזמנה" Grid.Column="3" HorizontalAlignment="Center" FontFamily="David" FontSize="23" FontStyle="Italic" FontWeight="ExtraBlack" Foreground="Green" Background="Aquamarine"  Grid.Row="1" VerticalAlignment="Center" Width="150" Height="50" Click="updateGuestRequest" />
             <Button Content="מחק הזמנה" Grid.Column="3" HorizontalAlignment="Center"  Grid.Row="2" FontFamily="David" FontSize="23" FontStyle="Italic" FontWeight="ExtraBlack" Foreground="Green" Background="Aquamarine" VerticalAlignment="Center" Width="150" Height="50"  Click="deleteGuestRequest"/>
             <Rectangle Name="contentOfHostingUnit" Fill="Beige" Grid.ColumnSpan="4"  HorizontalAlignment="Center" Height="400"   VerticalAlignment="Center" Width="400" Grid.RowSpan="5" Margin="118,-4,117.2,-72"/>
-            <TextBlock Name="contentRectangle" Text="{Binding Path=str, Mode=TwoWay}" Foreground="Brown" Grid.ColumnSpan="4"  HorizontalAlignment="Center" Height="350"   VerticalAlignment="Center" Width="350" Grid.RowSpan="5" Margin="118,-4,117.2,-72" />
+            <TextBlock Name="contentRectangle" Text="{Binding Path=str, Mode=TwoWay}" FontSize="15" FontFamily="Gabriola" FontWeight="Black" Foreground="Brown" Grid.ColumnSpan="4"  HorizontalAlignment="Center" Height="350"   VerticalAlignment="Center" Width="350" Grid.RowSpan="5" Margin="118,-4,117.2,-72" />
         </Grid>
 
 

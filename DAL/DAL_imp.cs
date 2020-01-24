@@ -12,6 +12,7 @@ namespace DAL
     {
         public void addGuestRequest(GuestRequest guestRequest)
         {
+            DataSource d1 = new DataSource();
             DataSource.guestRequests.Add(guestRequest.Clone());
         }
 

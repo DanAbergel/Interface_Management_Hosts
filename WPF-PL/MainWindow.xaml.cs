@@ -195,6 +195,15 @@ namespace WPF_PL
                     item.Content = hostingUnit.HostingUnitName;
                     selection.Items.Add(item);
                 }
+                if (list.Count == 0) {
+                    selection.IsEnabled = false;
+                    contentRectangle.Text = "We don't have any HostingUnit compatible with your request.";
+                }
+                else
+                {
+                    selection.IsEnabled = true;
+                    contentRectangle.Text = "";
+                }
             }
             catch(Exception message)
             {
@@ -302,10 +311,11 @@ namespace WPF_PL
         private void addOrder(object sender, RoutedEventArgs e)//ok
         {
             contentRectangle.Text = "";
+            verifyifAddOrUpdate = 0;
             order = new Order();
             order.guestRequest = guestRequest;
             order.hostingUnitReserved = hostingUnit;
-            order.TotalPrice = guestRequest.numOfDays() * (guestRequest.Adults * hostingUnit.pricePerDayPerAdult + guestRequest.Children * hostingUnit.pricePerDayPerChild);
+            bl.calculateTotalPriceWithComission(order);
             bl.addOrder(order);
 
 
@@ -352,7 +362,7 @@ namespace WPF_PL
                         hostingUnit = hosting;//for reservation
                     }
             }
-            reserved.IsEnabled = true;
+            reserved.IsEnabled = true;//enable the button which reserved the hosting unit
         }
 
         private void deleteGuestRequest(object sender, RoutedEventArgs e)//ok

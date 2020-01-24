@@ -35,6 +35,7 @@ namespace BL
 
             void addOrder(Order order);
             void updateOrder(Order updateOrder);
+            Order calculateTotalPriceWithComission(Order order);
             List<Order> getAllOrders();
 
             #endregion
