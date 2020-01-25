@@ -152,8 +152,7 @@ namespace BL
 
                 /*seulement si pour l instant il n a trouve aucun probleme il continue a verifier 
                 le dernier mois */
-                daysInMonth = DateTime.DaysInMonth(Entry.Year, End.Month - 1);
-                for (int day = 0; day < daysInMonth; day++)
+                for (int day = 0; day < End.Day; day++)
                 {
                     if (!Diary[End.Month - 1, day])
                         return false;

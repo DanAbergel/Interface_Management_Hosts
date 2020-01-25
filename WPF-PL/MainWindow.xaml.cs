@@ -27,17 +27,15 @@ namespace WPF_PL
         IBL bl = BL.BLFactory.GetBL();
         GuestRequest guestRequest;
         HostingUnit hostingUnit;
+        Host host;
         Order order;
         List<HostingUnit> list;
         string str="";
-        int size = 0;
         int verifyifAddOrUpdate = 0;
         public MainWindow()
         {
             InitializeComponent();
             SystemCommands.MaximizeWindow(this);
-            IBL bl = BL.BLFactory.GetBL();
-
 
             jacuzziCombobox.ItemsSource = Enum.GetValues(typeof(BE.BE.Criterion));
             poolCombobox.ItemsSource = Enum.GetValues(typeof(BE.BE.Criterion));
@@ -56,12 +54,17 @@ namespace WPF_PL
 
             comboboxType.ItemsSource = Enum.GetValues(typeof(BE.BE.theType));
             comboboxTypeUpdate.ItemsSource = Enum.GetValues(typeof(BE.BE.theType));
-
-            //CalendarBegin.SelectedDate=DateTime.Today;
-               
-
-
+            typeHostingCombobox.ItemsSource = Enum.GetValues(typeof(BE.BE.theType));
+            typeHostingComboboxUpdate.ItemsSource = Enum.GetValues(typeof(BE.BE.theType));
         }
+
+
+          
+
+
+
+
+
 
 
 
@@ -70,13 +73,12 @@ namespace WPF_PL
         /// </summary>
         /// <param name="buttomsOfMainGrid"></param>
         /// <param name="e"></param>
-
-
         //fonction du boutton proprietaire
         private void Proprietaire(object sender, RoutedEventArgs e)
         {
             mainGrid.Visibility = Visibility.Hidden;
             proprietaireGrid.Visibility = Visibility.Visible;
+            HostingUnit hostingUnit = new HostingUnit();
         }
         //fonction du boutton administarteur
         private void Administrateur(object sender, RoutedEventArgs e)
@@ -100,18 +102,34 @@ namespace WPF_PL
             Close();
         }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
         /// <summary>
         /// bouttons de la page proprietaire
         /// </summary>
         /// <param name="buttomsOfProprietaireGrid"></param>
         /// <param name="e"></param>
         //fonction du boutton updateHostingUnit
-        private void updateHosting_Click(object sender, RoutedEventArgs e)
+        private void Identify(object sender, RoutedEventArgs e)
         {
             proprietaireGrid.Visibility = Visibility.Hidden;
-            updateHostingUnitGrid.Visibility = Visibility.Visible;
-            hostingUnit = new HostingUnit();
-            updateHostingUnitGrid.DataContext = hostingUnit;
+            Identification.Visibility = Visibility.Visible;
+            host = new Host();
+            Identification.DataContext = host;
+            DeleteHostingUnit.IsEnabled = false;
+            UpdateHostingUnit.IsEnabled = false;
+            selectionForDeleteOrUpdate.IsEnabled = false;
         }
         //fonction du boutton addHostingUnit
         private void addHostingUnit(object sender, RoutedEventArgs e)
@@ -121,12 +139,6 @@ namespace WPF_PL
             hostingUnit = new HostingUnit();
             addHostingUnitGrid.DataContext = hostingUnit;
 
-        }
-        //fonction du boutton deleteHostingUnit
-        private void deleteHostingUnit(object sender, RoutedEventArgs e)
-        {
-            proprietaireGrid.Visibility = Visibility.Hidden;
-            mainGrid.Visibility = Visibility.Visible;
         }
         //fonction du boutton return dans le grid proprietaire 
         private void returnFromProprietaireT(object sender, RoutedEventArgs e)
@@ -212,6 +224,11 @@ namespace WPF_PL
         }
 
 
+
+
+
+
+
         /// <summary>
         /// bouttons de la page updateGuestRequest
         /// </summary>
@@ -227,16 +244,8 @@ namespace WPF_PL
 
 
 
-        /// <summary>
-        /// bouttons de la page deleteGuestRequest
-        /// </summary>
-        /// <param name="buttomOfDeleteGuestRequest"></param>
-        /// <param name="e"></param>
-        //fonction du boutton delete dans le grid deleteGuestRequest
-        private void DeleteguestRequest_Click(object sender, RoutedEventArgs e)
-        {
-            bl.deleteGuestRequest(guestRequest.guestRequestKey);
-        }
+
+
 
 
 
@@ -263,43 +272,11 @@ namespace WPF_PL
         }
 
 
-        /// <summary>
-        /// bouttons de la page updateHostingUnit
-        /// </summary>
-        /// <param name="buttomsOfupdateHostingUnit"></param>
-        /// <param name="e"></param>
-        //fonction du boutton return dans le grid addHostingUnit
-        private void returnFromUpdateHostingUnit(object sender, RoutedEventArgs e)
-        {
-            updateHostingUnitGrid.Visibility = Visibility.Hidden;
-            proprietaireGrid.Visibility = Visibility.Visible;
-        }
-        //fonction du boutton send dans la page updateHostingUnit
-        private void SendHostingUnitUpdate_Click(object sender, RoutedEventArgs e)
-        {
-            bl.uptadeHostingUnit(hostingUnit);
-        }
 
 
 
 
-        /// <summary>
-        /// bouttons de la page deleteHostingUnit
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        //fonction du boutton delete dans le grid deleteGuestRequest
-        private void DeleteHosting_Click_1(object sender, RoutedEventArgs e)
-        {
-            bl.deleteHostingUnit(hostingUnit.HostingUnitKey);
-        }
        
-     
-
-
-
-
-
 
 
          /// <summary>
@@ -347,8 +324,7 @@ namespace WPF_PL
             addOrderGrid.Visibility = Visibility.Hidden;
             mainGrid.Visibility = Visibility.Visible;
         }
-
-         private void selection_SelectionChanged(object sender, SelectionChangedEventArgs e)//bon
+        private void selection_SelectionChanged(object sender, SelectionChangedEventArgs e)//bon
         {
             if (selection.Items.Count > 0)
             {
@@ -364,7 +340,6 @@ namespace WPF_PL
             }
             reserved.IsEnabled = true;//enable the button which reserved the hosting unit
         }
-
         private void deleteGuestRequest(object sender, RoutedEventArgs e)//ok
         {
 
@@ -407,13 +382,81 @@ namespace WPF_PL
             mainGrid.Visibility = Visibility.Visible;
         }
 
-       
-       
-        
-        
 
-       
 
-       
+
+        private void IdentifyForContinue(object sender, RoutedEventArgs e)
+        {
+            if (PrivateNameIdentify.Text == "" || FamilyNameIdentify.Text == "" || MailIdentify.Text == "")
+                MessageBox.Show("ERROR!\nYou didn't fill all the fields.", "ERROR", MessageBoxButton.OK, MessageBoxImage.Error);
+            else
+            {
+                list = new List<HostingUnit>();
+                list = (from hostingUnit in bl.getAllHostingUnits()
+                        where hostingUnit.Owner.PrivateName == host.PrivateName
+                        && hostingUnit.Owner.FamilyName == host.FamilyName
+                        && hostingUnit.Owner.MailAddress == host.MailAddress
+                        select hostingUnit).ToList();
+                if (list.Count > 0)
+                {
+                    DeleteHostingUnit.IsEnabled = true;
+                    UpdateHostingUnit.IsEnabled = true;
+                    selectionForDeleteOrUpdate.IsEnabled = true;
+                    for (int i = 0; i < selectionForDeleteOrUpdate.Items.Count; i++)
+                        selectionForDeleteOrUpdate.Items.RemoveAt(i);
+                    foreach (HostingUnit hostingUnit in list)
+                    {
+                        ComboBoxItem item = new ComboBoxItem();
+                        item.Content = hostingUnit.HostingUnitName;
+                        selectionForDeleteOrUpdate.Items.Add(item);
+                    }
+                }
+                
+            }
+        }
+
+        private void selectionForDeleteOrUpdate_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            hostingUnit = new HostingUnit();
+            string name = "";
+            name = ((ComboBoxItem)selectionForDeleteOrUpdate.SelectedItem).Content.ToString();
+            foreach (HostingUnit hosting in list)
+                if (hosting.HostingUnitName == name)
+                {
+                    hostingUnit = hosting;
+                }
+        }
+
+        private void DeleteHostingUnit_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBoxResult result=MessageBox.Show("Are you sure to delete your HostingUnit?", "", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            if (result==MessageBoxResult.Yes)
+                bl.deleteHostingUnit(hostingUnit.HostingUnitKey);
+            MessageBox.Show("Your hostingUnit was deleted!", "", MessageBoxButton.OK, MessageBoxImage.Information);
+            Identification.Visibility = Visibility.Hidden;
+            mainGrid.Visibility = Visibility.Visible;
+        }
+
+
+        private void UpdateHostingUnit_Click(object sender, RoutedEventArgs e)
+        {
+            updateHostingUnitGrid.DataContext = hostingUnit;
+            Identification.Visibility = Visibility.Hidden;
+            updateHostingUnitGrid.Visibility = Visibility.Visible;
+        }
+
+        private void returnFromUpdateHostingUnit(object sender, RoutedEventArgs e)
+        {
+            updateHostingUnitGrid.Visibility = Visibility.Hidden;
+            mainGrid.Visibility = Visibility.Visible;
+        }
+
+        private void SendHostingUnitUpdate_Click(object sender, RoutedEventArgs e)
+        {
+            bl.uptadeHostingUnit(hostingUnit);
+            MessageBox.Show("Your hostingUnit was updated!", "", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+            updateHostingUnitGrid.Visibility = Visibility.Hidden;
+            mainGrid.Visibility = Visibility.Visible;
+        }
     }
 }
