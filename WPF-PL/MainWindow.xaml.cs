@@ -78,7 +78,7 @@ namespace WPF_PL
         {
             mainGrid.Visibility = Visibility.Hidden;
             proprietaireGrid.Visibility = Visibility.Visible;
-            HostingUnit hostingUnit = new HostingUnit();
+            //HostingUnit hostingUnit = new HostingUnit();
         }
         //fonction du boutton administarteur
         private void Administrateur(object sender, RoutedEventArgs e)
@@ -402,8 +402,8 @@ namespace WPF_PL
                     DeleteHostingUnit.IsEnabled = true;
                     UpdateHostingUnit.IsEnabled = true;
                     selectionForDeleteOrUpdate.IsEnabled = true;
-                    for (int i = 0; i < selectionForDeleteOrUpdate.Items.Count; i++)
-                        selectionForDeleteOrUpdate.Items.RemoveAt(i);
+                    //for (int i = 0; i < selectionForDeleteOrUpdate.Items.Count; i++)
+                    //    selectionForDeleteOrUpdate.Items.RemoveAt(i);
                     foreach (HostingUnit hostingUnit in list)
                     {
                         ComboBoxItem item = new ComboBoxItem();
@@ -415,16 +415,19 @@ namespace WPF_PL
             }
         }
 
-        private void selectionForDeleteOrUpdate_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void selectionForDeleteOrUpdateSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            hostingUnit = new HostingUnit();
-            string name = "";
-            name = ((ComboBoxItem)selectionForDeleteOrUpdate.SelectedItem).Content.ToString();
-            foreach (HostingUnit hosting in list)
-                if (hosting.HostingUnitName == name)
-                {
-                    hostingUnit = hosting;
-                }
+            if (selectionForDeleteOrUpdate.Items.Count > 0)
+            {
+                hostingUnit = new HostingUnit();
+                string name = "";
+                name = ((ComboBoxItem)selectionForDeleteOrUpdate.SelectedItem).Content.ToString();
+                foreach (HostingUnit hosting in list)
+                    if (hosting.HostingUnitName == name)
+                    {
+                        hostingUnit = hosting;
+                    }
+            }
         }
 
         private void DeleteHostingUnit_Click(object sender, RoutedEventArgs e)
@@ -443,6 +446,8 @@ namespace WPF_PL
             updateHostingUnitGrid.DataContext = hostingUnit;
             Identification.Visibility = Visibility.Hidden;
             updateHostingUnitGrid.Visibility = Visibility.Visible;
+            for (int i = 0; i < selectionForDeleteOrUpdate.Items.Count; i++)
+                selectionForDeleteOrUpdate.Items.RemoveAt(i);
         }
 
         private void returnFromUpdateHostingUnit(object sender, RoutedEventArgs e)
