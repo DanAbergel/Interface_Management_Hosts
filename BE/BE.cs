@@ -10,9 +10,9 @@ namespace BE
     {
         public enum theType
         {
+           Hotel,
             Zimmer,
-            Hotel,
-            Camping
+            Room
         }
         public enum Area {
             North,
