@@ -367,6 +367,8 @@ namespace BL
                 return false;
             if (!SearchForFreeDates(guestRequest.EntryDate, guestRequest.ReleaseDate, hostingUnit.Diary))
                 return false;
+            if (guestRequest.type != hostingUnit.type)
+                return false;
             return true;
         }
     }

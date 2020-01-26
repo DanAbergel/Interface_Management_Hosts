@@ -44,7 +44,8 @@ namespace DAL
                 childrenAttraction = original.childrenAttraction,
                 succesfulDeals = original.succesfulDeals,
                 occupied = original.occupied,
-                Owner = Clone(original.Owner)
+                Owner = Clone(original.Owner),type=original.type
+
 
             };
 

@@ -25,6 +25,7 @@ namespace BE
         public bool jacuzzi { get; set; }
         public bool childrenAttraction { get; set; }
         public BE.Area area { get; set; }
+        public BE.theType type { get; set; }
         public HostingUnit()
         {
             HostingUnitKey = Configuration.StaticHostingUnitKey++;
