@@ -12,7 +12,7 @@ namespace BE
         {
            Hotel,
             Zimmer,
-            Camping
+            Room
         }
         public enum Area {
             North,

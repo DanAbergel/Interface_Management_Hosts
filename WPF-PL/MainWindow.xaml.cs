@@ -131,6 +131,8 @@ namespace WPF_PL
             UpdateHostingUnit.IsEnabled = false;
             selectionForDeleteOrUpdate.IsEnabled = false;
             identifyButton.IsEnabled = true;
+            for (int i = 0; i < selectionForDeleteOrUpdate.Items.Count; i++)
+                selectionForDeleteOrUpdate.Items.RemoveAt(i);
         }
         //fonction du boutton addHostingUnit
         private void addHostingUnit(object sender, RoutedEventArgs e)
@@ -453,8 +455,8 @@ namespace WPF_PL
             updateHostingUnitGrid.DataContext = hostingUnit;
             Identification.Visibility = Visibility.Hidden;
             updateHostingUnitGrid.Visibility = Visibility.Visible;
-            for (int i = 0; i < selectionForDeleteOrUpdate.Items.Count; i++)
-                selectionForDeleteOrUpdate.Items.RemoveAt(i);
+            //for (int i = 0; i < selectionForDeleteOrUpdate.Items.Count; i++)
+            //    selectionForDeleteOrUpdate.Items.RemoveAt(i);
             comboboxAreaUpdateHostingUnit.SelectedValue=hostingUnit.area;
             typeHostingComboboxUpdate.SelectedValue=hostingUnit.type;
         }
@@ -479,7 +481,7 @@ namespace WPF_PL
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             Identification.Visibility = Visibility.Hidden;
-            proprietaireGrid.Visibility = Visibility.Visible;
+            mainGrid.Visibility = Visibility.Visible;
         }
     }
 }
