@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace BE
 {
-    internal static class Configuration
+    public static class Configuration
     {
         internal static long StaticGuestRequestKey=100000000;
         internal static long StaticHostKey=100000000;
         internal static long StaticHostingUnitKey=100000000;
         internal static long StaticOrder=100000000;
-        internal static double comissionPerDay = 10; 
+        public static double comissionPerDay = 10; 
     }
 }

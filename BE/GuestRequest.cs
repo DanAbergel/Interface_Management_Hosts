@@ -17,9 +17,8 @@ namespace BE
             RegistrationDate = DateTime.Now;
             StatusOfRequest = StatutRequirement.Active;
             canChangeStatusOfRequirement = true;
-            bank = new BankBranch();
         }
-        public long guestRequestKey { get; set; }
+        public long guestRequestKey;
         public Client client { get; set; }
         public StatutRequirement StatusOfRequest { get; set; }
         public bool canChangeStatusOfRequirement { get; set; }

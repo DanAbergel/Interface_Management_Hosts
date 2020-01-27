@@ -44,8 +44,7 @@ namespace DAL
                 childrenAttraction = original.childrenAttraction,
                 succesfulDeals = original.succesfulDeals,
                 occupied = original.occupied,
-                Owner = Clone(original.Owner),type=original.type
-
+                Owner = Clone(original.Owner)
 
             };
 
@@ -78,8 +77,8 @@ namespace DAL
         }
 
         public static Order Clone(this Order original)
-        { 
-            Order target = new Order()
+        {
+            Order target = new Order
             {
                 guestRequest = Clone(original.guestRequest),
                 OrderKey = original.OrderKey,
@@ -113,7 +112,7 @@ namespace DAL
                 FamilyName = orignal.FamilyName,
                 MailAddress = orignal.MailAddress,
                 NumberPhone = orignal.NumberPhone,
-               // bank = Clone(orignal.bank)
+                bank = Clone(orignal.bank)
             };
             return target;
         }

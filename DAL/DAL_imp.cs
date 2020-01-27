@@ -1,4 +1,4 @@
-﻿using System;
+﻿/*using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,8 +12,15 @@ namespace DAL
     {
         public void addGuestRequest(GuestRequest guestRequest)
         {
-            DataSource d1 = new DataSource();
-            DataSource.guestRequests.Add(guestRequest.Clone());
+            if (!GuestRequestExist(guestRequest.guestRequestKey))
+            {
+                DataSource.guestRequests.Add(guestRequest.Clone());
+            }
+
+            else
+                throw new KeyNotFoundException("la requete existe deja");
+
+
         }
 
         public void addHostingUnit(HostingUnit hostingUnit)
@@ -33,7 +40,7 @@ namespace DAL
             DataSource.orders.Add(order.Clone());
         }
 
-        public void deleteHostingUnit(long HostingUnitKey)
+        public void deleteHostingUnit(string HostingUnitKey)
         {
             //verifie si le logement existe pour pouvoir le supprimer
             if (HostingUnitExist(HostingUnitKey))
@@ -49,6 +56,20 @@ namespace DAL
 
         }
 
+        public void deleteOrder(string orderKey)
+        {
+            if (OrderExist(orderKey))
+            {
+                var result = (from Order in DataSource.orders
+                              where Order.OrderKey == orderKey
+                              select Order).First();
+                DataSource.orders.Remove(result);
+            }
+            else
+                throw new KeyNotFoundException("la commande n'existe pas");
+
+        }
+
         public void deleteGuestRequest(long guestRequestKey)
         {
             var result = from guestRequest in DataSource.guestRequests
@@ -57,29 +78,39 @@ namespace DAL
             if (!DataSource.guestRequests.Remove(result.ElementAt(0)))
                 throw new KeyNotFoundException("Error!!!didnt find this GuestRequestKey");
         }
-        public List<BankBranch> GetAllBankAccounts()
+        public IEnumerable<BE.GuestRequest> getAllGuestRequest(Func<BE.GuestRequest, bool> predicate = null)
         {
-            return new List<BankBranch>(DataSource.allBankAccounts);
+            if (predicate == null)
+                return DataSource.guestRequests.AsEnumerable().Select(t => t.Clone());
+            return DataSource.guestRequests.Where(predicate).Select(t => t.Clone());
         }
 
-        public List<GuestRequest> getAllGuestRequest()
+        public IEnumerable<BE.HostingUnit> getAllHostingUnits(Func<BE.HostingUnit, bool> predicate = null)
         {
-            return new List<GuestRequest>(DataSource.guestRequests);
+            if (predicate == null)
+                return DataSource.hostingUnits.AsEnumerable().Select(t => t.Clone());
+            return DataSource.hostingUnits.Where(predicate).Select(t => t.Clone());
         }
 
-        public List<HostingUnit> getAllHostingUnits()
+        public IEnumerable<BE.Order> getAllOrders(Func<BE.Order, bool> predicate = null)
         {
-            return new List<HostingUnit>(DataSource.hostingUnits);
+            if (predicate == null)
+                return DataSource.orders.AsEnumerable().Select(t => t.Clone());
+            return DataSource.orders.Where(predicate).Select(t => t.Clone());
         }
 
-        public List<Order> getAllOrders()
+        public IEnumerable<BE.Host> getAllHost(Func<BE.Host, bool> predicate = null)
         {
-            return new List<Order>(DataSource.orders);
+            if (predicate == null)
+                return DataSource.hosts.AsEnumerable().Select(t => t.Clone());
+            return DataSource.hosts.Where(predicate).Select(t => t.Clone());
         }
 
-        public List<Host> getAllHost()
+        public IEnumerable<BE.BankBranch> GetAllBankAccounts(Func<BE.BankBranch, bool> predicate = null)
         {
-            return new List<Host>(DataSource.hosts);
+            if (predicate == null)
+                return DataSource.allBankAccounts.AsEnumerable().Select(t => t.Clone());
+            return DataSource.allBankAccounts.Where(predicate).Select(t => t.Clone());
         }
 
         public void updateGuestRequest(GuestRequest updateGuestRequest)
@@ -126,7 +157,7 @@ namespace DAL
 
 
 
-        public bool HostingUnitExist(long HostingUnitKey)
+        public bool HostingUnitExist(string HostingUnitKey)
         {
             HostingUnit tmp = (from HostingUnit in DataSource.hostingUnits
                                where HostingUnit.HostingUnitKey == HostingUnitKey
@@ -149,10 +180,10 @@ namespace DAL
 
         }
 
-        public bool OrderExist(long HostingUnitKey)
+        public bool OrderExist(string OrderKey)
         {
             Order tmp = (from Order in DataSource.orders
-                         where Order.OrderKey== HostingUnitKey
+                         where Order.OrderKey == OrderKey
                          select Order).FirstOrDefault();
             if (tmp == default(Order))
                 return false;
@@ -162,7 +193,7 @@ namespace DAL
         }
 
 
-        public HostingUnit GetHostingUnitByID(long HostingUnitKey)
+        public HostingUnit GetHostingUnitByID(string HostingUnitKey)
         {
             if (HostingUnitExist(HostingUnitKey))
             {
@@ -184,7 +215,16 @@ namespace DAL
             throw new KeyNotFoundException("הבקשה לא קיים");
         }
 
-
+        public Order GetOrderByID(string OrderKey)
+        {
+            if (OrderExist(OrderKey))
+            {
+                return (from Order in DataSource.orders
+                        where Order.OrderKey == OrderKey
+                        select new Order()).FirstOrDefault();
+            }
+            throw new KeyNotFoundException("הזמנה לא קיימת");
+        }
 
         public List<HostingUnit> getHostingUnits(Func<HostingUnit, bool> predicate = null)
         {
@@ -193,4 +233,4 @@ namespace DAL
 
     }
 
-}
+}*/

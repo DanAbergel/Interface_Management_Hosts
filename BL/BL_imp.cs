@@ -28,25 +28,23 @@ namespace BL
         } 
         public void addGuestRequest(GuestRequest guestRequest)
         {
-
-                if (guestRequest.EntryDate.CompareTo(guestRequest.EntryDate) > 0)
-                    throw new Exception("Error !!! Entry date is later than release date ");
-                if (guestRequest.EntryDate.CompareTo(guestRequest.ReleaseDate) == 0)
-                    throw new Exception("Error !!! We accept only with at least one day between Entry and Release dates");
-                newDal.addGuestRequest(guestRequest);
-            
+            if (guestRequest.EntryDate.CompareTo(guestRequest.EntryDate) > 0)
+                throw new Exception("Error !!! Entry date is later than release date ");
+            if (guestRequest.EntryDate.CompareTo(guestRequest.ReleaseDate) == 0)
+                throw new Exception("Error !!! We accept only with at least one day between Entry and Release dates");
+            newDal.addGuestRequest(guestRequest);
         }
         public void addOrder(Order order)
         {
+            //if (!SearchForFreeDates(order.guestRequest.EntryDate, order.guestRequest.ReleaseDate, order.hostingUnitReserved.Diary))
+              //  throw new KeyNotFoundException("The demanded dates are not available for this hosting unit");
             newDal.addOrder(order);
-            //assign in the diary new dates occupied
-            assignDatesForAHostingUnit(order.guestRequest.EntryDate, order.guestRequest.ReleaseDate, order.hostingUnitReserved);
         }
 
 
 
         ////implementation de supression
-        public void deleteHostingUnit(long HostingUnitKey)
+        public void deleteHostingUnit(string HostingUnitKey)
         {
             if (newDal.HostingUnitExist(HostingUnitKey))
             {
@@ -98,19 +96,19 @@ namespace BL
 
 
         //implementation de retour de listes
-        public List<HostingUnit> getAllHostingUnits()
+        public IEnumerable<HostingUnit> getAllHostingUnits(Func<HostingUnit,bool> predicate=null)
         {
             return newDal.getAllHostingUnits();
         }
-        public List<GuestRequest> getAllGuestRequest()
+        public IEnumerable<GuestRequest> getAllGuestRequest(Func<GuestRequest,bool> predicate=null)
         {
             return newDal.getAllGuestRequest();
         }
-        public List<Order> getAllOrders()
+        public IEnumerable<BE.Order> getAllOrders(Func<BE.Order, bool> predicate = null)
         {
             return newDal.getAllOrders();
         }
-        public List<BankBranch> GetAllBankAccounts()
+        public IEnumerable<BankBranch> GetAllBankAccounts(Func<BankBranch,bool> predicate=null)
         {
             return newDal.GetAllBankAccounts();
         }
@@ -122,17 +120,18 @@ namespace BL
         ////autres fonctions
         public bool SearchForFreeDates(DateTime Entry, DateTime End, bool[,] Diary)
         {
-            int daysInMonth ;
-            if (Entry.Month==End.Month)
+            int daysInMonth;
+            if (Entry.Month == End.Month)
             {
-                for(int day=Entry.Day;day<End.Day;day++)
+                for (int day = Entry.Day; day < End.Day; day++)
                 {
                     if (!Diary[Entry.Month, day])
                         return false;
                 }
                 return true;//si il n a vu aucun probleme dans les dates
             }
-            else {
+            else
+            {
                 daysInMonth = DateTime.DaysInMonth(Entry.Year, Entry.Month);
                 for (int day = Entry.Day - 1; day < daysInMonth; day++)//verifie le premier mois de la requete
                 {
@@ -152,22 +151,24 @@ namespace BL
 
                 /*seulement si pour l instant il n a trouve aucun probleme il continue a verifier 
                 le dernier mois */
-                for (int day = 0; day < End.Day; day++)
+                daysInMonth = DateTime.DaysInMonth(Entry.Year, End.Month - 1);
+                for (int day = 0; day < daysInMonth; day++)
                 {
                     if (!Diary[End.Month - 1, day])
                         return false;
                 }
                 /*si il n a pas retourne de false jusque maintenant ca veut dire qu'il n'y'a aucun probleme
                  et donc il renvoie une valeur true qui signifie que les dates demandées sont valides */
-                return true; }
+                return true;
+            }
         }
 
-        public Order calculateTotalPriceWithComission(Order order)
+        Order calculateTotalPriceWithComission(Order order)
         {
             double priceForsAdults,priceForChildrens,TotalComission;
             priceForsAdults = order.guestRequest.Adults * order.hostingUnitReserved.pricePerDayPerAdult;
             priceForChildrens = order.guestRequest.Children * order.hostingUnitReserved.pricePerDayPerChild;
-            TotalComission = 10 * differenceBetweenTwoDates(order.guestRequest.EntryDate, order.guestRequest.ReleaseDate);
+            TotalComission = 10 * differnceBetweenTwoDates(order.guestRequest.EntryDate, order.guestRequest.ReleaseDate);
             order.TotalPrice=priceForsAdults+priceForChildrens+TotalComission;
             return order;
         }
@@ -183,7 +184,7 @@ namespace BL
         }
 
         //calcule la difference de dates entre la date d'aujourd'hui et une date de fin
-        public int differenceBetweenTwoDates(DateTime End)
+        public int differnceBetweenTwoDates(DateTime End)
         {
             int difference=0;
             DateTime today = DateTime.Today;
@@ -202,7 +203,7 @@ namespace BL
             return difference;
         }
         //calcule la difference de dates avec une date de debut et une de fin
-        public int differenceBetweenTwoDates(DateTime Begin ,DateTime End)
+        public int differnceBetweenTwoDates(DateTime Begin ,DateTime End)
         {
             int difference = 0;
             int daysInMonth;
@@ -228,9 +229,8 @@ namespace BL
             return difference;
         }
 
-       
 
-        public void assignDatesForAHostingUnit(DateTime Entry,DateTime Exit,HostingUnit unit)
+        public void assignDatesForAHostingUnit(DateTime Entry, DateTime Exit, HostingUnit unit)
         {
             int daysInMonth;
             if (Entry.Month == Exit.Month)
@@ -339,25 +339,33 @@ namespace BL
         {
             throw new NotImplementedException();
         }
-        //verifie pour touts les hostingunits les conditions de compatibilite avec le guestRequest
+
+
+
+        public List<HostingUnit> getHostingUnits(Func<HostingUnit, bool> p)
+        {
+            return newDal.getHostingUnits(p);
+        }
+
+
         public List<HostingUnit> getHostingUnits(GuestRequest guestRequest)
         {
             List<HostingUnit> List = (from hostingUnit in newDal.getAllHostingUnits()
-                                         where verification(hostingUnit, guestRequest)
-                                         select hostingUnit).ToList();
+                                      where verification(hostingUnit, guestRequest)
+                                      select hostingUnit).ToList();
             return List;
         }
 
         //verifie les conditions
-        bool verification(HostingUnit hostingUnit , GuestRequest guestRequest)
+        bool verification(HostingUnit hostingUnit, GuestRequest guestRequest)
         {
             if (guestRequest.area != hostingUnit.area)
                 return false;
-            if (guestRequest.Adults > hostingUnit.capacityAdults)
+            if (guestRequest.Adults < hostingUnit.capacityAdults)
                 return false;
-            if (guestRequest.Children > hostingUnit.capacityChildren)
+            if (guestRequest.Children < hostingUnit.capacityChildren)
                 return false;
-            if (guestRequest.ChildrenAttractions==BE.BE.Criterion.Necessary&&!hostingUnit.childrenAttraction)
+            if (guestRequest.ChildrenAttractions == BE.BE.Criterion.Necessary && !hostingUnit.childrenAttraction)
                 return false;
             if (guestRequest.Garden == BE.BE.Criterion.Necessary && !hostingUnit.garden)
                 return false;
@@ -366,8 +374,6 @@ namespace BL
             if (guestRequest.Jacuzzi == BE.BE.Criterion.Necessary && !hostingUnit.jacuzzi)
                 return false;
             if (!SearchForFreeDates(guestRequest.EntryDate, guestRequest.ReleaseDate, hostingUnit.Diary))
-                return false;
-            if (guestRequest.type != hostingUnit.type)
                 return false;
             return true;
         }

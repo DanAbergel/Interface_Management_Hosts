@@ -13,21 +13,23 @@ namespace BL
             #region fonctions logement    
 
             void addHostingUnit(HostingUnit hostingUnit);
-            void deleteHostingUnit(long HostingUnitKey);
+            void deleteHostingUnit(string HostingUnitKey);
             void uptadeHostingUnit(HostingUnit updateHostingUnit);
-            List<HostingUnit> getAllHostingUnits();
-            HostingUnit GetHostingUnitByID(long ID);
+            //List<HostingUnit> getAllHostingUnits();
             List<HostingUnit> getHostingUnits(GuestRequest guestRequest);
+            List<HostingUnit> getHostingUnits(Func<HostingUnit, bool> p);
+            HostingUnit GetHostingUnitByID(long ID);
+            IEnumerable<BE.HostingUnit> getAllHostingUnits(Func<BE.HostingUnit, bool> predicate = null);
 
 
         #endregion
 
-            #region fonctions requete
+        #region fonctions requete
 
-            void addGuestRequest(GuestRequest guestRequest);
+             void addGuestRequest(GuestRequest guestRequest);
             void deleteGuestRequest(long guestRequestKey);
             void updateGuestRequest(GuestRequest updateGuestRequest);
-            List<GuestRequest> getAllGuestRequest();
+             IEnumerable<BE.GuestRequest> getAllGuestRequest(Func<BE.GuestRequest, bool> predicate = null);
             GuestRequest GetGuestRequestByID(long ID);
             #endregion
 
@@ -35,20 +37,19 @@ namespace BL
 
             void addOrder(Order order);
             void updateOrder(Order updateOrder);
-            Order calculateTotalPriceWithComission(Order order);
-            List<Order> getAllOrders();
+            IEnumerable<BE.Order> getAllOrders(Func<BE.Order, bool> predicate = null);
 
-            #endregion
+        #endregion
 
-            #region liste des comptes bancaires
+        #region liste des comptes bancaires
 
-            List<BankBranch> GetAllBankAccounts();
+        IEnumerable<BE.BankBranch> GetAllBankAccounts(Func<BE.BankBranch, bool> predicate = null);
 
-            #endregion
-    
-            #region fonction grouping
+        #endregion
 
-            IEnumerable<IGrouping<BE.BE.Area,GuestRequest>> GetRequestByArea();
+        #region fonction grouping
+
+        IEnumerable<IGrouping<BE.BE.Area,GuestRequest>> GetRequestByArea();
             IEnumerable<IGrouping<int, GuestRequest>> GetRequestByTotalVacationers();
             IEnumerable<IGrouping<int, Host>> GetHostByNumOfHostingUnit(bool sorted= false);
             IEnumerable<IGrouping<BE.BE.Area, HostingUnit>> GetHostingUnitByArea();

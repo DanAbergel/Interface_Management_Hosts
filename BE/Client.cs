@@ -8,12 +8,17 @@ namespace BE
 {
     public class Client
     {
-        public string ID { get; set; }
+        public Client()
+        {
+            bank = new BankBranch();
+        }
+
+        public long ID { get; set; }
         public string PrivateName { get; set; }
         public string FamilyName { get; set; }
         public string MailAddress { get; set; }
         public string NumberPhone { get; set; }
-        public BankBranch bank;
+        public BankBranch bank { get; set; }
         public override string ToString()
         {
             string str="";

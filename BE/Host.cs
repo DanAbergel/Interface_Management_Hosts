@@ -16,6 +16,7 @@ namespace BE
         public BankBranch Account { get; set; }
         public bool CollectionClearance { get; set; }
         public int numOfHostingUnit { get; set; }
+
         public Host()
         {
             Account = new BankBranch();
@@ -30,7 +31,7 @@ namespace BE
         
        
     }
-    }
+}
     
         
         
