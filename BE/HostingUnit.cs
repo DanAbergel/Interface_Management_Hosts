@@ -47,7 +47,7 @@ namespace BE
             if(BE.Area.Jerusalem == area)
             str += "Area: Jerusalem";
             if(BE.Area.North == area)
-            str += "Area: North";
+            str += "Area: North"; 
             if(BE.Area.South == area)
             str += "Area: South";
             if (pool || garden || jacuzzi || childrenAttraction)
