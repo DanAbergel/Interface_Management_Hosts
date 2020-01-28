@@ -36,6 +36,7 @@ namespace WPF_PL
         Host host;
         List<HostingUnit> list;
         string str = "";
+        bool entry;
         int size = 0;
         int verifyifAddOrUpdate = 0;
         
@@ -129,8 +130,10 @@ namespace WPF_PL
             UpdateHostingUnit.IsEnabled = false;
             selectionForDeleteOrUpdate.IsEnabled = false;
             identifyButton.IsEnabled = true;
-            for (int i = 0; i < selectionForDeleteOrUpdate.Items.Count; i++)
-                selectionForDeleteOrUpdate.Items.RemoveAt(i);
+            //the bool entry2 is for dont access to the func of selectionchanged
+            entry = false;
+            selectionForDeleteOrUpdate.Items.Clear();
+            entry = true;//for dont entry in selection function
         }
 
 
@@ -184,9 +187,10 @@ namespace WPF_PL
         {
             try
             {
-                for (int i = 0; i < selection.Items.Count; i++)
-                    selection.Items.RemoveAt(i);
-
+                //size = selection.Items.Count;
+                //for (int i = 0; i < size; i++)
+                //    selection.Items.RemoveAt(i);
+                selection.Items.Clear();
                 if (verifyifAddOrUpdate == 0)
                 {
                     guestRequest.area = (BE.BE.Area)comboboxArea.SelectedValue;
@@ -467,6 +471,7 @@ namespace WPF_PL
 
         private void IdentifyForContinue(object sender, RoutedEventArgs e)
         {
+            try { 
             if (PrivateNameIdentify.Text == "" || FamilyNameIdentify.Text == "" || MailIdentify.Text == "")
                 MessageBox.Show("ERROR!\nYou didn't fill all the fields.", "ERROR", MessageBoxButton.OK, MessageBoxImage.Error);
             else
@@ -477,30 +482,34 @@ namespace WPF_PL
                         && hostingUnit.Owner.FamilyName == host.FamilyName
                         && hostingUnit.Owner.MailAddress == host.MailAddress
                         select hostingUnit).ToList();
-                if (list.Count > 0)
-                {
-                    DeleteHostingUnit.IsEnabled = true;
-                    UpdateHostingUnit.IsEnabled = true;
-                    selectionForDeleteOrUpdate.IsEnabled = true;
-                    //for (int i = 0; i < selectionForDeleteOrUpdate.Items.Count; i++)
-                    //    selectionForDeleteOrUpdate.Items.RemoveAt(i);
-                    foreach (HostingUnit hostingUnit in list)
+                    if (list.Count > 0)
                     {
-                        ComboBoxItem item = new ComboBoxItem();
-                        item.Content = hostingUnit.HostingUnitName;
-                        selectionForDeleteOrUpdate.Items.Add(item);
+                        DeleteHostingUnit.IsEnabled = true;
+                        UpdateHostingUnit.IsEnabled = true;
+                        selectionForDeleteOrUpdate.IsEnabled = true;
+                        //for (int i = 0; i < selectionForDeleteOrUpdate.Items.Count; i++)
+                        //    selectionForDeleteOrUpdate.Items.RemoveAt(i);
+                        foreach (HostingUnit hostingUnit in list)
+                        {
+                            ComboBoxItem item = new ComboBoxItem();
+                            item.Content = hostingUnit.HostingUnitName;
+                            selectionForDeleteOrUpdate.Items.Add(item);
+                        }
+                        identifyButton.IsEnabled = false;
                     }
-                    identifyButton.IsEnabled = false;
+           
                 }
 
+            }catch(Exception message)
+            {
+                MessageBox.Show(message.Message, "ERROR", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
         private void selectionForDeleteOrUpdateSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (selectionForDeleteOrUpdate.Items.Count > 0)
+            if (entry)
             {
-                //hostingUnit = new HostingUnit();
                 string name = "";
                 name = ((ComboBoxItem)selectionForDeleteOrUpdate.SelectedItem).Content.ToString();
                 foreach (HostingUnit hosting in list)
