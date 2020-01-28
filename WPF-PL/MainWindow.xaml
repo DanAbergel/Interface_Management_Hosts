@@ -337,7 +337,7 @@
 
 
 
-        <Grid Name="addHostingUnitGrid" Visibility="Visible">
+        <Grid Name="addHostingUnitGrid" Visibility="Hidden">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
@@ -412,7 +412,7 @@
 
         </Grid>
 
-        <Grid Name="updateHostingUnitGrid" Visibility="Hidden">
+        <Grid Name="updateHostingUnitGrid" Visibility="Visible">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
@@ -435,46 +435,54 @@
 
 
             </Grid.ColumnDefinitions>
-            <!--<Grid.Background>
-                <ImageBrush ImageSource="D:\Belles Images\images (4).jfif" Stretch="UniformToFill"/>
-            </Grid.Background>-->
-            <TextBlock Name="namePrivateHostUpdateTxt" Text="שם פרטי"  HorizontalAlignment="Center"   VerticalAlignment="Center"  FontFamily="David" FontWeight="ExtraBlack" FontSize="18" Grid.Row="1" Grid.Column="5"/>
-            <TextBox Name="PrivateNameHostUpdateTxtBox" Text="{Binding Path=Owner.PrivateName, Mode=TwoWay}" HorizontalAlignment="Center" Height="20"   VerticalAlignment="Center" Width="120" Grid.Row="1" Grid.Column="4" />
-            <TextBlock Name="FamilyNameHostUpdateTxt" Text="שם משפחה"  HorizontalAlignment="Center"    VerticalAlignment="Center"  FontFamily="David" FontWeight="ExtraBlack" FontSize="18" Grid.Row="2" Grid.Column="5"/>
-            <TextBox Name="FamilyNameHostUpdateTxtBox" Text="{Binding Path=Owner.FamilyName, Mode=TwoWay}" HorizontalAlignment="Center" Height="20"   VerticalAlignment="Center" Width="120" Grid.Row="2" Grid.Column="4"/>
-            <TextBlock Name="TitreDroitHostUpdate" FontFamily="David" FontStyle="Italic" Foreground="DarkSalmon" FontWeight="ExtraLight"  FontSize="30" Text="פרטי התקשרות" HorizontalAlignment="Center"  TextWrapping="Wrap"  VerticalAlignment="Center" Grid.Row="0" Grid.Column="4" Grid.ColumnSpan="2"  />
-            <TextBlock Name="MailHostUpdateTxt" Text="כתובת מייל" HorizontalAlignment="Center"   VerticalAlignment="Center" FontFamily="David" FontWeight="ExtraBlack" FontSize="18" Grid.Row="3" Grid.Column="5"/>
-            <TextBox Name="MailHostUpdateTxtBox" Text="{Binding Path=Owner.MailAddress, Mode=TwoWay}" HorizontalAlignment="Center" Height="20" VerticalAlignment="Center" Width="120" Grid.Row="3" Grid.Column="4"/>
-            <TextBlock Name="TelHostUpdateTxt" Text="מספר טלפון" Height="20" HorizontalAlignment="Center"  VerticalAlignment="Center" FontFamily="David" FontWeight="ExtraBlack" FontSize="18" Grid.Row="4" Grid.Column="5"/>
-            <TextBox Name="TelHostUpdateTxtBox" Text="{Binding Path=Owner.PhoneNumber, Mode=TwoWay}" HorizontalAlignment="Center" Height="20"  VerticalAlignment="Center" Width="120" Grid.Row="4" Grid.Column="4"/>
-            <CheckBox Name="poolCheckHostUpdate" IsChecked="{Binding Path=pool, Mode=TwoWay}" Content="בריכה" FontFamily="David"  FontWeight="ExtraBlack" FontSize="16" HorizontalAlignment="Center"  VerticalAlignment="Center" Grid.Row="5" Grid.Column="2" Grid.ColumnSpan="2" />
-            <CheckBox Name="gardenCheckHostUpdate" IsChecked="{Binding Path=garden, Mode=TwoWay}" Content="גינה" FontFamily="David"  FontWeight="ExtraBlack" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center"  Grid.Row="6" Grid.Column="2" Grid.ColumnSpan="2"/>
-            <CheckBox Name="attractionsCheckHostUpdate" IsChecked="{Binding Path=childrenAttraction, Mode=TwoWay}" Content="אטרקציות לילדים" FontFamily="David"  FontWeight="ExtraBlack" FontSize="16" HorizontalAlignment="Center"  VerticalAlignment="Center"  Grid.Row="7" Grid.Column="2" Grid.ColumnSpan="2" />
-            <CheckBox Name="jacuzziCheckHostUpdate" IsChecked="{Binding Path=jacuzzi, Mode=TwoWay}" Content="ג'קוזי"  FontFamily="David"  FontWeight="ExtraBlack" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center"  Grid.Row="8" Grid.Column="2" Grid.ColumnSpan="2"/>
-            <TextBlock Name="TitreGaucheHostUpdate" Text="פרטי היחידה" FontFamily="David" FontStyle="Italic" Foreground="DarkSalmon" FontWeight="ExtraLight"  FontSize="30" HorizontalAlignment="Center" VerticalAlignment="Center"  Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" Grid.RowSpan="2" />
-            <TextBlock Name="numChildrenHostTxtUpdate" Text="קיבולת ילדים" FontFamily="David" FontWeight="ExtraBlack" FontSize="16" HorizontalAlignment="Left"  VerticalAlignment="Center" Grid.Row="6" Grid.Column="1"/>
-            <TextBox Name="ChildrenHostingUpdateTxtBox" Text="{Binding Path=capacityChildren, Mode=TwoWay}" HorizontalAlignment="Center"  VerticalAlignment="Center" Width="56" Grid.Row="6" Grid.Column="0" Margin="29,14.2,47.8,14.2"  />
-            <TextBlock Name="numAdultsHostingUpdateTxt" Text="קיבולת מבוגרים" FontFamily="David" FontWeight="ExtraBlack" FontSize="16" HorizontalAlignment="Left"  VerticalAlignment="Center" Height="19" Grid.Row="5" Grid.Column="1"/>
-            <TextBox Name="AdultsHostingUpdateTxtBox" Text="{Binding Path=capacityAdults, Mode=TwoWay}" HorizontalAlignment="Center"  VerticalAlignment="Center" Width="54"  Grid.Row="5" Grid.Column="0" Margin="31,14.6,47.8,14.8" />
-            <Button Name="returnButton5" Content="חזור" HorizontalAlignment="Center"  VerticalAlignment="Center" Width="75" FontSize="18" FontFamily="David" Background="Aquamarine" Foreground="Green" FontWeight="UltraBold" Grid.Row="0" Grid.Column="0" Click="returnFromUpdateHostingUnit"/>
-            <Button  Name="SendHostingUnitUpdate" IsEnabled="{Binding ElementName=clearanceUpdateCheckbox, Path=IsChecked}"  Content="עדכן"  Grid.Column="4"   HorizontalAlignment="Center" Grid.Row="8" VerticalAlignment="Center" Width="75" FontFamily="David" Background="Aquamarine" FontSize="18" FontWeight="UltraBold" Foreground="Green" Click="SendHostingUnitUpdate_Click" />
-            <TextBlock Name="AreaHostingUnitUpdateTxt" Grid.Column="1" HorizontalAlignment="Left" Grid.Row="7" TextWrapping="Wrap" Text="איזור בארץ" VerticalAlignment="Center" FontSize="16" FontFamily="David" FontWeight="ExtraBlack"/>
-            <ComboBox Name="comboboxAreaUpdateHostingUnit" HorizontalAlignment="Center"  Grid.Row="7" VerticalAlignment="Center" Width="70"/>
-            <TextBlock Name="NameHostingUnitUpdate" Text="שם היחידה" FontFamily="David" FontSize="16" FontWeight="ExtraBlack" Grid.Column="3" HorizontalAlignment="Left"  Grid.Row="2" TextWrapping="Wrap"  VerticalAlignment="Center" />
-            <TextBox Name="NameHostingUnitUpdateTxtBox" Text="{Binding Path=HostingUnitName, Mode=TwoWay}"   Grid.ColumnSpan="2" Grid.Column="2" HorizontalAlignment="Left" Height="23" Grid.Row="2" TextWrapping="Wrap"  VerticalAlignment="Center" Width="120"/>
-            <TextBlock Name="addressHostingUnitUpdate" Text="כתובת היחידה" FontFamily="David" FontSize="16" FontWeight="ExtraBlack" Grid.Column="1" HorizontalAlignment="Left"  Grid.Row="2" TextWrapping="Wrap"  VerticalAlignment="Center"/>
-            <TextBox Name="addressHostingUnitUpdateTxtbox" Text="{Binding Path=address, Mode=TwoWay}"  Grid.Column="0" HorizontalAlignment="Center" Height="23"  Grid.Row="2" TextWrapping="Wrap"  VerticalAlignment="Center" Width="120"/>
-            <TextBlock Name="numAdultsMaxUpdateTxt" Text="מחיר למבוגר" FontFamily="David" FontSize="16" FontWeight="ExtraBlack" Grid.Column="3" HorizontalAlignment="Left"  Grid.Row="3"  TextWrapping="Wrap"  VerticalAlignment="Center"/>
-            <TextBox Name="priceAdultsMaxUpdateTxtbox" Text="{Binding Path=pricePerDayPerAdult}" Grid.ColumnSpan="2" Grid.Column="2" HorizontalAlignment="Left" Height="23"  Grid.Row="3"  TextWrapping="Wrap"  VerticalAlignment="Center" Width="120"/>
-            <TextBlock Name="numChildrenMaxUpdateTxt" Text="מחיר לילד" FontFamily="David" FontSize="16" FontWeight="ExtraBlack" Grid.Column="1" HorizontalAlignment="Left"  Grid.Row="3" TextWrapping="Wrap" VerticalAlignment="Center"/>
-            <TextBox Name="priceChildrenMaxUpdateTxtbox" Text="{Binding Path=pricePerDayPerChild}" HorizontalAlignment="Center" Height="23" Grid.Row="3"  TextWrapping="Wrap"  VerticalAlignment="Center" Width="120"/>
-            <CheckBox Name="clearanceUpdateCheckbox" IsChecked="{Binding Path=Owner.CollectionClearance, Mode=TwoWay}" Content="אישור גבייה" FontSize="17" FontWeight="ExtraBlack" FontFamily="David" Grid.Column="5" HorizontalAlignment="Center" Grid.Row="7" VerticalAlignment="Center"/>
-            <TextBlock  Name="theTypeHostingUpdate" Grid.Column="1" HorizontalAlignment="Left" FontFamily="David" FontSize="16" FontWeight="ExtraBlack"  Grid.Row="8"  Text="סוג האירוח" VerticalAlignment="Center"/>
-            <ComboBox Name="typeHostingComboboxUpdate" HorizontalAlignment="Center" Grid.Row="8" VerticalAlignment="Center" Width="70" />
-            <TextBlock Name="bankNameUpdate" Grid.Column="5" HorizontalAlignment="Center"  Grid.Row="5"  Text="שם הבנק" FontFamily="David" FontSize="18" FontWeight="ExtraBlack" VerticalAlignment="Center"  />
-            <TextBlock Name="accountNumberUpdate" Grid.Column="5" HorizontalAlignment="Center"  Grid.Row="6"  FontFamily="David" FontSize="18" FontWeight="ExtraBlack" VerticalAlignment="Center" Text="מספר חשבון"  />
-            <TextBox Name="bankNmeTxtboxUpdate" Text="{Binding Path=Owner.Account.BankName, Mode=TwoWay}" Grid.Column="4" HorizontalAlignment="Center" Height="23"  Grid.Row="5"   VerticalAlignment="Center" Width="120"/>
-            <TextBox Name="accountNumberUpdateTxtbox" Text="{Binding Path=Owner.Account.BankNumber, Mode=TwoWay}" Grid.Column="4" HorizontalAlignment="Left" Height="23" Margin="7.4,11.2,0,0" Grid.Row="6" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+            <Grid.Background>
+                <ImageBrush ImageSource="https://s1.best-wallpaper.net/wallpaper/m/1110/Blue-and-green-abstract-space-curve_m.webp" Stretch="UniformToFill"/>
+            </Grid.Background>
+            <TextBlock Name="namePrivateHostUpdateTxt" Text="שם פרטי"  HorizontalAlignment="Left"   VerticalAlignment="Center"  FontFamily="David" FontWeight="ExtraBlack" FontSize="23" Grid.Row="1" Grid.Column="5"/>
+            <TextBox Name="PrivateNameHostUpdateTxtBox" Text="{Binding Path=Owner.PrivateName, Mode=TwoWay}" HorizontalAlignment="Center" Height="30"   VerticalAlignment="Center" Width="150" Grid.Row="1" Grid.Column="4" />
+            <TextBlock Name="FamilyNameHostUpdateTxt" Text="שם משפחה"  HorizontalAlignment="Left"    VerticalAlignment="Center"  FontFamily="David" FontWeight="ExtraBlack" FontSize="23" Grid.Row="2" Grid.Column="5"/>
+            <TextBox Name="FamilyNameHostUpdateTxtBox" Text="{Binding Path=Owner.FamilyName, Mode=TwoWay}" HorizontalAlignment="Center" Height="30"   VerticalAlignment="Center" Width="150" Grid.Row="2" Grid.Column="4"/>
+            <TextBlock Name="TitreDroitHostUpdate" FontFamily="David" FontStyle="Italic" Foreground="DarkSalmon" FontWeight="ExtraBlack"  FontSize="40" Text="פרטי התקשרות" HorizontalAlignment="Center"   VerticalAlignment="Bottom" Grid.Row="0" Grid.Column="4"   />
+            <TextBlock Name="MailHostUpdateTxt" Text="כתובת מייל" HorizontalAlignment="Left"   VerticalAlignment="Center" FontFamily="David" FontWeight="ExtraBlack" FontSize="23" Grid.Row="3" Grid.Column="5"/>
+            <TextBox Name="MailHostUpdateTxtBox" Text="{Binding Path=Owner.MailAddress, Mode=TwoWay}" HorizontalAlignment="Center" Height="30" VerticalAlignment="Center" Width="150" Grid.Row="3" Grid.Column="4"/>
+            <TextBlock Name="TelHostUpdateTxt" Text="מספר טלפון" Height="20" HorizontalAlignment="Left"  VerticalAlignment="Center" FontFamily="David" FontWeight="ExtraBlack" FontSize="23" Grid.Row="4" Grid.Column="5"/>
+            <TextBox Name="TelHostUpdateTxtBox" Text="{Binding Path=Owner.PhoneNumber, Mode=TwoWay}" HorizontalAlignment="Center" Height="30"  VerticalAlignment="Center" Width="150" Grid.Row="4" Grid.Column="4"/>
+            <CheckBox Name="poolCheckHostUpdate" IsChecked="{Binding Path=pool, Mode=TwoWay}" Content="בריכה" FontFamily="David"  FontWeight="ExtraBlack" FontSize="23" HorizontalAlignment="Left"  VerticalAlignment="Center" Grid.Row="7" Grid.Column="3"   />
+            <CheckBox Name="gardenCheckHostUpdate" IsChecked="{Binding Path=garden, Mode=TwoWay}" Content="גינה" FontFamily="David"  FontWeight="ExtraBlack" FontSize="23" HorizontalAlignment="Left" VerticalAlignment="Center"  Grid.Row="8" Grid.Column="1" />
+            <CheckBox Name="attractionsCheckHostUpdate" IsChecked="{Binding Path=childrenAttraction, Mode=TwoWay}" Content="אטרקציות לילדים" FontFamily="David"  FontWeight="ExtraBlack" FontSize="23" HorizontalAlignment="Left"  VerticalAlignment="Center"  Grid.Row="7" Grid.Column="1"  />
+            <CheckBox Name="jacuzziCheckHostUpdate" IsChecked="{Binding Path=jacuzzi, Mode=TwoWay}" Content="ג'קוזי"  FontFamily="David"  FontWeight="ExtraBlack" FontSize="23" HorizontalAlignment="Left" VerticalAlignment="Center"  Grid.Row="8" Grid.Column="3"/>
+            <TextBlock Name="TitreGaucheHostUpdate" Text="פרטי היחידה" FontFamily="David" FontStyle="Italic" Foreground="DarkSalmon"  FontWeight="ExtraBlack"  FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Bottom"  Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" />
+            <TextBlock Name="numChildrenHostTxtUpdate" Text="קיבולת ילדים" FontFamily="David" FontWeight="ExtraBlack" FontSize="23" HorizontalAlignment="Left"  VerticalAlignment="Center" Grid.Row="6" Grid.Column="1"/>
+            <TextBox Name="ChildrenHostingUpdateTxtBox" Text="{Binding Path=capacityChildren, Mode=TwoWay}" HorizontalAlignment="Center"  VerticalAlignment="Center" Width="150" Height="30" Grid.Row="6" Grid.Column="0" />
+            <TextBlock Name="numAdultsHostingUpdateTxt" Text="קיבולת מבוגרים" FontFamily="David" FontWeight="ExtraBlack" FontSize="23" HorizontalAlignment="Left"  VerticalAlignment="Center" Height="30" Grid.Row="5" Grid.Column="1"/>
+            <TextBox Name="AdultsHostingUpdateTxtBox" Text="{Binding Path=capacityAdults, Mode=TwoWay}" HorizontalAlignment="Center"  VerticalAlignment="Center" Width="150" Height="30"  Grid.Row="5" Grid.Column="0"  />
+            <Button Name="returnButton5" Content="חזור" HorizontalAlignment="Center"  VerticalAlignment="Center" Width="110" Height="30" FontSize="23" FontFamily="David" Background="Aquamarine" Foreground="Green" FontWeight="UltraBold" Grid.Row="0" Grid.Column="0" Click="returnFromUpdateHostingUnit">
+                <Button.Effect>
+                    <DropShadowEffect/>
+                </Button.Effect>
+            </Button>
+            <Button  Name="SendHostingUnitUpdate" IsEnabled="{Binding ElementName=clearanceUpdateCheckbox, Path=IsChecked}"  Content="עדכן"  Grid.Column="5"   HorizontalAlignment="Center" Grid.Row="8" VerticalAlignment="Center" Width="110" Height="30" FontFamily="David" Background="Aquamarine" FontSize="23" FontWeight="UltraBold" Foreground="Green" Click="SendHostingUnitUpdate_Click" >
+                <Button.Effect>
+                    <DropShadowEffect/>
+                </Button.Effect>
+            </Button>
+            <TextBlock Name="AreaHostingUnitUpdateTxt" Grid.Column="3" HorizontalAlignment="Left" Grid.Row="5" Text="איזור בארץ" VerticalAlignment="Center" FontSize="23" FontFamily="David" FontWeight="ExtraBlack" />
+            <ComboBox Name="comboboxAreaUpdateHostingUnit" HorizontalAlignment="Center"  Grid.Row="5" VerticalAlignment="Center" Width="150" Height="30" Grid.Column="2" />
+            <TextBlock Name="NameHostingUnitUpdate" Text="שם היחידה" FontFamily="David" FontSize="23" FontWeight="ExtraBlack" Grid.Column="3" HorizontalAlignment="Left"  Grid.Row="2"   VerticalAlignment="Center" />
+            <TextBox Name="NameHostingUnitUpdateTxtBox" Text="{Binding Path=HostingUnitName, Mode=TwoWay}"    Grid.Column="2" HorizontalAlignment="Center" Height="30" Grid.Row="2" TextWrapping="Wrap"  VerticalAlignment="Center" Width="150"/>
+            <TextBlock Name="addressHostingUnitUpdate" Text="כתובת היחידה" FontFamily="David" FontSize="23" FontWeight="ExtraBlack" Grid.Column="1" HorizontalAlignment="Left"  Grid.Row="2" TextWrapping="Wrap"  VerticalAlignment="Center"/>
+            <TextBox Name="addressHostingUnitUpdateTxtbox" Text="{Binding Path=address, Mode=TwoWay}"  Grid.Column="0" HorizontalAlignment="Center" Height="30"  Grid.Row="2" TextWrapping="Wrap"  VerticalAlignment="Center" Width="150"/>
+            <TextBlock Name="numAdultsMaxUpdateTxt" Text="מחיר למבוגר" FontFamily="David" FontSize="23" FontWeight="ExtraBlack" Grid.Column="3" HorizontalAlignment="Left"  Grid.Row="3"  TextWrapping="Wrap"  VerticalAlignment="Center"/>
+            <TextBox Name="priceAdultsMaxUpdateTxtbox" Text="{Binding Path=pricePerDayPerAdult}"  Grid.Column="2" HorizontalAlignment="Center" Height="30"  Grid.Row="3"  TextWrapping="Wrap"  VerticalAlignment="Center" Width="150"/>
+            <TextBlock Name="numChildrenMaxUpdateTxt" Text="מחיר לילד" FontFamily="David" FontSize="23" FontWeight="ExtraBlack" Grid.Column="1" HorizontalAlignment="Left"  Grid.Row="3" TextWrapping="Wrap" VerticalAlignment="Center"/>
+            <TextBox Name="priceChildrenMaxUpdateTxtbox" Text="{Binding Path=pricePerDayPerChild}" HorizontalAlignment="Center" Height="30" Grid.Row="3"  TextWrapping="Wrap"  VerticalAlignment="Center" Width="150"/>
+            <CheckBox Name="clearanceUpdateCheckbox" IsChecked="{Binding Path=Owner.CollectionClearance, Mode=TwoWay}" Content="אישור גבייה" FontSize="23" FontWeight="ExtraBlack" FontFamily="David" Grid.Column="5" HorizontalAlignment="Left" Grid.Row="7" VerticalAlignment="Center"/>
+            <TextBlock  Name="theTypeHostingUpdate" Grid.Column="3" HorizontalAlignment="Left" FontFamily="David" FontSize="23" FontWeight="ExtraBlack"  Grid.Row="6"  Text="סוג האירוח" VerticalAlignment="Center" />
+            <ComboBox Name="typeHostingComboboxUpdate" HorizontalAlignment="Center" Grid.Row="6" VerticalAlignment="Center" Width="150" Height="30" Grid.Column="2"  />
+            <TextBlock Name="bankNameUpdate" Grid.Column="5" HorizontalAlignment="Left"  Grid.Row="5"  Text="שם הבנק" FontFamily="David" FontSize="23" FontWeight="ExtraBlack" VerticalAlignment="Center"  />
+            <TextBlock Name="accountNumberUpdate" Grid.Column="5" HorizontalAlignment="Left"  Grid.Row="6"  FontFamily="David" FontSize="23" FontWeight="ExtraBlack" VerticalAlignment="Center" Text="מספר חשבון"  />
+            <TextBox Name="bankNameTxtboxUpdate" Text="{Binding Path=Owner.Account.BankName, Mode=TwoWay}" Grid.Column="4" HorizontalAlignment="Center" Height="30"   Grid.Row="5"   VerticalAlignment="Center" Width="150"/>
+            <TextBox Name="accountNumberUpdateTxtbox" Text="{Binding Path=Owner.Account.BankNumber, Mode=TwoWay}" Grid.Column="4" HorizontalAlignment="Center" Height="30"  Grid.Row="6"  VerticalAlignment="Center" Width="150"/>
 
 
 
