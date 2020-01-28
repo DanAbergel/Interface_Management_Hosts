@@ -1,4 +1,4 @@
-﻿/*using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -49,7 +49,7 @@ namespace DAL
                               where HostingUnit.HostingUnitKey == HostingUnitKey
                               select HostingUnit).First();
                 DataSource.hostingUnits.Remove(result);
-                   
+
             }
             else//si il ne le trouve pas 
                 throw new KeyNotFoundException("le logement n'existe pas");
@@ -233,4 +233,4 @@ namespace DAL
 
     }
 
-}*/
+}

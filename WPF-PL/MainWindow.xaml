@@ -202,7 +202,7 @@
 
 
 
-        <Grid Name="addGuestRequestGrid" Visibility="Hidden"  >
+        <Grid Name="addGuestRequestGrid" Visibility="Hidden" Margin="-10,-16,9.6,15.4"  >
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
@@ -229,7 +229,7 @@
                 <ImageBrush ImageSource="https://cdn.pixabay.com/photo/2017/01/20/00/30/maldives-1993704_960_720.jpg" Stretch="UniformToFill"/>
             </Grid.Background>
             <TextBlock Name="namePrivateTxt" Text="שם פרטי"   HorizontalAlignment="Center"   VerticalAlignment="Center"  FontFamily="David" FontWeight="ExtraBlack" FontSize="18" Grid.Row="2" Grid.Column="5"/>
-            <TextBox Name="PrivateNameTxtBox" Text="{Binding Path=client.PrivateName}" HorizontalAlignment="Center" Height="20"   VerticalAlignment="Center" Width="120" Grid.Row="2" Grid.Column="4" />
+            <TextBox Name="PrivateNameTxtBox" Text="{Binding Path=client.PrivateName}" HorizontalAlignment="Center" Height="20"   VerticalAlignment="Center" Width="120" Grid.Row="2" Grid.Column="4"  />
             <TextBlock Name="FamilyNameTxt" Text="שם משפחה"  HorizontalAlignment="Center"    VerticalAlignment="Center"  FontFamily="David" FontWeight="ExtraBlack" FontSize="18" Grid.Row="3" Grid.Column="5"/>
             <TextBox Name="FamilyNameTxtBox" Text="{Binding Path=client.FamilyName}"  HorizontalAlignment="Center" Height="20"   VerticalAlignment="Center" Width="120" Grid.Row="3" Grid.Column="4"/>
             <TextBlock Name="TitreDroit" FontFamily="David" FontStyle="Italic" Foreground="DarkSalmon" FontWeight="ExtraLight"  FontSize="30" Text="פרטי התקשרות" HorizontalAlignment="Center"  TextWrapping="Wrap"  VerticalAlignment="Center" Grid.Row="0" Grid.Column="4" Grid.ColumnSpan="2" Grid.RowSpan="2" />

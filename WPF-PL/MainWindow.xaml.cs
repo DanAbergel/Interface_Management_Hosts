@@ -515,8 +515,10 @@ namespace WPF_PL
         {
             MessageBoxResult result = MessageBox.Show("Are you sure to delete your HostingUnit?", "", MessageBoxButton.YesNo, MessageBoxImage.Question);
             if (result == MessageBoxResult.Yes)
+            {
                 bl.deleteHostingUnit(hostingUnit.HostingUnitKey);
-            MessageBox.Show("Your hostingUnit was deleted!", "", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show("Your hostingUnit was deleted!", "", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
             Identification.Visibility = Visibility.Hidden;
             mainGrid.Visibility = Visibility.Visible;
         }
@@ -551,5 +553,7 @@ namespace WPF_PL
             Identification.Visibility = Visibility.Hidden;
             proprietaireGrid.Visibility = Visibility.Visible;
         }
+
+     
     }
 }

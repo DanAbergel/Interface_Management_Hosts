@@ -52,7 +52,7 @@ namespace BE
             string str = "";
             str += "HostingUnit Key:  " + HostingUnitKey;
             str += Owner.ToString();
-            str += "\nHostingUnit Name:" + HostingUnitName+"\n";
+            str += "\nHostingUnit Name:" + HostingUnitName;
             str += "\nType of HostingUnit: " + type.ToString()+"\n";
             if(BE.Area.Center==area)
             str+="Area: Center";
@@ -62,17 +62,7 @@ namespace BE
             str += "Area: North"; 
             if(BE.Area.South == area)
             str += "Area: South";
-            str +=  address.ToString();
-            str += "\nHostingUnit Name:" + HostingUnitName + "\n";
-            str += "\nType of HostingUnit: " + type.ToString() + "\n";
-            if (BE.Area.Center == area)
-                str += "Area: Center";
-            if (BE.Area.Jerusalem == area)
-                str += "Area: Jerusalem";
-            if (BE.Area.North == area)
-                str += "Area: North";
-            if (BE.Area.South == area)
-                str += "Area: South";
+            str +=  address;
             if (pool || garden || jacuzzi || childrenAttraction)
                 str += "\nThe HostingUnit contents: ";
             if (pool)

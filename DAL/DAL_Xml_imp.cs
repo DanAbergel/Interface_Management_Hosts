@@ -13,7 +13,7 @@ using System.Xml.Serialization;
 
 namespace DAL
 {
-    class DAL_Xml_imp:IDAL
+    class DAL_XML_imp:IDAL
     {
         XElement HostingRoot;
         string hostingPath = @"hostingXml.xml";
@@ -33,7 +33,7 @@ namespace DAL
         /// <summary>
         /// DAL_XML_imp ctor
         /// </summary>
-        internal DAL_Xml_imp()
+        internal DAL_XML_imp()
         {
             if (!File.Exists(configPath))
             {
@@ -67,7 +67,7 @@ namespace DAL
         /// <summary>
         /// dtor
         /// </summary>
-        ~DAL_Xml_imp()
+        ~DAL_XML_imp()
         {
             HostingRoot.Save(hostingPath);
             SaveToXML<List<GuestRequest>>(DataSource.guestRequests, guestPath);
