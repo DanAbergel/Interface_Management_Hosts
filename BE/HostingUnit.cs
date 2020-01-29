@@ -17,9 +17,6 @@ namespace BE
         public Host Owner { get; set; }
         public string HostingUnitName { get; set; }
         public string address { get; set; }
-
-
-
         [XmlIgnore]
         public bool[,] Diary { get; set; }
         [XmlArray("diary")]

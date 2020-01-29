@@ -28,7 +28,7 @@ namespace BL
         } 
         public void addGuestRequest(GuestRequest guestRequest)
         {
-            if (guestRequest.EntryDate.CompareTo(guestRequest.EntryDate) > 0)
+            if (differnceBetweenTwoDates(guestRequest.EntryDate,guestRequest.ReleaseDate)==-1)
                 throw new Exception("Error !!! Entry date is later than release date ");
             if (guestRequest.EntryDate.CompareTo(guestRequest.ReleaseDate) == 0)
                 throw new Exception("Error !!! We accept only with at least one day between Entry and Release dates");
@@ -69,6 +69,10 @@ namespace BL
         }
         public void updateGuestRequest(GuestRequest updateGuestRequest)
         {
+            if (differnceBetweenTwoDates(updateGuestRequest.EntryDate, updateGuestRequest.ReleaseDate) == -1)
+                throw new Exception("Error !!! Entry date is later than release date ");
+            if (updateGuestRequest.EntryDate.CompareTo(updateGuestRequest.ReleaseDate) == 0)
+                throw new Exception("Error !!! We accept only with at least one day between Entry and Release dates");
             newDal.updateGuestRequest(updateGuestRequest);
         } 
         public void updateOrder(Order updateOrder)
@@ -208,7 +212,7 @@ namespace BL
             int difference = 0;
             int daysInMonth;
             daysInMonth = DateTime.DaysInMonth(Begin.Year, Begin.Month);
-            if (Begin.CompareTo(End) == 1)
+            if (Begin.CompareTo(End) >0)
                 return -1;
             if (Begin.Month!=End.Month) {
                 for (int day = Begin.Day; day < daysInMonth; day++)
@@ -361,9 +365,9 @@ namespace BL
         {
             if (guestRequest.area != hostingUnit.area)
                 return false;
-            if (guestRequest.Adults < hostingUnit.capacityAdults)
+            if (guestRequest.Adults > hostingUnit.capacityAdults)
                 return false;
-            if (guestRequest.Children < hostingUnit.capacityChildren)
+            if (guestRequest.Children > hostingUnit.capacityChildren)
                 return false;
             if (guestRequest.ChildrenAttractions == BE.BE.Criterion.Necessary && !hostingUnit.childrenAttraction)
                 return false;

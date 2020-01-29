@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Net.Mail;
+using System.ComponentModel;//for background worker class
 using BE;
 using BL;
 using System.Collections.ObjectModel;
@@ -37,9 +38,9 @@ namespace WPF_PL
         List<HostingUnit> list;
         string str = "";
         bool entry;
-        int size = 0;
+        //int size = 0;
         int verifyifAddOrUpdate = 0;
-        
+
         public MainWindow()
         {
             InitializeComponent();
@@ -222,7 +223,7 @@ namespace WPF_PL
 
                 //ferme la page add ou update
                 addOrderGrid.Visibility = Visibility.Visible;
-
+                reserved.IsEnabled = false;
 
                 //initialise le combobox selection
                 list = bl.getHostingUnits(guestRequest);
@@ -325,7 +326,7 @@ namespace WPF_PL
             updateHostingUnitGrid.Visibility = Visibility.Hidden;
             proprietaireGrid.Visibility = Visibility.Visible;
         }
-       
+
 
 
 
@@ -371,7 +372,7 @@ namespace WPF_PL
             str += order.ToString();
             MessageBox.Show("Your reservation has been sent to the Host!!!\nYou will get a mail to confirm your reservation.", "Reservation", MessageBoxButton.OK, MessageBoxImage.Exclamation);
             MailMessage mail = new MailMessage();
-            mail.To.Add("danabergel1995@gmail.com");
+            mail.To.Add(guestRequest.client.MailAddress);
             mail.From = new MailAddress("danabergelCsharp@gmail.com");
             mail.Subject = "Information about reservation hosting";
             mail.Body = str;
@@ -405,6 +406,7 @@ namespace WPF_PL
                         contentRectangle.Text = hosting.ToString();
                         hostingUnit = hosting;//for reservation
                     }
+                reserved.IsEnabled = true;
             }
         }
 
@@ -437,51 +439,21 @@ namespace WPF_PL
             mainGrid.Visibility = Visibility.Visible;
         }
 
-        public ObservableCollection<Client> people = new ObservableCollection<Client>();
-        public ObservableCollection<Client> People { get { return people; } }
-
-        private void listhosting_Click(object sender, RoutedEventArgs e)
-        {
-            DataSet dataSet = new DataSet();
-            dataSet.ReadXml(@"hostingXml.xml");
-            hosting.ItemsSource = dataSet.Tables[0].DefaultView;
-            administrateurGrid.Visibility = Visibility.Hidden;
-            getlisthosting.Visibility = Visibility.Visible;
-        }
-
-        private void Button_Click15(object sender, RoutedEventArgs e)
-        {
-            getlisthosting.Visibility = Visibility.Hidden;
-            administrateurGrid.Visibility = Visibility.Visible;
-        }
-        private void Button_Click16(object sender, RoutedEventArgs e)
-        {
-            getlistrequest.Visibility = Visibility.Hidden;
-            administrateurGrid.Visibility = Visibility.Visible;
-        }
-
-        private void listrequest_Click(object sender, RoutedEventArgs e)
-        {
-            DataSet dataSet = new DataSet();
-            dataSet.ReadXml(@"guestXml.xml");
-            this.guestrequest.ItemsSource = dataSet.Tables[0].DefaultView;
-            administrateurGrid.Visibility = Visibility.Hidden;
-            getlistrequest.Visibility = Visibility.Visible;
-        }
 
         private void IdentifyForContinue(object sender, RoutedEventArgs e)
         {
-            try { 
-            if (PrivateNameIdentify.Text == "" || FamilyNameIdentify.Text == "" || MailIdentify.Text == "")
-                MessageBox.Show("ERROR!\nYou didn't fill all the fields.", "ERROR", MessageBoxButton.OK, MessageBoxImage.Error);
-            else
+            try
             {
-                list = new List<HostingUnit>();
-                list = (from hostingUnit in bl.getAllHostingUnits()
-                        where hostingUnit.Owner.PrivateName == host.PrivateName
-                        && hostingUnit.Owner.FamilyName == host.FamilyName
-                        && hostingUnit.Owner.MailAddress == host.MailAddress
-                        select hostingUnit).ToList();
+                if (PrivateNameIdentify.Text == "" || FamilyNameIdentify.Text == "" || MailIdentify.Text == "")
+                    MessageBox.Show("ERROR!\nYou didn't fill all the fields.", "ERROR", MessageBoxButton.OK, MessageBoxImage.Error);
+                else
+                {
+                    list = new List<HostingUnit>();
+                    list = (from hostingUnit in bl.getAllHostingUnits()
+                            where hostingUnit.Owner.PrivateName == host.PrivateName
+                            && hostingUnit.Owner.FamilyName == host.FamilyName
+                            && hostingUnit.Owner.MailAddress == host.MailAddress
+                            select hostingUnit).ToList();
                     if (list.Count > 0)
                     {
                         DeleteHostingUnit.IsEnabled = true;
@@ -497,10 +469,11 @@ namespace WPF_PL
                         }
                         identifyButton.IsEnabled = false;
                     }
-           
+
                 }
 
-            }catch(Exception message)
+            }
+            catch (Exception message)
             {
                 MessageBox.Show(message.Message, "ERROR", MessageBoxButton.OK, MessageBoxImage.Error);
             }
@@ -538,8 +511,8 @@ namespace WPF_PL
             updateHostingUnitGrid.DataContext = hostingUnit;
             Identification.Visibility = Visibility.Hidden;
             updateHostingUnitGrid.Visibility = Visibility.Visible;
-           // for (int i = 0; i < selectionForDeleteOrUpdate.Items.Count; i++)
-             //   selectionForDeleteOrUpdate.Items.RemoveAt(i);
+            // for (int i = 0; i < selectionForDeleteOrUpdate.Items.Count; i++)
+            //   selectionForDeleteOrUpdate.Items.RemoveAt(i);
             comboboxAreaUpdateHostingUnit.SelectedValue = hostingUnit.area;
             typeHostingComboboxUpdate.SelectedValue = hostingUnit.type;
         }
@@ -563,6 +536,52 @@ namespace WPF_PL
             proprietaireGrid.Visibility = Visibility.Visible;
         }
 
-     
+        private void listorder_Click(object sender, RoutedEventArgs e)
+        {
+
+
+            orderlst.ItemsSource = bl.getAllOrders();
+            administrateurGrid.Visibility = Visibility.Hidden;
+            getlistOrder.Visibility = Visibility.Visible;
+        }
+
+        private void Button_Click17(object sender, RoutedEventArgs e)
+        {
+            getlistOrder.Visibility = Visibility.Hidden;
+            administrateurGrid.Visibility = Visibility.Visible;
+        }
+
+        private void listhosting_Click(object sender, RoutedEventArgs e)
+        {
+
+            hosting.ItemsSource = bl.getAllHostingUnits();
+            //DataSet dataSet = new DataSet();
+            //dataSet.ReadXml(@"hostingXml.xml");
+            //hosting.ItemsSource = dataSet.Tables[0].DefaultView;
+            //hosting.ItemsSource = bl.getAllHostingUnits();
+            administrateurGrid.Visibility = Visibility.Hidden;
+            getlisthosting.Visibility = Visibility.Visible;
+        }
+
+        private void Button_Click15(object sender, RoutedEventArgs e)
+        {
+            getlisthosting.Visibility = Visibility.Hidden;
+            administrateurGrid.Visibility = Visibility.Visible;
+        }
+        private void Button_Click16(object sender, RoutedEventArgs e)
+        {
+            getlistrequest.Visibility = Visibility.Hidden;
+            administrateurGrid.Visibility = Visibility.Visible;
+        }
+
+        private void listrequest_Click(object sender, RoutedEventArgs e)
+        {
+            guestrequest.ItemsSource = bl.getAllGuestRequest();
+            //DataSet dataSet = new DataSet();
+            //dataSet.ReadXml(@"guestXml.xml");
+            //this.guestrequest.ItemsSource = dataSet.Tables[0].DefaultView;
+            administrateurGrid.Visibility = Visibility.Hidden;
+            getlistrequest.Visibility = Visibility.Visible;
+        }
     }
 }
