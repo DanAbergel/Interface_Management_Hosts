@@ -268,7 +268,8 @@ namespace DAL
             {
                 if (HostingListChanged)
                 {
-                    DataSource.hostingUnits = (from hosting in HostingRoot.Elements() select new HostingUnit()).ToList();
+                    DataSource.hostingUnits = (from hosting in HostingRoot.Elements()
+                                               select new HostingUnit()).ToList();
                     HostingListChanged = false;
                 }
             }
